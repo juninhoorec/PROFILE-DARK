@@ -43,7 +43,9 @@ function meta(html: string, key: string) {
 }
 
 function jsonLd(html: string): Record<string, any> | undefined {
-  for (const match of html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+  const scriptPattern = /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+  let match: RegExpExecArray | null;
+  while ((match = scriptPattern.exec(html)) !== null) {
     try {
       const parsed = JSON.parse(match[1]);
       const nodes = Array.isArray(parsed) ? parsed : parsed['@graph'] || [parsed];
