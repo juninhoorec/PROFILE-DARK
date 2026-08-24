@@ -1,0 +1,2281 @@
+{
+  "version": 1,
+  "profiles": [
+    {
+      "id": "prof_luna_star",
+      "name": "Luna Star",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "bio": "Criadora virtual de estilo de vida, beleza e bem-estar. Elegante, empática e focada em recomendações autênticas.",
+      "niche": "Lifestyle & Beleza",
+      "personality": "Carismática",
+      "toneOfVoice": "Acolhedor",
+      "voiceName": "Luna (Natural)",
+      "voiceSampleUrl": "/assets/audio/luna_sample.mp3",
+      "realismScore": 90,
+      "language": "Português (BR)",
+      "characterLock": {
+        "face": true,
+        "age": true,
+        "hair": true,
+        "body": true,
+        "voice": true,
+        "personality": true
+      },
+      "dna": {
+        "name": "Luna Star",
+        "ageApparent": 28,
+        "nationality": "Brasileira",
+        "niche": "Lifestyle & Beleza",
+        "subNiche": "Cuidados Pessoais & Perfumaria de Luxo",
+        "personality": "Carismática, autêntica, elegante e inspiradora",
+        "toneOfVoice": "Acolhedor, próximo e confiante",
+        "speechPattern": "Frases dinâmicas, entonação natural, pausas estratégicas de ênfase",
+        "visualAppearance": "Morena iluminada, traços marcantes, pele natural com textura real, olhos expressivos castanho-claros",
+        "wardrobeStyle": "Minimalista chic, blazers elegantes, tons neutros e tecidos nobres",
+        "environmentPreference": "Apartamento contemporâneo iluminado, estúdio clean e luz suave de fim de tarde",
+        "voiceStyle": "Voz feminina quente, dicção cristalina, ritmo conversacional",
+        "voiceLanguage": "pt-BR",
+        "suggestedUsernames": [
+          "@lunastar",
+          "@lunarecomenda",
+          "@usecomluna",
+          "@dicasdaluna",
+          "@lunaescolhe"
+        ],
+        "targetAudience": "Mulheres de 22 a 42 anos interessadas em autocuidado, estética refinada e produtividade",
+        "buyerPersona": "Profissionais e empreendedoras que buscam produtos de alta qualidade e sofisticação com recomendação crível",
+        "primaryCommercialGoal": "conversao",
+        "mainCTA": "Toque no link da bio para garantir o seu com condição exclusiva.",
+        "secondaryCTA": "Comente EU QUERO que envio o link no direct.",
+        "salesStyle": "Recomendação consultiva e storytelling sensorial",
+        "aggressivenessLevel": "moderado",
+        "editorialStrategy": "70% Lifestyle & Rotina com inserção contextual do produto, 30% Review aprofundado com prova de uso",
+        "initialIdeas": [
+          "5 hábitos matinais que transformaram minha pele",
+          "O perfume que virou minha marca registrada",
+          "Arrume-se comigo para uma reunião importante",
+          "Por que parei de usar cosméticos convencionais"
+        ]
+      },
+      "references": [
+        {
+          "id": "ref_1",
+          "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+          "type": "image",
+          "isMaster": true,
+          "label": "Foto Mestre Frontal",
+          "createdAt": "2026-08-20T10:00:00Z"
+        },
+        {
+          "id": "ref_2",
+          "url": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
+          "type": "image",
+          "isMaster": false,
+          "label": "Ângulo 3/4 Luz Natural",
+          "createdAt": "2026-08-20T10:05:00Z"
+        }
+      ],
+      "isDemo": true,
+      "createdAt": "2026-08-20T10:00:00Z",
+      "updatedAt": "2026-08-22T12:00:00Z"
+    },
+    {
+      "id": "prof_orion_tech",
+      "name": "Orion Tech",
+      "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      "bio": "Especialista em tecnologia automotiva e lançamentos futuristas.",
+      "niche": "Tecnologia & Automotivo",
+      "personality": "Analítico e Preciso",
+      "toneOfVoice": "Autoridade Técnica",
+      "voiceName": "Orion (Grave e Firme)",
+      "voiceSampleUrl": "/assets/audio/orion_sample.mp3",
+      "realismScore": 95,
+      "language": "Português (BR)",
+      "characterLock": {
+        "face": true,
+        "age": true,
+        "hair": true,
+        "body": true,
+        "voice": true,
+        "personality": true
+      },
+      "dna": {
+        "name": "Orion Tech",
+        "ageApparent": 34,
+        "nationality": "Brasileiro",
+        "niche": "Tecnologia & Automotivo",
+        "subNiche": "Veículos Elétricos & Gadgets de Alta Performance",
+        "personality": "Fascinado por engenharia, direto, confiável",
+        "toneOfVoice": "Técnico, dinâmico e seguro",
+        "speechPattern": "Métricas exatas, análises comparativas e tom entusiasmado com dados",
+        "visualAppearance": "Cabelo curto impecável, barba aparada, postura ereta, jaqueta techwear escura",
+        "wardrobeStyle": "Techwear refinado, preto e cinza chumbo",
+        "environmentPreference": "Garagem moderna com iluminação LED arquitetônica e estúdio escuro com telas",
+        "voiceStyle": "Voz masculina encorpada, dicção firme",
+        "voiceLanguage": "pt-BR",
+        "suggestedUsernames": [
+          "@oriontech",
+          "@orionautomotivo",
+          "@orionavalia",
+          "@orionreview"
+        ],
+        "targetAudience": "Entusiastas de tecnologia e compradores de automóveis premium (25 a 55 anos)",
+        "buyerPersona": "Profissionais de tecnologia e executivos buscando inovação, segurança e design de ponta",
+        "primaryCommercialGoal": "conversao",
+        "mainCTA": "Acesse o configurador oficial no primeiro link da descrição.",
+        "secondaryCTA": "Deixe seu comentário sobre qual teste quer ver a seguir.",
+        "salesStyle": "Review minucioso baseado em testes práticos",
+        "aggressivenessLevel": "moderado",
+        "editorialStrategy": "Vídeos de unboxing de alta tecnologia, comparativos de desempenho e tours detalhados",
+        "initialIdeas": [
+          "Novo Carro X1: 0 a 100 em teste real",
+          "5 segredos do painel inteligente"
+        ]
+      },
+      "references": [],
+      "isDemo": true,
+      "createdAt": "2026-08-19T08:00:00Z",
+      "updatedAt": "2026-08-22T10:00:00Z"
+    },
+    {
+      "id": "prof_review_pro",
+      "name": "Review Pro",
+      "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+      "bio": "Testes extremos e reviews honestos de calçados esportivos e equipamentos.",
+      "niche": "Esportes & Fitness",
+      "personality": "Enérgico",
+      "toneOfVoice": "Descontraído",
+      "voiceName": "Vitor (Jovem e Dinâmico)",
+      "realismScore": 92,
+      "language": "Português (BR)",
+      "characterLock": {
+        "face": true,
+        "age": true,
+        "hair": true,
+        "body": true,
+        "voice": true,
+        "personality": true
+      },
+      "dna": {
+        "name": "Review Pro",
+        "ageApparent": 26,
+        "nationality": "Brasileiro",
+        "niche": "Esportes & Calçados",
+        "subNiche": "Tênis de Corrida e Streetwear",
+        "personality": "Ágil, empolgado e hiper-específico sobre amortecimento",
+        "toneOfVoice": "Jovem, direto e amigável",
+        "speechPattern": "Gírias de corrida, linguagem informal, ritmo acelerado",
+        "visualAppearance": "Atlético, regata esportiva respirável ou corta-vento moderno",
+        "wardrobeStyle": "Sportswear contemporâneo",
+        "environmentPreference": "Pista de corrida emborrachada e estúdio com bancada de testes",
+        "voiceStyle": "Voz dinâmica com energia alta",
+        "voiceLanguage": "pt-BR",
+        "suggestedUsernames": [
+          "@reviewpro",
+          "@tenisnareal",
+          "@vitorreview"
+        ],
+        "targetAudience": "Corredores amadores e avançados, praticantes de academia e sneakerheads",
+        "buyerPersona": "Atletas urbanos que valorizam durabilidade, resposta de espuma e conforto diário",
+        "primaryCommercialGoal": "conversao",
+        "mainCTA": "Use meu cupom REVIEW10 no link fixado.",
+        "secondaryCTA": "Salva esse vídeo para não comprar o modelo errado!",
+        "salesStyle": "Demonstração de produto com teste de flexão e amortecimento em close-up",
+        "aggressivenessLevel": "direto",
+        "editorialStrategy": "Shorts de teste de impacto, comparativos lado a lado e unboxings dinâmicos",
+        "initialIdeas": [
+          "Tênis Ultra Max: vale a pena ou é hype?"
+        ]
+      },
+      "references": [],
+      "isDemo": true,
+      "createdAt": "2026-08-18T14:00:00Z",
+      "updatedAt": "2026-08-22T09:00:00Z"
+    },
+    {
+      "id": "prof_bela_skin",
+      "name": "Bela Skin",
+      "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+      "bio": "Dermatologia estética descomplicada e rotinas noturnas restauradoras.",
+      "niche": "Skincare & Saúde",
+      "personality": "Calma e Didática",
+      "toneOfVoice": "Suave",
+      "voiceName": "Beatriz (ASMR Suave)",
+      "realismScore": 94,
+      "language": "Português (BR)",
+      "characterLock": {
+        "face": true,
+        "age": true,
+        "hair": true,
+        "body": true,
+        "voice": true,
+        "personality": true
+      },
+      "dna": {
+        "name": "Bela Skin",
+        "ageApparent": 30,
+        "nationality": "Brasileira",
+        "niche": "Skincare & Cosmecêuticos",
+        "subNiche": "Barreira Cutânea & Hidratação Profunda",
+        "personality": "Serena, acolhedora e precisa sobre ativos cosméticos",
+        "toneOfVoice": "Voz aveludada, tom relaxante e explicativo",
+        "speechPattern": "Tom sereno com pausas suaves, sem afobação",
+        "visualAppearance": "Pele impecável com viço natural, cabelo preso em coque despojado",
+        "wardrobeStyle": "Roupas de seda, roupão felpudo branco, tons pastel",
+        "environmentPreference": "Banheiro de mármore com iluminação quente de velas e plantas",
+        "voiceStyle": "Voz feminina tranquila e sedosa",
+        "voiceLanguage": "pt-BR",
+        "suggestedUsernames": [
+          "@belaskin",
+          "@rotinanoturna",
+          "@dicasdabela"
+        ],
+        "targetAudience": "Pessoas que buscam rotinas de autocuidado relaxantes e produtos eficazes",
+        "buyerPersona": "Mulheres e homens de 25-50 anos com rotina agitada buscando momentos de bem-estar",
+        "primaryCommercialGoal": "conversao",
+        "mainCTA": "Aproveite o kit noturno no link exclusivo da bio.",
+        "secondaryCTA": "Comente sua maior dúvida de pele aqui embaixo.",
+        "salesStyle": "Tutorial de aplicação sensorial com foco na textura e absorção",
+        "aggressivenessLevel": "sutil",
+        "editorialStrategy": "Vídeos noturnos relaxantes tipo ASMR visual aplicando os produtos passo a passo",
+        "initialIdeas": [
+          "Minha rotina noturna em 3 passos para acordar renovada"
+        ]
+      },
+      "references": [],
+      "isDemo": true,
+      "createdAt": "2026-08-17T11:00:00Z",
+      "updatedAt": "2026-08-22T08:00:00Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod_essence_noir",
+      "name": "Parfume Essence Noir",
+      "brand": "Aura Perfumaria",
+      "category": "Perfumaria de Luxo",
+      "description": "Fragrância oriental amadeirada com notas de âmbar negro, baunilha de Madagascar e cedro nobre.",
+      "imageUrl": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80",
+      "price": "R$ 389,00",
+      "offer": "Frete grátis + Amostra de 10ml na primeira compra",
+      "buyUrl": "https://auraperfumaria.com.br/essence-noir",
+      "productLock": {
+        "logo": true,
+        "color": true,
+        "shape": true,
+        "material": true,
+        "packaging": true,
+        "text": true,
+        "details": true
+      },
+      "dna": {
+        "name": "Parfume Essence Noir",
+        "brand": "Aura Perfumaria",
+        "category": "Perfume Eau de Parfum",
+        "keyFeatures": [
+          "Frasco de vidro fumê pesado",
+          "Tampa magnética dourada fosca",
+          "Vaporizador de névoa ultrafina"
+        ],
+        "colors": [
+          "Preto translúcido",
+          "Dourado fosco",
+          "Âmbar"
+        ],
+        "shape": "Frasco retangular facetado com bordas chanfradas",
+        "packagingDetails": "Caixa de toque aveludado preta com hot stamping dourado",
+        "mainBenefits": [
+          "Fixação de mais de 12 horas",
+          "Projeção marcante sem ser invasiva",
+          "Fragrância exclusiva"
+        ],
+        "problemSolved": "Perfumes comuns que somem após 2 horas na pele",
+        "desireExploited": "Presença magnética, sofisticação e elogios espontâneos",
+        "price": "R$ 389,00",
+        "specialOffer": "Condição de lançamento com 15% OFF pelo cupom LUNA15",
+        "checkoutUrl": "https://auraperfumaria.com.br/essence-noir",
+        "targetAudience": "Homens e mulheres que apreciam perfumaria de nicho sofisticada",
+        "commonObjections": [
+          "Será que é doce demais?",
+          "Fixa bem em dias quentes?"
+        ],
+        "primaryDifferentiator": "Macerado durante 90 dias com óleos essenciais importados de Grasse"
+      },
+      "isDemo": true,
+      "createdAt": "2026-08-20T11:00:00Z",
+      "updatedAt": "2026-08-22T10:00:00Z"
+    },
+    {
+      "id": "prod_carro_x1",
+      "name": "Carro X1 Supercharged",
+      "brand": "Orion Motors",
+      "category": "Automotivo Elétrico",
+      "description": "Sedan elétrico esportivo de alta autonomia com piloto automático inteligente de nível 3.",
+      "imageUrl": "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=600&q=80",
+      "price": "A partir de R$ 320.000",
+      "buyUrl": "https://orionmotors.com/x1",
+      "productLock": {
+        "logo": true,
+        "color": true,
+        "shape": true,
+        "material": true,
+        "packaging": false,
+        "text": true,
+        "details": true
+      },
+      "dna": {
+        "name": "Carro X1 Supercharged",
+        "brand": "Orion Motors",
+        "category": "Veículo Elétrico Premium",
+        "keyFeatures": [
+          "Autonomia de 680km",
+          "Faróis Matrix LED adaptativos",
+          "Rodas 21 polegadas forjadas"
+        ],
+        "colors": [
+          "Preto ônix acetinado",
+          "Prata espacial"
+        ],
+        "shape": "Linhas aerodinâmicas coupé agressivas",
+        "packagingDetails": "N/A",
+        "mainBenefits": [
+          "0 a 100 km/h em 3.2 segundos",
+          "Custo por km rodado 80% menor que gasolina"
+        ],
+        "problemSolved": "Carros elétricos sem apelo esportivo ou com baixa autonomia",
+        "desireExploited": "Sensação de pilotagem esportiva e status tecnológico",
+        "targetAudience": "Executivos e entusiastas de engenharia",
+        "commonObjections": [
+          "Tempo de recarga em estrada",
+          "Desvalorização"
+        ],
+        "primaryDifferentiator": "Bateria de estado sólido com recarga ultrarrápida de 80% em 12 minutos"
+      },
+      "isDemo": true,
+      "createdAt": "2026-08-19T09:00:00Z",
+      "updatedAt": "2026-08-22T10:00:00Z"
+    },
+    {
+      "id": "prod_tenis_ultra_max",
+      "name": "Tênis Ultra Max Pro Run",
+      "brand": "Aero Athletics",
+      "category": "Calçados & Esporte",
+      "description": "Tênis de corrida com placa de carbono curva e entressola de superespuma com retorno de 88% de energia.",
+      "imageUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
+      "price": "R$ 899,90",
+      "offer": "Parcele em 10x sem juros + Meia técnica grátis",
+      "buyUrl": "https://aeroathletics.com/ultramax",
+      "productLock": {
+        "logo": true,
+        "color": true,
+        "shape": true,
+        "material": true,
+        "packaging": true,
+        "text": true,
+        "details": true
+      },
+      "dna": {
+        "name": "Tênis Ultra Max Pro Run",
+        "brand": "Aero Athletics",
+        "category": "Tênis de Performance",
+        "keyFeatures": [
+          "Placa de carbono 3D",
+          "Cabedal em mesh respirável ultraleve de 180g",
+          "Solado antiderrapante"
+        ],
+        "colors": [
+          "Branco ártico com detalhes azul elétrico e laranja neon"
+        ],
+        "shape": "Geometria rocker com bico curvado para propulsão rápida",
+        "packagingDetails": "Caixa com abertura lateral e sacochila térmica de transporte inclusa",
+        "mainBenefits": [
+          "Economia de esforço muscular em até 4%",
+          "Zero bolhas e máxima respirabilidade"
+        ],
+        "problemSolved": "Cansaço precoce nas pernas e impacto nas articulações durante corridas longas",
+        "desireExploited": "Bater recordes pessoais (PRs) e correr com sensação de estar flutuando",
+        "price": "R$ 899,90",
+        "targetAudience": "Corredores de rua de 5k até maratona",
+        "commonObjections": [
+          "Durabilidade da sola",
+          "É instável em curvas?"
+        ],
+        "primaryDifferentiator": "Espuma PEBAX de densidade dupla com placa de carbono integral"
+      },
+      "isDemo": true,
+      "createdAt": "2026-08-18T15:00:00Z",
+      "updatedAt": "2026-08-22T10:00:00Z"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "job_1787574607061_x0uvl",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileId": "prof_luna_star",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productId": "prod_essence_noir",
+      "productName": "Parfume Essence Noir",
+      "creativePlanId": "test_plan_1787574607058",
+      "creativePlan": {
+        "id": "test_plan_1787574607058",
+        "profileId": "prof_luna_star",
+        "productId": "prod_essence_noir",
+        "format": "reels",
+        "objective": "conversao",
+        "funnelStage": "meio",
+        "targetDurationSeconds": 3,
+        "hook": "Teste de 3 segundos para Luna Star",
+        "creativeAngle": "Smoke Test de Validação de Identidade e Produto",
+        "fullScript": "[CENA 1 - 3 SEGUNDOS]\nLuna Star olha para a câmera com movimento suave e sorriso autêntico segurando Parfume Essence Noir.",
+        "scenes": [
+          {
+            "sceneNumber": 1,
+            "title": "Cena 1: Teste Rápido de 3 Segundos",
+            "durationSeconds": 3,
+            "visualPrompt": "Close-up ultrarrealista de Luna Star com iluminação 4K e textura de pele natural.",
+            "cameraMovement": "Zoom-in lento estabilizado.",
+            "lightingStyle": "Golden hour suave.",
+            "narrationScript": "Qualidade confirmada com fidelidade de personagem.",
+            "productInteraction": "Exibindo Parfume Essence Noir.",
+            "characterAction": "Olhar para câmera.",
+            "status": "completed"
+          }
+        ],
+        "ctaText": "Aprovar e gerar vídeo completo",
+        "captionText": "Teste de validação de pipeline 3s.",
+        "hashtags": [
+          "#SmokeTest",
+          "#ProfileDark"
+        ],
+        "thumbnailPrompt": "Thumbnail de validação 3s para Luna Star",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+        "estimatedCredits": 15,
+        "createdAt": "2026-08-24T12:30:07.058Z"
+      },
+      "status": "concluido",
+      "progress": 100,
+      "durationSeconds": 3,
+      "resolution": "1080p",
+      "aspectRatio": "9:16",
+      "fps": 30,
+      "pipeline": [
+        {
+          "id": "context",
+          "label": "Contexto",
+          "status": "completed"
+        },
+        {
+          "id": "script",
+          "label": "Roteiro",
+          "status": "completed"
+        },
+        {
+          "id": "audio",
+          "label": "Áudio",
+          "status": "completed"
+        },
+        {
+          "id": "scene_1",
+          "label": "Cena 1",
+          "status": "completed"
+        },
+        {
+          "id": "scene_2",
+          "label": "Cena 2",
+          "status": "completed"
+        },
+        {
+          "id": "scene_3",
+          "label": "Cena 3",
+          "status": "completed"
+        },
+        {
+          "id": "render",
+          "label": "Render",
+          "status": "completed"
+        },
+        {
+          "id": "quality_check",
+          "label": "Quality Check",
+          "status": "completed"
+        }
+      ],
+      "costCredits": 15,
+      "isSmokeTest": true,
+      "retryCount": 0,
+      "createdAt": "2026-08-24T12:30:07.061Z",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "providerUsed": "runway / gen3a_turbo",
+      "completedAt": "2026-08-24T12:30:07.071Z",
+      "qualityScore": 98
+    },
+    {
+      "id": "job_1787574607024_8zadj",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileId": "prof_luna_star",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productId": "prod_essence_noir",
+      "productName": "Parfume Essence Noir",
+      "creativePlanId": "test_plan_1787574607022",
+      "creativePlan": {
+        "id": "test_plan_1787574607022",
+        "profileId": "prof_luna_star",
+        "productId": "prod_essence_noir",
+        "format": "reels",
+        "objective": "conversao",
+        "funnelStage": "meio",
+        "targetDurationSeconds": 3,
+        "hook": "Teste de 3 segundos para Luna Star",
+        "creativeAngle": "Smoke Test de Validação de Identidade e Produto",
+        "fullScript": "[CENA 1 - 3 SEGUNDOS]\nLuna Star olha para a câmera com movimento suave e sorriso autêntico segurando Parfume Essence Noir.",
+        "scenes": [
+          {
+            "sceneNumber": 1,
+            "title": "Cena 1: Teste Rápido de 3 Segundos",
+            "durationSeconds": 3,
+            "visualPrompt": "Close-up ultrarrealista de Luna Star com iluminação 4K e textura de pele natural.",
+            "cameraMovement": "Zoom-in lento estabilizado.",
+            "lightingStyle": "Golden hour suave.",
+            "narrationScript": "Qualidade confirmada com fidelidade de personagem.",
+            "productInteraction": "Exibindo Parfume Essence Noir.",
+            "characterAction": "Olhar para câmera.",
+            "status": "completed"
+          }
+        ],
+        "ctaText": "Aprovar e gerar vídeo completo",
+        "captionText": "Teste de validação de pipeline 3s.",
+        "hashtags": [
+          "#SmokeTest",
+          "#ProfileDark"
+        ],
+        "thumbnailPrompt": "Thumbnail de validação 3s para Luna Star",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+        "estimatedCredits": 15,
+        "createdAt": "2026-08-24T12:30:07.022Z"
+      },
+      "status": "concluido",
+      "progress": 100,
+      "durationSeconds": 3,
+      "resolution": "1080p",
+      "aspectRatio": "9:16",
+      "fps": 30,
+      "pipeline": [
+        {
+          "id": "context",
+          "label": "Contexto",
+          "status": "completed"
+        },
+        {
+          "id": "script",
+          "label": "Roteiro",
+          "status": "completed"
+        },
+        {
+          "id": "audio",
+          "label": "Áudio",
+          "status": "completed"
+        },
+        {
+          "id": "scene_1",
+          "label": "Cena 1",
+          "status": "completed"
+        },
+        {
+          "id": "scene_2",
+          "label": "Cena 2",
+          "status": "completed"
+        },
+        {
+          "id": "scene_3",
+          "label": "Cena 3",
+          "status": "completed"
+        },
+        {
+          "id": "render",
+          "label": "Render",
+          "status": "completed"
+        },
+        {
+          "id": "quality_check",
+          "label": "Quality Check",
+          "status": "completed"
+        }
+      ],
+      "costCredits": 15,
+      "isSmokeTest": true,
+      "retryCount": 0,
+      "createdAt": "2026-08-24T12:30:07.024Z",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "providerUsed": "runway / gen3a_turbo",
+      "completedAt": "2026-08-24T12:30:07.028Z",
+      "qualityScore": 97
+    },
+    {
+      "id": "job_1787419465346_0hbo1",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileId": "prof_luna_star",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productId": "prod_essence_noir",
+      "productName": "Parfume Essence Noir",
+      "creativePlanId": "test_plan_1787419465343",
+      "creativePlan": {
+        "id": "test_plan_1787419465343",
+        "profileId": "prof_luna_star",
+        "productId": "prod_essence_noir",
+        "format": "reels",
+        "objective": "conversao",
+        "funnelStage": "meio",
+        "targetDurationSeconds": 3,
+        "hook": "Teste de 3 segundos para Luna Star",
+        "creativeAngle": "Smoke Test de Validação de Identidade e Produto",
+        "fullScript": "[CENA 1 - 3 SEGUNDOS]\nLuna Star olha para a câmera com movimento suave e sorriso autêntico segurando Parfume Essence Noir.",
+        "scenes": [
+          {
+            "sceneNumber": 1,
+            "title": "Cena 1: Teste Rápido de 3 Segundos",
+            "durationSeconds": 3,
+            "visualPrompt": "Close-up ultrarrealista de Luna Star com iluminação 4K e textura de pele natural.",
+            "cameraMovement": "Zoom-in lento estabilizado.",
+            "lightingStyle": "Golden hour suave.",
+            "narrationScript": "Qualidade confirmada com fidelidade de personagem.",
+            "productInteraction": "Exibindo Parfume Essence Noir.",
+            "characterAction": "Olhar para câmera.",
+            "status": "completed"
+          }
+        ],
+        "ctaText": "Aprovar e gerar vídeo completo",
+        "captionText": "Teste de validação de pipeline 3s.",
+        "hashtags": [
+          "#SmokeTest",
+          "#ProfileDark"
+        ],
+        "thumbnailPrompt": "Thumbnail de validação 3s para Luna Star",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+        "estimatedCredits": 15,
+        "createdAt": "2026-08-22T17:24:25.343Z"
+      },
+      "status": "concluido",
+      "progress": 100,
+      "durationSeconds": 3,
+      "resolution": "1080p",
+      "aspectRatio": "9:16",
+      "fps": 30,
+      "pipeline": [
+        {
+          "id": "context",
+          "label": "Contexto",
+          "status": "completed"
+        },
+        {
+          "id": "script",
+          "label": "Roteiro",
+          "status": "completed"
+        },
+        {
+          "id": "audio",
+          "label": "Áudio",
+          "status": "completed"
+        },
+        {
+          "id": "scene_1",
+          "label": "Cena 1",
+          "status": "completed"
+        },
+        {
+          "id": "scene_2",
+          "label": "Cena 2",
+          "status": "completed"
+        },
+        {
+          "id": "scene_3",
+          "label": "Cena 3",
+          "status": "completed"
+        },
+        {
+          "id": "render",
+          "label": "Render",
+          "status": "completed"
+        },
+        {
+          "id": "quality_check",
+          "label": "Quality Check",
+          "status": "completed"
+        }
+      ],
+      "costCredits": 15,
+      "isSmokeTest": true,
+      "retryCount": 0,
+      "createdAt": "2026-08-22T17:24:25.346Z",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "providerUsed": "runway / gen3a_turbo",
+      "completedAt": "2026-08-22T17:24:25.351Z",
+      "qualityScore": 97
+    },
+    {
+      "id": "job_1787419465323_hxsmz",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileId": "prof_luna_star",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productId": "prod_essence_noir",
+      "productName": "Parfume Essence Noir",
+      "creativePlanId": "test_plan_1787419465320",
+      "creativePlan": {
+        "id": "test_plan_1787419465320",
+        "profileId": "prof_luna_star",
+        "productId": "prod_essence_noir",
+        "format": "reels",
+        "objective": "conversao",
+        "funnelStage": "meio",
+        "targetDurationSeconds": 3,
+        "hook": "Teste de 3 segundos para Luna Star",
+        "creativeAngle": "Smoke Test de Validação de Identidade e Produto",
+        "fullScript": "[CENA 1 - 3 SEGUNDOS]\nLuna Star olha para a câmera com movimento suave e sorriso autêntico segurando Parfume Essence Noir.",
+        "scenes": [
+          {
+            "sceneNumber": 1,
+            "title": "Cena 1: Teste Rápido de 3 Segundos",
+            "durationSeconds": 3,
+            "visualPrompt": "Close-up ultrarrealista de Luna Star com iluminação 4K e textura de pele natural.",
+            "cameraMovement": "Zoom-in lento estabilizado.",
+            "lightingStyle": "Golden hour suave.",
+            "narrationScript": "Qualidade confirmada com fidelidade de personagem.",
+            "productInteraction": "Exibindo Parfume Essence Noir.",
+            "characterAction": "Olhar para câmera.",
+            "status": "completed"
+          }
+        ],
+        "ctaText": "Aprovar e gerar vídeo completo",
+        "captionText": "Teste de validação de pipeline 3s.",
+        "hashtags": [
+          "#SmokeTest",
+          "#ProfileDark"
+        ],
+        "thumbnailPrompt": "Thumbnail de validação 3s para Luna Star",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+        "estimatedCredits": 15,
+        "createdAt": "2026-08-22T17:24:25.320Z"
+      },
+      "status": "concluido",
+      "progress": 100,
+      "durationSeconds": 3,
+      "resolution": "1080p",
+      "aspectRatio": "9:16",
+      "fps": 30,
+      "pipeline": [
+        {
+          "id": "context",
+          "label": "Contexto",
+          "status": "completed"
+        },
+        {
+          "id": "script",
+          "label": "Roteiro",
+          "status": "completed"
+        },
+        {
+          "id": "audio",
+          "label": "Áudio",
+          "status": "completed"
+        },
+        {
+          "id": "scene_1",
+          "label": "Cena 1",
+          "status": "completed"
+        },
+        {
+          "id": "scene_2",
+          "label": "Cena 2",
+          "status": "completed"
+        },
+        {
+          "id": "scene_3",
+          "label": "Cena 3",
+          "status": "completed"
+        },
+        {
+          "id": "render",
+          "label": "Render",
+          "status": "completed"
+        },
+        {
+          "id": "quality_check",
+          "label": "Quality Check",
+          "status": "completed"
+        }
+      ],
+      "costCredits": 15,
+      "isSmokeTest": true,
+      "retryCount": 0,
+      "createdAt": "2026-08-22T17:24:25.323Z",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "providerUsed": "runway / gen3a_turbo",
+      "completedAt": "2026-08-22T17:24:25.329Z",
+      "qualityScore": 97
+    },
+    {
+      "id": "job_1787419054713_lpuzr",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileId": "prof_luna_star",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productId": "prod_essence_noir",
+      "productName": "Parfume Essence Noir",
+      "creativePlanId": "test_plan_1787419054709",
+      "creativePlan": {
+        "id": "test_plan_1787419054709",
+        "profileId": "prof_luna_star",
+        "productId": "prod_essence_noir",
+        "format": "reels",
+        "objective": "conversao",
+        "funnelStage": "meio",
+        "targetDurationSeconds": 3,
+        "hook": "Teste de 3 segundos para Luna Star",
+        "creativeAngle": "Smoke Test de Validação de Identidade e Produto",
+        "fullScript": "[CENA 1 - 3 SEGUNDOS]\nLuna Star olha para a câmera com movimento suave e sorriso autêntico segurando Parfume Essence Noir.",
+        "scenes": [
+          {
+            "sceneNumber": 1,
+            "title": "Cena 1: Teste Rápido de 3 Segundos",
+            "durationSeconds": 3,
+            "visualPrompt": "Close-up ultrarrealista de Luna Star com iluminação 4K e textura de pele natural.",
+            "cameraMovement": "Zoom-in lento estabilizado.",
+            "lightingStyle": "Golden hour suave.",
+            "narrationScript": "Qualidade confirmada com fidelidade de personagem.",
+            "productInteraction": "Exibindo Parfume Essence Noir.",
+            "characterAction": "Olhar para câmera.",
+            "status": "completed"
+          }
+        ],
+        "ctaText": "Aprovar e gerar vídeo completo",
+        "captionText": "Teste de validação de pipeline 3s.",
+        "hashtags": [
+          "#SmokeTest",
+          "#ProfileDark"
+        ],
+        "thumbnailPrompt": "Thumbnail de validação 3s para Luna Star",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+        "estimatedCredits": 15,
+        "createdAt": "2026-08-22T17:17:34.709Z"
+      },
+      "status": "concluido",
+      "progress": 100,
+      "durationSeconds": 3,
+      "resolution": "1080p",
+      "aspectRatio": "9:16",
+      "fps": 30,
+      "pipeline": [
+        {
+          "id": "context",
+          "label": "Contexto",
+          "status": "completed"
+        },
+        {
+          "id": "script",
+          "label": "Roteiro",
+          "status": "completed"
+        },
+        {
+          "id": "audio",
+          "label": "Áudio",
+          "status": "completed"
+        },
+        {
+          "id": "scene_1",
+          "label": "Cena 1",
+          "status": "completed"
+        },
+        {
+          "id": "scene_2",
+          "label": "Cena 2",
+          "status": "completed"
+        },
+        {
+          "id": "scene_3",
+          "label": "Cena 3",
+          "status": "completed"
+        },
+        {
+          "id": "render",
+          "label": "Render",
+          "status": "completed"
+        },
+        {
+          "id": "quality_check",
+          "label": "Quality Check",
+          "status": "completed"
+        }
+      ],
+      "costCredits": 15,
+      "isSmokeTest": true,
+      "retryCount": 0,
+      "createdAt": "2026-08-22T17:17:34.713Z",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "providerUsed": "runway / gen3a_turbo",
+      "completedAt": "2026-08-22T17:17:34.718Z",
+      "qualityScore": 98
+    },
+    {
+      "id": "job_1787419051989_af9a2",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileId": "prof_luna_star",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productId": "prod_essence_noir",
+      "productName": "Parfume Essence Noir",
+      "creativePlanId": "test_plan_1787419051985",
+      "creativePlan": {
+        "id": "test_plan_1787419051985",
+        "profileId": "prof_luna_star",
+        "productId": "prod_essence_noir",
+        "format": "reels",
+        "objective": "conversao",
+        "funnelStage": "meio",
+        "targetDurationSeconds": 3,
+        "hook": "Teste de 3 segundos para Luna Star",
+        "creativeAngle": "Smoke Test de Validação de Identidade e Produto",
+        "fullScript": "[CENA 1 - 3 SEGUNDOS]\nLuna Star olha para a câmera com movimento suave e sorriso autêntico segurando Parfume Essence Noir.",
+        "scenes": [
+          {
+            "sceneNumber": 1,
+            "title": "Cena 1: Teste Rápido de 3 Segundos",
+            "durationSeconds": 3,
+            "visualPrompt": "Close-up ultrarrealista de Luna Star com iluminação 4K e textura de pele natural.",
+            "cameraMovement": "Zoom-in lento estabilizado.",
+            "lightingStyle": "Golden hour suave.",
+            "narrationScript": "Qualidade confirmada com fidelidade de personagem.",
+            "productInteraction": "Exibindo Parfume Essence Noir.",
+            "characterAction": "Olhar para câmera.",
+            "status": "completed"
+          }
+        ],
+        "ctaText": "Aprovar e gerar vídeo completo",
+        "captionText": "Teste de validação de pipeline 3s.",
+        "hashtags": [
+          "#SmokeTest",
+          "#ProfileDark"
+        ],
+        "thumbnailPrompt": "Thumbnail de validação 3s para Luna Star",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+        "estimatedCredits": 15,
+        "createdAt": "2026-08-22T17:17:31.985Z"
+      },
+      "status": "concluido",
+      "progress": 100,
+      "durationSeconds": 3,
+      "resolution": "1080p",
+      "aspectRatio": "9:16",
+      "fps": 30,
+      "pipeline": [
+        {
+          "id": "context",
+          "label": "Contexto",
+          "status": "completed"
+        },
+        {
+          "id": "script",
+          "label": "Roteiro",
+          "status": "completed"
+        },
+        {
+          "id": "audio",
+          "label": "Áudio",
+          "status": "completed"
+        },
+        {
+          "id": "scene_1",
+          "label": "Cena 1",
+          "status": "completed"
+        },
+        {
+          "id": "scene_2",
+          "label": "Cena 2",
+          "status": "completed"
+        },
+        {
+          "id": "scene_3",
+          "label": "Cena 3",
+          "status": "completed"
+        },
+        {
+          "id": "render",
+          "label": "Render",
+          "status": "completed"
+        },
+        {
+          "id": "quality_check",
+          "label": "Quality Check",
+          "status": "completed"
+        }
+      ],
+      "costCredits": 15,
+      "isSmokeTest": true,
+      "retryCount": 0,
+      "createdAt": "2026-08-22T17:17:31.989Z",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "providerUsed": "runway / gen3a_turbo",
+      "completedAt": "2026-08-22T17:17:31.993Z",
+      "qualityScore": 97
+    },
+    {
+      "id": "job_1787419037000_yp920",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileId": "prof_luna_star",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productId": "prod_essence_noir",
+      "productName": "Parfume Essence Noir",
+      "creativePlanId": "test_plan_1787419036997",
+      "creativePlan": {
+        "id": "test_plan_1787419036997",
+        "profileId": "prof_luna_star",
+        "productId": "prod_essence_noir",
+        "format": "reels",
+        "objective": "conversao",
+        "funnelStage": "meio",
+        "targetDurationSeconds": 3,
+        "hook": "Teste de 3 segundos para Luna Star",
+        "creativeAngle": "Smoke Test de Validação de Identidade e Produto",
+        "fullScript": "[CENA 1 - 3 SEGUNDOS]\nLuna Star olha para a câmera com movimento suave e sorriso autêntico segurando Parfume Essence Noir.",
+        "scenes": [
+          {
+            "sceneNumber": 1,
+            "title": "Cena 1: Teste Rápido de 3 Segundos",
+            "durationSeconds": 3,
+            "visualPrompt": "Close-up ultrarrealista de Luna Star com iluminação 4K e textura de pele natural.",
+            "cameraMovement": "Zoom-in lento estabilizado.",
+            "lightingStyle": "Golden hour suave.",
+            "narrationScript": "Qualidade confirmada com fidelidade de personagem.",
+            "productInteraction": "Exibindo Parfume Essence Noir.",
+            "characterAction": "Olhar para câmera.",
+            "status": "completed"
+          }
+        ],
+        "ctaText": "Aprovar e gerar vídeo completo",
+        "captionText": "Teste de validação de pipeline 3s.",
+        "hashtags": [
+          "#SmokeTest",
+          "#ProfileDark"
+        ],
+        "thumbnailPrompt": "Thumbnail de validação 3s para Luna Star",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+        "estimatedCredits": 15,
+        "createdAt": "2026-08-22T17:17:16.997Z"
+      },
+      "status": "concluido",
+      "progress": 100,
+      "durationSeconds": 3,
+      "resolution": "1080p",
+      "aspectRatio": "9:16",
+      "fps": 30,
+      "pipeline": [
+        {
+          "id": "context",
+          "label": "Contexto",
+          "status": "completed"
+        },
+        {
+          "id": "script",
+          "label": "Roteiro",
+          "status": "completed"
+        },
+        {
+          "id": "audio",
+          "label": "Áudio",
+          "status": "completed"
+        },
+        {
+          "id": "scene_1",
+          "label": "Cena 1",
+          "status": "completed"
+        },
+        {
+          "id": "scene_2",
+          "label": "Cena 2",
+          "status": "completed"
+        },
+        {
+          "id": "scene_3",
+          "label": "Cena 3",
+          "status": "completed"
+        },
+        {
+          "id": "render",
+          "label": "Render",
+          "status": "completed"
+        },
+        {
+          "id": "quality_check",
+          "label": "Quality Check",
+          "status": "completed"
+        }
+      ],
+      "costCredits": 15,
+      "isSmokeTest": true,
+      "retryCount": 0,
+      "createdAt": "2026-08-22T17:17:17.000Z",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "providerUsed": "runway / gen3a_turbo",
+      "completedAt": "2026-08-22T17:17:17.006Z",
+      "qualityScore": 98
+    },
+    {
+      "id": "job_1787419013414_petxz",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileId": "prof_luna_star",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productId": "prod_essence_noir",
+      "productName": "Parfume Essence Noir",
+      "creativePlanId": "test_plan_1787419013412",
+      "creativePlan": {
+        "id": "test_plan_1787419013412",
+        "profileId": "prof_luna_star",
+        "productId": "prod_essence_noir",
+        "format": "reels",
+        "objective": "conversao",
+        "funnelStage": "meio",
+        "targetDurationSeconds": 3,
+        "hook": "Teste de 3 segundos para Luna Star",
+        "creativeAngle": "Smoke Test de Validação de Identidade e Produto",
+        "fullScript": "[CENA 1 - 3 SEGUNDOS]\nLuna Star olha para a câmera com movimento suave e sorriso autêntico segurando Parfume Essence Noir.",
+        "scenes": [
+          {
+            "sceneNumber": 1,
+            "title": "Cena 1: Teste Rápido de 3 Segundos",
+            "durationSeconds": 3,
+            "visualPrompt": "Close-up ultrarrealista de Luna Star com iluminação 4K e textura de pele natural.",
+            "cameraMovement": "Zoom-in lento estabilizado.",
+            "lightingStyle": "Golden hour suave.",
+            "narrationScript": "Qualidade confirmada com fidelidade de personagem.",
+            "productInteraction": "Exibindo Parfume Essence Noir.",
+            "characterAction": "Olhar para câmera.",
+            "status": "completed"
+          }
+        ],
+        "ctaText": "Aprovar e gerar vídeo completo",
+        "captionText": "Teste de validação de pipeline 3s.",
+        "hashtags": [
+          "#SmokeTest",
+          "#ProfileDark"
+        ],
+        "thumbnailPrompt": "Thumbnail de validação 3s para Luna Star",
+        "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+        "estimatedCredits": 15,
+        "createdAt": "2026-08-22T17:16:53.412Z"
+      },
+      "status": "concluido",
+      "progress": 100,
+      "durationSeconds": 3,
+      "resolution": "1080p",
+      "aspectRatio": "9:16",
+      "fps": 30,
+      "pipeline": [
+        {
+          "id": "context",
+          "label": "Contexto",
+          "status": "completed"
+        },
+        {
+          "id": "script",
+          "label": "Roteiro",
+          "status": "completed"
+        },
+        {
+          "id": "audio",
+          "label": "Áudio",
+          "status": "completed"
+        },
+        {
+          "id": "scene_1",
+          "label": "Cena 1",
+          "status": "completed"
+        },
+        {
+          "id": "scene_2",
+          "label": "Cena 2",
+          "status": "completed"
+        },
+        {
+          "id": "scene_3",
+          "label": "Cena 3",
+          "status": "completed"
+        },
+        {
+          "id": "render",
+          "label": "Render",
+          "status": "completed"
+        },
+        {
+          "id": "quality_check",
+          "label": "Quality Check",
+          "status": "completed"
+        }
+      ],
+      "costCredits": 15,
+      "isSmokeTest": true,
+      "retryCount": 0,
+      "createdAt": "2026-08-22T17:16:53.415Z",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "providerUsed": "runway / gen3a_turbo",
+      "completedAt": "2026-08-22T17:16:53.418Z",
+      "qualityScore": 98
+    },
+    {
+      "id": "job_habitos_luna",
+      "title": "5 hábitos que mudaram minha vida",
+      "profileId": "prof_luna_star",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "status": "preparando",
+      "progress": 10,
+      "durationSeconds": 24,
+      "resolution": "4k",
+      "aspectRatio": "9:16",
+      "fps": 30,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "pipeline": [
+        {
+          "id": "context",
+          "label": "Contexto",
+          "status": "completed"
+        },
+        {
+          "id": "script",
+          "label": "Roteiro",
+          "status": "completed"
+        },
+        {
+          "id": "audio",
+          "label": "Áudio",
+          "status": "in_progress"
+        },
+        {
+          "id": "scene_1",
+          "label": "Cena 1",
+          "status": "pending"
+        },
+        {
+          "id": "scene_2",
+          "label": "Cena 2",
+          "status": "pending"
+        },
+        {
+          "id": "scene_3",
+          "label": "Cena 3",
+          "status": "pending"
+        },
+        {
+          "id": "render",
+          "label": "Render",
+          "status": "pending"
+        },
+        {
+          "id": "quality_check",
+          "label": "Quality Check",
+          "status": "pending"
+        }
+      ],
+      "costCredits": 80,
+      "retryCount": 0,
+      "createdAt": "2026-08-22T13:40:00Z"
+    },
+    {
+      "id": "job_carro_orion",
+      "title": "Novo lançamento: Carro X1",
+      "profileId": "prof_orion_tech",
+      "profileName": "Orion Tech",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      "productId": "prod_carro_x1",
+      "productName": "Carro X1 Supercharged",
+      "status": "gerando_roteiro",
+      "progress": 25,
+      "durationSeconds": 30,
+      "resolution": "1080p",
+      "aspectRatio": "9:16",
+      "fps": 30,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=400&q=80",
+      "pipeline": [
+        {
+          "id": "context",
+          "label": "Contexto",
+          "status": "completed"
+        },
+        {
+          "id": "script",
+          "label": "Roteiro",
+          "status": "in_progress"
+        },
+        {
+          "id": "audio",
+          "label": "Áudio",
+          "status": "pending"
+        },
+        {
+          "id": "scene_1",
+          "label": "Cena 1",
+          "status": "pending"
+        },
+        {
+          "id": "scene_2",
+          "label": "Cena 2",
+          "status": "pending"
+        },
+        {
+          "id": "scene_3",
+          "label": "Cena 3",
+          "status": "pending"
+        },
+        {
+          "id": "render",
+          "label": "Render",
+          "status": "pending"
+        },
+        {
+          "id": "quality_check",
+          "label": "Quality Check",
+          "status": "pending"
+        }
+      ],
+      "costCredits": 100,
+      "retryCount": 0,
+      "createdAt": "2026-08-22T13:30:00Z"
+    },
+    {
+      "id": "job_tenis_review",
+      "title": "Tênis Ultra Max: vale a pena?",
+      "profileId": "prof_review_pro",
+      "profileName": "Review Pro",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+      "productId": "prod_tenis_ultra_max",
+      "productName": "Tênis Ultra Max Pro Run",
+      "status": "gerando_video",
+      "progress": 60,
+      "durationSeconds": 62,
+      "resolution": "1080p",
+      "aspectRatio": "9:16",
+      "fps": 30,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80",
+      "pipeline": [
+        {
+          "id": "context",
+          "label": "Contexto",
+          "status": "completed"
+        },
+        {
+          "id": "script",
+          "label": "Roteiro",
+          "status": "completed"
+        },
+        {
+          "id": "audio",
+          "label": "Áudio",
+          "status": "completed"
+        },
+        {
+          "id": "scene_1",
+          "label": "Cena 1",
+          "status": "completed"
+        },
+        {
+          "id": "scene_2",
+          "label": "Cena 2",
+          "status": "in_progress"
+        },
+        {
+          "id": "scene_3",
+          "label": "Cena 3",
+          "status": "pending"
+        },
+        {
+          "id": "render",
+          "label": "Render",
+          "status": "pending"
+        },
+        {
+          "id": "quality_check",
+          "label": "Quality Check",
+          "status": "pending"
+        }
+      ],
+      "costCredits": 180,
+      "retryCount": 0,
+      "createdAt": "2026-08-22T13:15:00Z"
+    },
+    {
+      "id": "job_perfume_essence",
+      "title": "Parfume Essence Noir — Elegância e poder",
+      "profileId": "prof_luna_star",
+      "profileName": "Aura Perfumaria",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=400&q=80",
+      "productId": "prod_essence_noir",
+      "productName": "Parfume Essence Noir",
+      "status": "renderizando",
+      "progress": 80,
+      "durationSeconds": 20,
+      "resolution": "4k",
+      "aspectRatio": "9:16",
+      "fps": 60,
+      "thumbnailUrl": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=400&q=80",
+      "pipeline": [
+        {
+          "id": "context",
+          "label": "Contexto",
+          "status": "completed"
+        },
+        {
+          "id": "script",
+          "label": "Roteiro",
+          "status": "completed"
+        },
+        {
+          "id": "audio",
+          "label": "Áudio",
+          "status": "completed"
+        },
+        {
+          "id": "scene_1",
+          "label": "Cena 1",
+          "status": "completed"
+        },
+        {
+          "id": "scene_2",
+          "label": "Cena 2",
+          "status": "completed"
+        },
+        {
+          "id": "scene_3",
+          "label": "Cena 3",
+          "status": "completed"
+        },
+        {
+          "id": "render",
+          "label": "Render",
+          "status": "in_progress"
+        },
+        {
+          "id": "quality_check",
+          "label": "Quality Check",
+          "status": "pending"
+        }
+      ],
+      "costCredits": 120,
+      "retryCount": 0,
+      "createdAt": "2026-08-22T13:00:00Z"
+    },
+    {
+      "id": "job_skincare_bela",
+      "title": "Skincare noturno perfeito",
+      "profileId": "prof_bela_skin",
+      "profileName": "Bela Skin",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+      "status": "concluido",
+      "progress": 100,
+      "durationSeconds": 28,
+      "resolution": "1080p",
+      "aspectRatio": "9:16",
+      "fps": 30,
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+      "audioUrl": "/assets/audio/skincare_sample.mp3",
+      "srtUrl": "/assets/captions/skincare.srt",
+      "pipeline": [
+        {
+          "id": "context",
+          "label": "Contexto",
+          "status": "completed"
+        },
+        {
+          "id": "script",
+          "label": "Roteiro",
+          "status": "completed"
+        },
+        {
+          "id": "audio",
+          "label": "Áudio",
+          "status": "completed"
+        },
+        {
+          "id": "scene_1",
+          "label": "Cena 1",
+          "status": "completed"
+        },
+        {
+          "id": "scene_2",
+          "label": "Cena 2",
+          "status": "completed"
+        },
+        {
+          "id": "scene_3",
+          "label": "Cena 3",
+          "status": "completed"
+        },
+        {
+          "id": "render",
+          "label": "Render",
+          "status": "completed"
+        },
+        {
+          "id": "quality_check",
+          "label": "Quality Check",
+          "status": "completed"
+        }
+      ],
+      "qualityScore": 97,
+      "costCredits": 90,
+      "retryCount": 0,
+      "createdAt": "2026-08-22T12:30:00Z",
+      "completedAt": "2026-08-22T12:32:00Z"
+    }
+  ],
+  "qualityChecks": [
+    {
+      "id": "qc_job_1787574607061_x0uvl_1787574607071",
+      "jobId": "job_1787574607061_x0uvl",
+      "status": "passed",
+      "metrics": {
+        "realism": 98,
+        "identity": 99,
+        "product": 98,
+        "motion": 95,
+        "overallQuality": 98
+      },
+      "details": {
+        "faceConsistent": true,
+        "productConsistent": true,
+        "lipSyncAccurate": true,
+        "audioClear": true,
+        "captionsSynced": true,
+        "resolutionValid": true,
+        "aspectRatioValid": true,
+        "durationValid": true,
+        "artifactsDetected": false,
+        "ctaLegible": true,
+        "brandSafe": true,
+        "issues": [],
+        "autoFixAvailable": false
+      },
+      "inspectedAt": "2026-08-24T12:30:07.071Z"
+    },
+    {
+      "id": "qc_job_1787574607024_8zadj_1787574607029",
+      "jobId": "job_1787574607024_8zadj",
+      "status": "passed",
+      "metrics": {
+        "realism": 98,
+        "identity": 97,
+        "product": 97,
+        "motion": 95,
+        "overallQuality": 97
+      },
+      "details": {
+        "faceConsistent": true,
+        "productConsistent": true,
+        "lipSyncAccurate": true,
+        "audioClear": true,
+        "captionsSynced": true,
+        "resolutionValid": true,
+        "aspectRatioValid": true,
+        "durationValid": true,
+        "artifactsDetected": false,
+        "ctaLegible": true,
+        "brandSafe": true,
+        "issues": [],
+        "autoFixAvailable": false
+      },
+      "inspectedAt": "2026-08-24T12:30:07.029Z"
+    },
+    {
+      "id": "qc_job_1787419465346_0hbo1_1787419465351",
+      "jobId": "job_1787419465346_0hbo1",
+      "status": "passed",
+      "metrics": {
+        "realism": 95,
+        "identity": 98,
+        "product": 97,
+        "motion": 96,
+        "overallQuality": 97
+      },
+      "details": {
+        "faceConsistent": true,
+        "productConsistent": true,
+        "lipSyncAccurate": true,
+        "audioClear": true,
+        "captionsSynced": true,
+        "resolutionValid": true,
+        "aspectRatioValid": true,
+        "durationValid": true,
+        "artifactsDetected": false,
+        "ctaLegible": true,
+        "brandSafe": true,
+        "issues": [],
+        "autoFixAvailable": false
+      },
+      "inspectedAt": "2026-08-22T17:24:25.352Z"
+    },
+    {
+      "id": "qc_job_1787419465323_hxsmz_1787419465329",
+      "jobId": "job_1787419465323_hxsmz",
+      "status": "passed",
+      "metrics": {
+        "realism": 95,
+        "identity": 99,
+        "product": 97,
+        "motion": 94,
+        "overallQuality": 97
+      },
+      "details": {
+        "faceConsistent": true,
+        "productConsistent": true,
+        "lipSyncAccurate": true,
+        "audioClear": true,
+        "captionsSynced": true,
+        "resolutionValid": true,
+        "aspectRatioValid": true,
+        "durationValid": true,
+        "artifactsDetected": false,
+        "ctaLegible": true,
+        "brandSafe": true,
+        "issues": [],
+        "autoFixAvailable": false
+      },
+      "inspectedAt": "2026-08-22T17:24:25.329Z"
+    },
+    {
+      "id": "qc_job_1787419054713_lpuzr_1787419054719",
+      "jobId": "job_1787419054713_lpuzr",
+      "status": "passed",
+      "metrics": {
+        "realism": 95,
+        "identity": 98,
+        "product": 99,
+        "motion": 97,
+        "overallQuality": 98
+      },
+      "details": {
+        "faceConsistent": true,
+        "productConsistent": true,
+        "lipSyncAccurate": true,
+        "audioClear": true,
+        "captionsSynced": true,
+        "resolutionValid": true,
+        "aspectRatioValid": true,
+        "durationValid": true,
+        "artifactsDetected": false,
+        "ctaLegible": true,
+        "brandSafe": true,
+        "issues": [],
+        "autoFixAvailable": false
+      },
+      "inspectedAt": "2026-08-22T17:17:34.719Z"
+    },
+    {
+      "id": "qc_job_1787419051989_af9a2_1787419051993",
+      "jobId": "job_1787419051989_af9a2",
+      "status": "passed",
+      "metrics": {
+        "realism": 96,
+        "identity": 97,
+        "product": 98,
+        "motion": 94,
+        "overallQuality": 97
+      },
+      "details": {
+        "faceConsistent": true,
+        "productConsistent": true,
+        "lipSyncAccurate": true,
+        "audioClear": true,
+        "captionsSynced": true,
+        "resolutionValid": true,
+        "aspectRatioValid": true,
+        "durationValid": true,
+        "artifactsDetected": false,
+        "ctaLegible": true,
+        "brandSafe": true,
+        "issues": [],
+        "autoFixAvailable": false
+      },
+      "inspectedAt": "2026-08-22T17:17:31.993Z"
+    },
+    {
+      "id": "qc_job_1787419037000_yp920_1787419037006",
+      "jobId": "job_1787419037000_yp920",
+      "status": "passed",
+      "metrics": {
+        "realism": 97,
+        "identity": 97,
+        "product": 98,
+        "motion": 96,
+        "overallQuality": 98
+      },
+      "details": {
+        "faceConsistent": true,
+        "productConsistent": true,
+        "lipSyncAccurate": true,
+        "audioClear": true,
+        "captionsSynced": true,
+        "resolutionValid": true,
+        "aspectRatioValid": true,
+        "durationValid": true,
+        "artifactsDetected": false,
+        "ctaLegible": true,
+        "brandSafe": true,
+        "issues": [],
+        "autoFixAvailable": false
+      },
+      "inspectedAt": "2026-08-22T17:17:17.006Z"
+    },
+    {
+      "id": "qc_job_1787419013414_petxz_1787419013418",
+      "jobId": "job_1787419013414_petxz",
+      "status": "passed",
+      "metrics": {
+        "realism": 98,
+        "identity": 99,
+        "product": 99,
+        "motion": 95,
+        "overallQuality": 98
+      },
+      "details": {
+        "faceConsistent": true,
+        "productConsistent": true,
+        "lipSyncAccurate": true,
+        "audioClear": true,
+        "captionsSynced": true,
+        "resolutionValid": true,
+        "aspectRatioValid": true,
+        "durationValid": true,
+        "artifactsDetected": false,
+        "ctaLegible": true,
+        "brandSafe": true,
+        "issues": [],
+        "autoFixAvailable": false
+      },
+      "inspectedAt": "2026-08-22T17:16:53.418Z"
+    }
+  ],
+  "radarConcepts": [
+    {
+      "id": "radar_cachorro_sarcastico",
+      "name": "Cachorro Sarcástico & Zen",
+      "category": "Animais",
+      "tag": "🔥 Aquecendo",
+      "imageUrl": "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80",
+      "opportunityScore": 96,
+      "commercialPotential": "Extremo",
+      "productionComplexity": "Baixa",
+      "targetAudience": "Donos de pets, jovens adultos 20-38 anos",
+      "possibleProducts": [
+        "Petiscos naturais",
+        "Camas ortopédicas",
+        "Camisetas estampadas",
+        "Afiliado Petz/Cobasi"
+      ],
+      "recommendedFormats": [
+        "Shorts verticais 15s",
+        "Monólogos sarcásticos de rotina",
+        "Review sincero de brinquedos"
+      ],
+      "isHot": true,
+      "suggestedProfileDNA": {
+        "name": "Bob Sarcástico",
+        "niche": "Humor & Pets",
+        "toneOfVoice": "Sarcástico, seco e irresistível",
+        "primaryCommercialGoal": "conversao",
+        "mainCTA": "Se seu humano não comprar esse petisco pra você, demita ele no link da bio."
+      }
+    },
+    {
+      "id": "radar_mulher_elegante_50",
+      "name": "Mulher Elegante 50+ & Finanças Pessoais",
+      "category": "Mulheres 50+",
+      "tag": "💎 Pouco explorado",
+      "imageUrl": "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=600&q=80",
+      "opportunityScore": 94,
+      "commercialPotential": "Extremo",
+      "productionComplexity": "Média",
+      "targetAudience": "Mulheres maduras de 45 a 65 anos com renda consolidada",
+      "possibleProducts": [
+        "Consultoria de investimentos",
+        "Cosméticos antienvelhecimento premium",
+        "Cursos de longevidade ativa"
+      ],
+      "recommendedFormats": [
+        "Pílulas de sabedoria financeira 30s",
+        "Desmistificando previdência",
+        "Rotina de elegância prática"
+      ],
+      "isHot": true,
+      "suggestedProfileDNA": {
+        "name": "Helena Vasconcelos",
+        "niche": "Finanças & Longevidade",
+        "toneOfVoice": "Sereno, seguro, sofisticado",
+        "primaryCommercialGoal": "autoridade",
+        "mainCTA": "Baixe o guia de independência financeira madura no link fixado."
+      }
+    },
+    {
+      "id": "radar_pedreiro_contador_historias",
+      "name": "Mestre de Obras Contador de Causos",
+      "category": "Profissões",
+      "tag": "🚀 Crescendo",
+      "imageUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
+      "opportunityScore": 91,
+      "commercialPotential": "Alto",
+      "productionComplexity": "Baixa",
+      "targetAudience": "Homens e mulheres de 25-60 anos, construtores, reformadores e adeptos do DIY",
+      "possibleProducts": [
+        "Ferramentas a bateria de alta durabilidade",
+        "Impermeabilizantes de ponta",
+        "Cursos profissionalizantes"
+      ],
+      "recommendedFormats": [
+        "Dica rápida no canteiro de obras",
+        "O maior erro ao assentar porcelanato",
+        "Comparativo de brocas"
+      ],
+      "isHot": true,
+      "suggestedProfileDNA": {
+        "name": "Mestre Geraldo",
+        "niche": "Construção & Ferramentas",
+        "toneOfVoice": "Humilde, experiente, bem-humorado",
+        "primaryCommercialGoal": "conversao",
+        "mainCTA": "Essa parafusadeira não te deixa na mão. Cupom do Geraldo na bio."
+      }
+    },
+    {
+      "id": "radar_gato_milionario",
+      "name": "Gato Herdeiro Investidor",
+      "category": "Humor",
+      "tag": "💰 Alta monetização",
+      "imageUrl": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80",
+      "opportunityScore": 89,
+      "commercialPotential": "Alto",
+      "productionComplexity": "Baixa",
+      "targetAudience": "Investidores iniciantes, fãs de memes e cultura cripto/mercado financeiro",
+      "possibleProducts": [
+        "Plataformas de investimento",
+        "Hardware wallets",
+        "Comunidade VIP de sinais/análises"
+      ],
+      "recommendedFormats": [
+        "Comentários sarcásticos sobre o fechamento de mercado",
+        "Como gastei meu dividendo em sachê"
+      ],
+      "suggestedProfileDNA": {
+        "name": "Lord Whiskers",
+        "niche": "Finanças & Memes",
+        "toneOfVoice": "Aristocrático e desdenhoso",
+        "primaryCommercialGoal": "descoberta",
+        "mainCTA": "Abra sua conta na corretora antes que eu compre seu quarteirão."
+      }
+    },
+    {
+      "id": "radar_chef_ficticio_express",
+      "name": "Chef Criativo de Refeições Rápidas em 1 Panela",
+      "category": "Gastronomia",
+      "tag": "🔥 Aquecendo",
+      "imageUrl": "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=600&q=80",
+      "opportunityScore": 93,
+      "commercialPotential": "Extremo",
+      "productionComplexity": "Média",
+      "targetAudience": "Solteiros, casais sem tempo e entusiastas de comida caseira rápida",
+      "possibleProducts": [
+        "Air fryers e panelas elétricas inteligentes",
+        "Kits de temperos especiais",
+        "E-books de receitas em 15 min"
+      ],
+      "recommendedFormats": [
+        "Receita dinâmica com corte rápido",
+        "Segredo do molho cremoso sem creme de leite"
+      ],
+      "isHot": true,
+      "suggestedProfileDNA": {
+        "name": "Chef André Express",
+        "niche": "Gastronomia Prática",
+        "toneOfVoice": "Energético, apetitoso e didático",
+        "primaryCommercialGoal": "conversao",
+        "mainCTA": "Garanta sua panela antiaderente com 20% OFF no link abaixo."
+      }
+    }
+  ],
+  "providerHealth": [
+    {
+      "service": "llm",
+      "name": "LLM (IA)",
+      "status": "operational",
+      "latencyMs": 337,
+      "successRate": 99.8,
+      "lastChecked": "Agora",
+      "isConfigured": true
+    },
+    {
+      "service": "image",
+      "name": "Imagem (FLUX)",
+      "status": "operational",
+      "latencyMs": 951,
+      "successRate": 99.4,
+      "lastChecked": "Agora",
+      "isConfigured": true
+    },
+    {
+      "service": "voice",
+      "name": "Voz (TTS)",
+      "status": "operational",
+      "latencyMs": 480,
+      "successRate": 99.5,
+      "lastChecked": "Agora",
+      "isConfigured": true
+    },
+    {
+      "service": "talking_head",
+      "name": "Talking Head",
+      "status": "operational",
+      "latencyMs": 1400,
+      "successRate": 98.9,
+      "lastChecked": "Agora",
+      "isConfigured": true
+    },
+    {
+      "service": "video",
+      "name": "Vídeo (Runway/Luma)",
+      "status": "operational",
+      "latencyMs": 1200,
+      "successRate": 98.9,
+      "lastChecked": "Agora",
+      "isConfigured": true
+    },
+    {
+      "service": "render",
+      "name": "Render",
+      "status": "operational",
+      "latencyMs": 2100,
+      "successRate": 99.1,
+      "lastChecked": "Agora",
+      "isConfigured": true
+    },
+    {
+      "service": "storage",
+      "name": "Storage",
+      "status": "operational",
+      "latencyMs": 120,
+      "successRate": 100,
+      "lastChecked": "Agora",
+      "isConfigured": true
+    }
+  ],
+  "credits": {
+    "userId": "user_pedro_martins",
+    "totalCredits": 20000,
+    "usedCredits": 7670,
+    "remainingCredits": 12330,
+    "planName": "Plano Pro",
+    "renewalDate": "10/06/2026"
+  },
+  "transactions": [
+    {
+      "id": "tx_1787574607058_ijyth",
+      "amount": 15,
+      "type": "charge",
+      "description": "Geração de vídeo (Teste 3s) para Luna Star",
+      "createdAt": "2026-08-24T12:30:07.058Z"
+    },
+    {
+      "id": "tx_1787574607022_f66j0",
+      "amount": 15,
+      "type": "charge",
+      "description": "Geração de vídeo (Teste 3s) para Luna Star",
+      "createdAt": "2026-08-24T12:30:07.022Z"
+    },
+    {
+      "id": "tx_1787419465343_ea5mk",
+      "amount": 15,
+      "type": "charge",
+      "description": "Geração de vídeo (Teste 3s) para Luna Star",
+      "createdAt": "2026-08-22T17:24:25.343Z"
+    },
+    {
+      "id": "tx_1787419465321_84rd3",
+      "amount": 15,
+      "type": "charge",
+      "description": "Geração de vídeo (Teste 3s) para Luna Star",
+      "createdAt": "2026-08-22T17:24:25.321Z"
+    },
+    {
+      "id": "tx_1787419054710_qu1z0",
+      "amount": 15,
+      "type": "charge",
+      "description": "Geração de vídeo (Teste 3s) para Luna Star",
+      "createdAt": "2026-08-22T17:17:34.710Z"
+    },
+    {
+      "id": "tx_1787419051985_zvm1u",
+      "amount": 15,
+      "type": "charge",
+      "description": "Geração de vídeo (Teste 3s) para Luna Star",
+      "createdAt": "2026-08-22T17:17:31.985Z"
+    },
+    {
+      "id": "tx_1787419036998_srqph",
+      "amount": 15,
+      "type": "charge",
+      "description": "Geração de vídeo (Teste 3s) para Luna Star",
+      "createdAt": "2026-08-22T17:17:16.998Z"
+    },
+    {
+      "id": "tx_1787419013413_rbizq",
+      "amount": 15,
+      "type": "charge",
+      "description": "Geração de vídeo (Teste 3s) para Luna Star",
+      "createdAt": "2026-08-22T17:16:53.413Z"
+    }
+  ],
+  "libraryItems": [
+    {
+      "id": "lib_job_1787574607061_x0uvl",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productName": "Parfume Essence Noir",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+      "duration": "00:03",
+      "resolution": "1080P",
+      "status": "concluido",
+      "createdAt": "2026-08-24T12:30:07.061Z",
+      "tags": [
+        "Luna Star",
+        "Parfume Essence Noir"
+      ],
+      "fileSizeMb": 4.2
+    },
+    {
+      "id": "lib_job_1787574607024_8zadj",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productName": "Parfume Essence Noir",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "duration": "00:03",
+      "resolution": "1080P",
+      "status": "concluido",
+      "createdAt": "2026-08-24T12:30:07.024Z",
+      "tags": [
+        "Luna Star",
+        "Parfume Essence Noir"
+      ],
+      "fileSizeMb": 4.2
+    },
+    {
+      "id": "lib_job_1787419465346_0hbo1",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productName": "Parfume Essence Noir",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "duration": "00:03",
+      "resolution": "1080P",
+      "status": "concluido",
+      "createdAt": "2026-08-22T17:24:25.346Z",
+      "tags": [
+        "Luna Star",
+        "Parfume Essence Noir"
+      ],
+      "fileSizeMb": 4.2
+    },
+    {
+      "id": "lib_job_1787419465323_hxsmz",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productName": "Parfume Essence Noir",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "duration": "00:03",
+      "resolution": "1080P",
+      "status": "concluido",
+      "createdAt": "2026-08-22T17:24:25.323Z",
+      "tags": [
+        "Luna Star",
+        "Parfume Essence Noir"
+      ],
+      "fileSizeMb": 4.2
+    },
+    {
+      "id": "lib_job_1787419054713_lpuzr",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productName": "Parfume Essence Noir",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+      "duration": "00:03",
+      "resolution": "1080P",
+      "status": "concluido",
+      "createdAt": "2026-08-22T17:17:34.713Z",
+      "tags": [
+        "Luna Star",
+        "Parfume Essence Noir"
+      ],
+      "fileSizeMb": 4.2
+    },
+    {
+      "id": "lib_job_1787419051989_af9a2",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productName": "Parfume Essence Noir",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "duration": "00:03",
+      "resolution": "1080P",
+      "status": "concluido",
+      "createdAt": "2026-08-22T17:17:31.989Z",
+      "tags": [
+        "Luna Star",
+        "Parfume Essence Noir"
+      ],
+      "fileSizeMb": 4.2
+    },
+    {
+      "id": "lib_job_1787419037000_yp920",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productName": "Parfume Essence Noir",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+      "duration": "00:03",
+      "resolution": "1080P",
+      "status": "concluido",
+      "createdAt": "2026-08-22T17:17:17.000Z",
+      "tags": [
+        "Luna Star",
+        "Parfume Essence Noir"
+      ],
+      "fileSizeMb": 4.2
+    },
+    {
+      "id": "lib_job_1787419013414_petxz",
+      "title": "⚡ Teste de 3s — Luna Star (Parfume Essence Noir)",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "productName": "Parfume Essence Noir",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+      "duration": "00:03",
+      "resolution": "1080P",
+      "status": "concluido",
+      "createdAt": "2026-08-22T17:16:53.415Z",
+      "tags": [
+        "Luna Star",
+        "Parfume Essence Noir"
+      ],
+      "fileSizeMb": 4.2
+    },
+    {
+      "id": "lib_1",
+      "title": "5 hábitos que mudaram minha vida",
+      "profileName": "Luna Star",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "duration": "00:24",
+      "resolution": "4K",
+      "status": "concluido",
+      "createdAt": "2026-08-22T12:00:00Z",
+      "tags": [
+        "Lifestyle",
+        "Luna Star",
+        "Hábitos"
+      ],
+      "fileSizeMb": 42.5
+    },
+    {
+      "id": "lib_2",
+      "title": "Novo lançamento: Carro X1",
+      "profileName": "Orion Tech",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=400&q=80",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "duration": "00:30",
+      "resolution": "1080p",
+      "status": "concluido",
+      "createdAt": "2026-08-22T11:45:00Z",
+      "tags": [
+        "Tech",
+        "Automotivo",
+        "Orion Tech"
+      ],
+      "fileSizeMb": 28.1
+    },
+    {
+      "id": "lib_3",
+      "title": "Tênis Ultra Max: vale a pena?",
+      "profileName": "Review Pro",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80",
+      "duration": "01:02",
+      "resolution": "1080p",
+      "status": "renderizando",
+      "progress": 80,
+      "createdAt": "2026-08-22T11:30:00Z",
+      "tags": [
+        "Esportes",
+        "Tênis",
+        "Review"
+      ],
+      "fileSizeMb": 54
+    },
+    {
+      "id": "lib_4",
+      "title": "Parfume Essence Noir - Elegância e poder",
+      "profileName": "Aura Perfumaria",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=400&q=80",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=400&q=80",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "duration": "00:20",
+      "resolution": "4K",
+      "status": "concluido",
+      "createdAt": "2026-08-22T11:00:00Z",
+      "tags": [
+        "Luxo",
+        "Perfumaria",
+        "Essence Noir"
+      ],
+      "fileSizeMb": 38.4
+    },
+    {
+      "id": "lib_5",
+      "title": "Skincare noturno perfeito",
+      "profileName": "Bela Skin",
+      "profileAvatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+      "duration": "00:28",
+      "resolution": "1080p",
+      "status": "concluido",
+      "createdAt": "2026-08-22T10:30:00Z",
+      "tags": [
+        "Skincare",
+        "Bela Skin",
+        "Rotina"
+      ],
+      "fileSizeMb": 26.8
+    }
+  ],
+  "updatedAt": "2026-08-24T12:30:07.074Z"
+}
