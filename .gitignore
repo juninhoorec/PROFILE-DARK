@@ -31,3 +31,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local AI workspace; preserved on disk but not tracked by this repository.
+spaces/Profile-Dark-LongCat/
