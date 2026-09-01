@@ -1,5 +1,10 @@
 {
   "/biblioteca/page": "app/biblioteca/page.js",
   "/redes-sociais/page": "app/redes-sociais/page.js",
-  "/api/social/health/route": "app/api/social/health/route.js"
+  "/page": "app/page.js",
+  "/api/health/route": "app/api/health/route.js",
+  "/api/render-jobs/route": "app/api/render-jobs/route.js",
+  "/api/products/route": "app/api/products/route.js",
+  "/api/profiles/route": "app/api/profiles/route.js",
+  "/api/library/route": "app/api/library/route.js"
 }
