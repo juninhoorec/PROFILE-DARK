@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { decryptToken, encryptToken } from './token-vault';
+import { decryptTikTokTicket, encryptTikTokTicket } from './tiktok-handoff';
 
 const STORE_FILE = path.join(process.cwd(), 'data', 'tiktok-accounts.json');
 export const TIKTOK_SCOPES = ['user.info.basic', 'video.publish'] as const;
@@ -42,24 +43,17 @@ export function saveTikTokAccount(token: TikTokTokenResponse, profile: { display
 
 function getStoredAccount(id: string) { const account = load().find((item) => item.id === id); if (!account) throw new Error('Conta TikTok não encontrada.'); return account; }
 
-async function tokenRequest(body: URLSearchParams): Promise<TikTokTokenResponse> {
-  const response = await fetch('https://open.tiktokapis.com/v2/oauth/token/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Cache-Control': 'no-cache' }, body });
-  const result = await response.json(); if (!response.ok || !result.access_token) throw new Error(result.error_description || result.message || 'O TikTok recusou a atualização do token.'); return result;
-}
-
-export async function exchangeTikTokCode(code: string, redirectUri: string, codeVerifier?: string) {
-  const clientKey = process.env.TIKTOK_CLIENT_KEY, clientSecret = process.env.TIKTOK_CLIENT_SECRET;
-  if (!clientKey || !clientSecret) throw new Error('A integração TikTok ainda não foi configurada pelo administrador.');
-  const body = new URLSearchParams({ client_key: clientKey, client_secret: clientSecret, code, grant_type: 'authorization_code', redirect_uri: redirectUri }); if (codeVerifier) body.set('code_verifier', codeVerifier);
-  return tokenRequest(body);
-}
-
 export async function refreshTikTokAccount(id: string) {
-  const account = getStoredAccount(id), clientKey = process.env.TIKTOK_CLIENT_KEY, clientSecret = process.env.TIKTOK_CLIENT_SECRET;
-  if (!clientKey || !clientSecret) throw new Error('Credenciais TikTok ausentes no servidor.');
+  const account = getStoredAccount(id), gateway = process.env.TIKTOK_GATEWAY_URL;
+  if (!gateway) throw new Error('Gateway TikTok ausente no servidor.');
   if (Date.parse(account.refreshTokenExpiresAt) <= Date.now()) { account.status = 'expired'; save(load().map((item) => item.id === id ? account : item)); throw new Error('A autorização TikTok expirou. Conecte a conta novamente.'); }
   try {
-    const token = await tokenRequest(new URLSearchParams({ client_key: clientKey, client_secret: clientSecret, grant_type: 'refresh_token', refresh_token: decryptToken(account.refreshTokenCiphertext) }));
+    const requestTicket = encryptTikTokTicket({ type: 'refresh_request', refresh_token: decryptToken(account.refreshTokenCiphertext) });
+    const response = await fetch(new URL('/api/tiktok/refresh', gateway), { method: 'POST', headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' }, body: JSON.stringify({ ticket: requestTicket }) });
+    const result = await response.json();
+    if (!response.ok || !result.ticket) throw new Error('O TikTok recusou a atualização do token.');
+    const token = decryptTikTokTicket<TikTokTokenResponse & { type: string; iat: number; exp: number }>(result.ticket);
+    if (token.type !== 'refresh_response') throw new Error('Resposta de renovação inválida.');
     return saveTikTokAccount(token, { displayName: account.displayName, avatarUrl: account.avatarUrl, username: account.username });
   } catch (error) {
     account.status = 'expired'; account.updatedAt = new Date().toISOString(); save(load().map((item) => item.id === id ? account : item)); throw new Error(error instanceof Error ? error.message : 'Refresh token TikTok inválido.');
