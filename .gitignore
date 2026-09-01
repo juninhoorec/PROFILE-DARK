@@ -34,3 +34,8 @@ next-env.d.ts
 
 # Local AI workspace; preserved on disk but not tracked by this repository.
 spaces/Profile-Dark-LongCat/
+
+# Server-side OAuth material and encrypted social account storage.
+data/.social-token-key
+data/tiktok-accounts.json
+data/tiktok-publish-jobs.json

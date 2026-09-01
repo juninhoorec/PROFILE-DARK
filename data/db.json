@@ -3269,7 +3269,7 @@
       "successRate": 0,
       "lastChecked": "Agora",
       "isConfigured": false,
-      "lastError": "Credencial não configurada."
+      "lastError": "Nenhuma chave de texto configurada."
     },
     {
       "service": "image",
@@ -3279,17 +3279,17 @@
       "successRate": 0,
       "lastChecked": "Agora",
       "isConfigured": false,
-      "lastError": "Credencial não configurada."
+      "lastError": "Nenhuma chave de imagem configurada."
     },
     {
       "service": "voice",
       "name": "Voz (TTS)",
-      "status": "degraded",
+      "status": "not_configured",
       "latencyMs": 0,
       "successRate": 0,
       "lastChecked": "Agora",
-      "isConfigured": true,
-      "lastError": "Aguardando teste real de conectividade."
+      "isConfigured": false,
+      "lastError": "Nenhuma chave de voz configurada."
     },
     {
       "service": "talking_head",
@@ -3304,12 +3304,12 @@
     {
       "service": "video",
       "name": "Vídeo (Runway/Luma)",
-      "status": "degraded",
+      "status": "not_configured",
       "latencyMs": 0,
       "successRate": 0,
       "lastChecked": "Agora",
-      "isConfigured": true,
-      "lastError": "Aguardando teste real de conectividade."
+      "isConfigured": false,
+      "lastError": "Nenhuma chave de vídeo configurada."
     },
     {
       "service": "render",
@@ -4026,5 +4026,5 @@
       "createdAt": "2026-08-24T13:15:42.006Z"
     }
   ],
-  "updatedAt": "2026-09-01T13:09:56.243Z"
+  "updatedAt": "2026-09-01T14:09:14.806Z"
 }

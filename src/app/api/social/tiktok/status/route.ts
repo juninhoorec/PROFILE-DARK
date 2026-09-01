@@ -1,0 +1,5 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { fetchTikTokPublishStatus } from '@/lib/social/tiktok-api';
+import { getTikTokJob, updateTikTokJob } from '@/lib/social/tiktok-jobs';
+export const dynamic = 'force-dynamic';
+export async function GET(request: NextRequest) { try { const jobId = request.nextUrl.searchParams.get('jobId'); if (!jobId) return NextResponse.json({ error: 'Publicação obrigatória.' }, { status: 400 }); const job = getTikTokJob(jobId); if (!job?.publishId) return NextResponse.json({ error: 'Publicação ainda não enviada ao TikTok.' }, { status: 404 }); const remote = await fetchTikTokPublishStatus(job.accountId, job.publishId); const status = remote.status === 'PUBLISH_COMPLETE' ? 'published' : remote.status === 'FAILED' ? 'error' : 'processing'; const updated = updateTikTokJob(job.id, { status, error: remote.fail_reason, postIds: remote.publicaly_available_post_id }); return NextResponse.json({ job: updated, remote }); } catch (error) { return NextResponse.json({ error: error instanceof Error ? error.message : 'Falha ao consultar a publicação.' }, { status: 400 }); } }

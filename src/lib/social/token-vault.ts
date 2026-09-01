@@ -1,8 +1,16 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { createCipheriv, createDecipheriv, createHash, randomBytes } from 'node:crypto';
 
 const key = () => {
-  const secret = process.env.SOCIAL_TOKEN_ENCRYPTION_KEY;
-  if (!secret || secret.length < 32) throw new Error('SOCIAL_TOKEN_ENCRYPTION_KEY precisa ter pelo menos 32 caracteres.');
+  let secret = process.env.SOCIAL_TOKEN_ENCRYPTION_KEY;
+  if (!secret) {
+    const file = path.join(process.cwd(), 'data', '.social-token-key');
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    if (!fs.existsSync(file)) fs.writeFileSync(file, randomBytes(48).toString('base64url'), { encoding: 'utf8', mode: 0o600 });
+    secret = fs.readFileSync(file, 'utf8').trim();
+  }
+  if (secret.length < 32) throw new Error('A chave de criptografia social precisa ter pelo menos 32 caracteres.');
   return createHash('sha256').update(secret).digest();
 };
 
