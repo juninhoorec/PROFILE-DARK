@@ -3,7 +3,8 @@ import { db } from '@/lib/storage/db';
 import { Product } from '@/lib/types';
 
 export async function GET() {
-  const products = db.getProducts();
+  const seen=new Set<string>();
+  const products = db.getProducts().filter(product=>{const key=product.buyUrl?`url:${product.buyUrl}`:`name:${product.name.toLowerCase()}|${product.brand.toLowerCase()}`;if(seen.has(key))return false;seen.add(key);return true;});
   return NextResponse.json({ products });
 }
 

@@ -5,7 +5,7 @@ import { QuickWorkflowSteps } from '@/components/layout/QuickWorkflowSteps';
 import { GenerateContentCard } from '@/components/dashboard/GenerateContentCard';
 import { BulkGenerationCard } from '@/components/dashboard/BulkGenerationCard';
 import { ProfileSettingsCard } from '@/components/dashboard/ProfileSettingsCard';
-import { ContextRealismCard } from '@/components/dashboard/ContextRealismCard';
+import { ContextRealismCard, DEFAULT_GENERATION_SETTINGS, GenerationSettings } from '@/components/dashboard/ContextRealismCard';
 import { RenderQueueCard } from '@/components/dashboard/RenderQueueCard';
 import { RecentLibraryCard } from '@/components/dashboard/RecentLibraryCard';
 
@@ -27,8 +27,6 @@ import { PromptEnhanceResult } from '@/lib/ai/prompt-enhancer';
 import {
   INITIAL_PROFILES,
   INITIAL_PRODUCTS,
-  INITIAL_RENDER_JOBS,
-  INITIAL_LIBRARY_ITEMS,
 } from '@/lib/constants';
 
 export default function DashboardPage() {
@@ -36,9 +34,11 @@ export default function DashboardPage() {
   const [profiles, setProfiles] = useState<Profile[]>(INITIAL_PROFILES);
   const [selectedProfile, setSelectedProfile] = useState<Profile>(INITIAL_PROFILES[0]);
   const [products, setProducts] = useState<Product[]>(INITIAL_PRODUCTS);
-  const [jobs, setJobs] = useState<GenerationJob[]>(INITIAL_RENDER_JOBS);
-  const [libraryItems, setLibraryItems] = useState<MediaLibraryItem[]>(INITIAL_LIBRARY_ITEMS);
+  const [jobs, setJobs] = useState<GenerationJob[]>([]);
+  const [libraryItems, setLibraryItems] = useState<MediaLibraryItem[]>([]);
   const [contentUrl, setContentUrl] = useState('');
+  const [generationSettings, setGenerationSettings] = useState<GenerationSettings>(DEFAULT_GENERATION_SETTINGS);
+  const [operationMessage, setOperationMessage] = useState<{type:'success'|'error'|'info';text:string}|null>(null);
 
   // Modals State
   const [isCreateProfileOpen, setIsCreateProfileOpen] = useState(false);
@@ -80,9 +80,25 @@ export default function DashboardPage() {
     fetch('/api/render-jobs')
       .then((r) => r.json())
       .then((data) => {
-        if (data.jobs) setJobs(data.jobs);
+        if (data.jobs) setJobs(data.jobs.filter((job:GenerationJob)=>!job.isDemo));
       })
       .catch(() => {});
+    fetch('/api/library').then((r)=>r.json()).then((data)=>{if(data.items)setLibraryItems(data.items.filter((item:MediaLibraryItem)=>!item.isDemo));}).catch(()=>{});
+  }, []);
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem('pd-generation-settings');
+    if (saved) try { setGenerationSettings({ ...DEFAULT_GENERATION_SETTINGS, ...JSON.parse(saved) }); } catch { /* use safe defaults */ }
+  }, []);
+
+  const updateGenerationSettings = (next:GenerationSettings) => {
+    setGenerationSettings(next);
+    window.localStorage.setItem('pd-generation-settings', JSON.stringify(next));
+  };
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('newGeneration') === '1') setIsNewGenerationOpen(true);
   }, []);
 
   // Listen to Global Custom Events from Header
@@ -119,13 +135,13 @@ export default function DashboardPage() {
         }),
       });
       const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Não foi possível iniciar a geração em massa.');
       if (data.jobs) {
         setJobs((prev) => [...data.jobs, ...prev]);
-        alert(`${quantity} vídeos em massa foram adicionados com sucesso à fila de renderização!`);
+        setOperationMessage({type:'success',text:`${quantity} vídeos adicionados à fila.`});
       }
     } catch (e) {
-      console.error(e);
-      alert('Erro ao disparar geração em massa.');
+      setOperationMessage({type:'error',text:e instanceof Error?e.message:'Erro ao disparar geração em massa.'});
     }
   };
 
@@ -140,6 +156,7 @@ export default function DashboardPage() {
         }),
       });
       const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Não foi possível executar o teste de 3 segundos.');
       if (data.job) {
         setActive3sJob(data.job);
         setActiveQualityCheck(data.qualityCheck);
@@ -147,8 +164,7 @@ export default function DashboardPage() {
         setJobs((prev) => [data.job, ...prev]);
       }
     } catch (e) {
-      console.error(e);
-      alert('Erro ao executar o teste de 3 segundos.');
+      setOperationMessage({type:'error',text:e instanceof Error?e.message:'Erro ao executar o teste de 3 segundos.'});
     }
   };
 
@@ -160,56 +176,31 @@ export default function DashboardPage() {
         body: JSON.stringify({
           profileId: profile.id,
           productId: product?.id,
-          creativePlan: plan,
-          resolution: '1080p',
+          creativePlan: {...plan, fullScript:`${plan.fullScript}\n\n[DIREÇÃO DE PRODUÇÃO]\nRealismo: ${generationSettings.realismLevel}%. Estilo: ${generationSettings.visualStyle}. Cenário: ${generationSettings.backgroundScene}. Contexto original: ${generationSettings.keepContext?'preservar':'adaptar'}. Produto: ${generationSettings.preserveProduct?'preservar fielmente':'adaptação permitida'}. Legendas: ${generationSettings.autoCaptions?'ativadas':'desativadas'}. Marca d’água: ${generationSettings.showWatermark?'ativada':'desativada'}.`},
+          resolution: generationSettings.renderQuality.startsWith('4K') ? '4k' : generationSettings.renderQuality.startsWith('720') ? '720p' : '1080p',
           fps: 30,
         }),
       });
       const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Não foi possível iniciar o render.');
       if (data.job) {
         setJobs((prev) => [data.job, ...prev]);
-        alert(`Renderização iniciada: "${data.job.title}". Acompanhe na fila.`);
+        setOperationMessage({type:'success',text:`Renderização iniciada: “${data.job.title}”.`});
       }
     } catch (e) {
-      console.error(e);
-      alert('Erro ao iniciar job de renderização.');
+      setOperationMessage({type:'error',text:e instanceof Error?e.message:'Erro ao iniciar job de renderização.'});
     }
   };
 
-  const handleViewJob = (job: GenerationJob) => {
+  const handleViewJob = async (job: GenerationJob) => {
     if (job.isSmokeTest || job.status === 'concluido') {
       setActive3sJob(job);
-      setActiveQualityCheck({
-        id: `qc_${job.id}`,
-        jobId: job.id,
-        status: 'passed',
-        metrics: {
-          realism: 98,
-          identity: 99,
-          product: 99,
-          motion: 95,
-          overallQuality: job.qualityScore || 97,
-        },
-        details: {
-          faceConsistent: true,
-          productConsistent: true,
-          lipSyncAccurate: true,
-          audioClear: true,
-          captionsSynced: true,
-          resolutionValid: true,
-          aspectRatioValid: true,
-          durationValid: true,
-          artifactsDetected: false,
-          ctaLegible: true,
-          brandSafe: true,
-          issues: [],
-          autoFixAvailable: false,
-        },
-        inspectedAt: new Date().toISOString(),
-      });
+      const response=await fetch(`/api/quality-check?jobId=${encodeURIComponent(job.id)}`);
+      const data=await response.json();
+      setActiveQualityCheck(data.qualityCheck || null);
       setIsVideo3sOpen(true);
     } else {
-      alert(`Job "${job.title}" está com status: ${job.status} (${job.progress}%).`);
+      setOperationMessage({type:'info',text:`“${job.title}”: ${job.status} (${job.progress}%).`});
     }
   };
 
@@ -219,39 +210,39 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-5 sm:p-8 space-y-6">
+      {operationMessage && <div role="status" className={`rounded-xl border px-4 py-3 text-sm ${operationMessage.type==='error'?'border-red-500/25 bg-red-500/10 text-red-200':operationMessage.type==='success'?'border-emerald-500/25 bg-emerald-500/10 text-emerald-200':'border-brand-500/25 bg-brand-500/10 text-brand-200'}`}>{operationMessage.text}</div>}
       {/* 1. Quick Workflow Banner */}
       <QuickWorkflowSteps />
 
       {/* Main Grid: 2 Columns (Center Content + Right Widgets) */}
       <div className="grid grid-cols-12 gap-6">
         {/* Center Main Area: 9 Columns */}
-        <div className="col-span-9 space-y-6">
+        <div className="col-span-12 xl:col-span-9 space-y-6">
           {/* Row 1: 3 Cards */}
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
             <GenerateContentCard
               contentUrl={contentUrl}
               onChangeContentUrl={setContentUrl}
               onOpenPromptModal={() => setIsNewGenerationOpen(true)}
             />
-            <BulkGenerationCard onTriggerBulk={handleTriggerBulk} />
+            <BulkGenerationCard />
             <ProfileSettingsCard
               profiles={profiles}
               selectedProfile={selectedProfile}
               onSelectProfile={setSelectedProfile}
-              onEditProfile={(p) => {
-                setSelectedProfile(p);
-                setIsCreateProfileOpen(true);
+              onEditProfile={() => {
+                window.location.href = '/profiles';
               }}
             />
           </div>
 
           {/* Row 2: 2 Cards (Context & Realism + Render Queue) */}
           <div className="grid grid-cols-12 gap-5">
-            <div className="col-span-5">
-              <ContextRealismCard />
+            <div className="col-span-12 lg:col-span-5">
+              <ContextRealismCard value={generationSettings} onChange={updateGenerationSettings} />
             </div>
-            <div className="col-span-7">
+            <div className="col-span-12 lg:col-span-7">
               <RenderQueueCard
                 jobs={jobs}
                 onViewJob={handleViewJob}
@@ -292,7 +283,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Right Column Widgets: 3 Columns */}
-        <div className="col-span-3 space-y-5">
+        <div className="col-span-12 xl:col-span-3 grid sm:grid-cols-2 xl:grid-cols-1 gap-5 content-start">
           <QuickTipsWidget />
           <BestPracticesWidget />
           <SystemHealthWidget
@@ -322,6 +313,7 @@ export default function DashboardPage() {
           setPromptEnhanceResult(res);
           setIsPromptEnhancerOpen(true);
         }}
+        initialContentUrl={contentUrl}
       />
 
       <PromptEnhancerModal
@@ -329,7 +321,8 @@ export default function DashboardPage() {
         onClose={() => setIsPromptEnhancerOpen(false)}
         enhanceResult={promptEnhanceResult}
         onApplyEnhanced={(enhanced) => {
-          alert('Prompt otimizado copiado e aplicado com sucesso!');
+          navigator.clipboard.writeText(enhanced);
+          setOperationMessage({type:'success',text:'Prompt otimizado copiado. Cole-o no briefing para revisar antes de gerar.'});
         }}
       />
 
@@ -354,11 +347,9 @@ export default function DashboardPage() {
           if (selectedProfile) handleRun3sTest(selectedProfile, products[0]);
         }}
         onGenerateFullVideo={() => {
-          alert('Qualidade aprovada pelo usuário! Vídeo completo adicionado ao Render Center.');
+          if (active3sJob?.creativePlan) handleStartJob({...active3sJob.creativePlan,targetDurationSeconds:24},selectedProfile,products[0]);
         }}
-        onAutoFix={(jobId) => {
-          alert('Correção automática de cena aplicada com sucesso. Profile e Produto mantidos bloqueados.');
-        }}
+        onAutoFix={async (jobId) => { const response=await fetch(`/api/render-jobs/${jobId}/scene-retry`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sceneNumber:1})}); const data=await response.json(); setOperationMessage({type:response.ok?'success':'error',text:response.ok?'Cena enviada para nova geração.':data.error||'Não foi possível corrigir a cena.'}); }}
       />
 
       <DownloadPackageModal

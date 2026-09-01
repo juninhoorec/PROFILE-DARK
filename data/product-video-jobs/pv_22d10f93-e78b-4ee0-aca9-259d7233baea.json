@@ -1,0 +1,56 @@
+{
+  "id": "pv_22d10f93-e78b-4ee0-aca9-259d7233baea",
+  "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+  "productId": "prod_2742a714-7793-490a-aab8-e7c49e02e3d6",
+  "status": "failed",
+  "progress": 8,
+  "currentScene": 1,
+  "message": "fetch failed",
+  "resolution": "480p",
+  "plan": {
+    "title": "Vó Zélia Resolve apresenta jogo de taças de vidro Diamond",
+    "productName": "jogo de taças de vidro Diamond",
+    "profileName": "Vó Zélia Resolve",
+    "durationSeconds": 20,
+    "scenes": [
+      {
+        "number": 1,
+        "title": "Apresentação do produto",
+        "narration": "Olha este jogo de taças de vidro Diamond. Eu conferi o que realmente importa.",
+        "motionPrompt": "Vó Zélia Resolve, especialista experiente em Casa & Família, com jeito Afetuosa, esperta, econômica e sem paciência para propaganda, fala diretamente para a câmera em Cozinha ou lavanderia real. Mantém exatamente o mesmo rosto, cabelo, roupa, ambiente e o mesmo jogo de taças de vidro Diamond. O produto permanece fiel à referência, sem mudar formato, cor, marca ou detalhes. Movimentos naturais, mãos anatomicamente corretas, câmera estável, sem cortes. segura o jogo de taças de vidro Diamond naturalmente junto ao corpo, olha para ele e depois para a câmera, apresentando-o com segurança."
+      },
+      {
+        "number": 2,
+        "title": "Benefício principal",
+        "narration": "Taça Diamante traz um toque de sofistição e elegância para sua mesa. Isso ajuda muito no dia a dia.",
+        "motionPrompt": "Vó Zélia Resolve, especialista experiente em Casa & Família, com jeito Afetuosa, esperta, econômica e sem paciência para propaganda, fala diretamente para a câmera em Cozinha ou lavanderia real. Mantém exatamente o mesmo rosto, cabelo, roupa, ambiente e o mesmo jogo de taças de vidro Diamond. O produto permanece fiel à referência, sem mudar formato, cor, marca ou detalhes. Movimentos naturais, mãos anatomicamente corretas, câmera estável, sem cortes. demonstra lentamente como o jogo de taças de vidro Diamond é usado e aponta para sua parte principal e reage com aprovação sincera."
+      },
+      {
+        "number": 3,
+        "title": "Experiência e detalhe",
+        "narration": "Na prática, destaco Modelo: Taça Diamante e Cor: Transparente.",
+        "motionPrompt": "Vó Zélia Resolve, especialista experiente em Casa & Família, com jeito Afetuosa, esperta, econômica e sem paciência para propaganda, fala diretamente para a câmera em Cozinha ou lavanderia real. Mantém exatamente o mesmo rosto, cabelo, roupa, ambiente e o mesmo jogo de taças de vidro Diamond. O produto permanece fiel à referência, sem mudar formato, cor, marca ou detalhes. Movimentos naturais, mãos anatomicamente corretas, câmera estável, sem cortes. aproxima o jogo de taças de vidro Diamond da câmera para mostrar um detalhe e volta à posição original com movimento suave."
+      },
+      {
+        "number": 4,
+        "title": "Resposta à dúvida comum",
+        "narration": "Confira medidas e detalhes do anúncio para a sua necessidade.",
+        "motionPrompt": "Vó Zélia Resolve, especialista experiente em Casa & Família, com jeito Afetuosa, esperta, econômica e sem paciência para propaganda, fala diretamente para a câmera em Cozinha ou lavanderia real. Mantém exatamente o mesmo rosto, cabelo, roupa, ambiente e o mesmo jogo de taças de vidro Diamond. O produto permanece fiel à referência, sem mudar formato, cor, marca ou detalhes. Movimentos naturais, mãos anatomicamente corretas, câmera estável, sem cortes. mantém o jogo de taças de vidro Diamond em contexto real, aponta para dois detalhes importantes e confirma a orientação com expressão segura."
+      },
+      {
+        "number": 5,
+        "title": "Recomendação e chamada",
+        "narration": "Gostou? Veja o link e escolha com segurança.",
+        "motionPrompt": "Vó Zélia Resolve, especialista experiente em Casa & Família, com jeito Afetuosa, esperta, econômica e sem paciência para propaganda, fala diretamente para a câmera em Cozinha ou lavanderia real. Mantém exatamente o mesmo rosto, cabelo, roupa, ambiente e o mesmo jogo de taças de vidro Diamond. O produto permanece fiel à referência, sem mudar formato, cor, marca ou detalhes. Movimentos naturais, mãos anatomicamente corretas, câmera estável, sem cortes. mantém o jogo de taças de vidro Diamond visível, sorri e faz um gesto discreto indicando o link abaixo."
+      }
+    ],
+    "fullScript": "Olha este jogo de taças de vidro Diamond. Eu conferi o que realmente importa. Taça Diamante traz um toque de sofistição e elegância para sua mesa. Isso ajuda muito no dia a dia. Na prática, destaco Modelo: Taça Diamante e Cor: Transparente. Confira medidas e detalhes do anúncio para a sua necessidade. Gostou? Veja o link e escolha com segurança."
+  },
+  "sceneUrls": [],
+  "attempts": 3,
+  "engine": "longcat-scenes",
+  "createdAt": "2026-08-24T23:21:58.875Z",
+  "updatedAt": "2026-08-24T23:58:17.389Z",
+  "nextRetryAt": "2026-08-24T23:52:21.778Z",
+  "error": "fetch failed"
+}

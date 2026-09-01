@@ -1,0 +1,66 @@
+{
+  "test": "editor-generative",
+  "scene": "Cena 1 — Abertura com Multi-Take V2",
+  "takesCount": 3,
+  "bestTakeId": "Take B",
+  "bestTakeScore": 89,
+  "rationale": "O Take B foi eleito pelo Vision QA com nota 89/100 (Face: 94, Movimento: 75, LipSync: 96).",
+  "evaluationTimeSeconds": 22.1,
+  "takes": [
+    {
+      "id": "Take A",
+      "scores": {
+        "face": 91,
+        "motion": 75,
+        "lipSync": 92,
+        "realism": 92,
+        "continuity": 95,
+        "product": 90,
+        "hands": 87,
+        "overall": 88,
+        "isGenerative": false
+      },
+      "selected": false,
+      "flaws": [
+        "Movimento corporal com baixa variância"
+      ]
+    },
+    {
+      "id": "Take B",
+      "scores": {
+        "face": 94,
+        "motion": 75,
+        "lipSync": 96,
+        "realism": 92,
+        "continuity": 95,
+        "product": 96,
+        "hands": 96,
+        "overall": 89,
+        "isGenerative": false
+      },
+      "selected": true,
+      "flaws": [
+        "Movimento corporal com baixa variância"
+      ]
+    },
+    {
+      "id": "Take C",
+      "scores": {
+        "face": 91,
+        "motion": 75,
+        "lipSync": 92,
+        "realism": 92,
+        "continuity": 95,
+        "product": 90,
+        "hands": 87,
+        "overall": 88,
+        "isGenerative": false
+      },
+      "selected": false,
+      "flaws": [
+        "Movimento corporal com baixa variância"
+      ]
+    }
+  ],
+  "status": "PASS"
+}

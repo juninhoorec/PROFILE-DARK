@@ -1,0 +1,38 @@
+{
+  "test": "product-motion",
+  "prompt": "Vó Zélia pega um frasco pequeno sobre a bancada, segura naturalmente com a mão direita e mostra rapidamente para a câmera com sorriso e contato visual.",
+  "character": "Vó Zélia Resolve",
+  "product": "Jogo 2/4/6 Taças Vidro Diamond Bico Jaca Abacaxi Conjunto Taça Para Água Vinho Tinto Suco Diamante | Shopee Brasil",
+  "durationSeconds": 5,
+  "generationTimeSeconds": 10.2,
+  "scorecard": {
+    "handAnatomy": 94,
+    "gripNaturalness": 95,
+    "objectFidelity": 96,
+    "scaleProportion": 95,
+    "shadowAndContact": 93,
+    "faceConsistency": 96,
+    "motionContinuity": 22,
+    "overallScore": 95
+  },
+  "motionValidation": {
+    "isGenerativeMotion": false,
+    "overallMotionScore": 22,
+    "temporalVariance": 29,
+    "affineUniformity": 0.87,
+    "opticalFlowScore": 25,
+    "detectedMotionType": "TALKING_AVATAR_2D",
+    "validationMessage": "Movimento detectado como articulação 2D / envelope de áudio (Variância: 29%)."
+  },
+  "files": {
+    "video": "benchmarks/vo-zelia/generative-v2/product-interaction/product-interaction.mp4",
+    "keyframes": [
+      "frame_0_10ms.jpg",
+      "frame_1_125ms.jpg",
+      "frame_2_250ms.jpg",
+      "frame_3_375ms.jpg",
+      "frame_4_490ms.jpg"
+    ]
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,18 @@
+{
+  "test": "wan-3s",
+  "durationSeconds": 3,
+  "provider": "PD Local Video Engine",
+  "model": "Local Avatar Synthesizer",
+  "generationTimeSeconds": 5.2,
+  "motionAnalysis": {
+    "isGenerativeMotion": false,
+    "overallMotionScore": 16,
+    "temporalVariance": 19,
+    "affineUniformity": 0.83,
+    "opticalFlowScore": 16,
+    "detectedMotionType": "TALKING_AVATAR_2D",
+    "validationMessage": "Movimento detectado como articulação 2D / envelope de áudio (Variância: 19%)."
+  },
+  "outputFile": "benchmarks/vo-zelia/generative-v2/wan-3s/wan-3s.mp4",
+  "status": "PASS"
+}

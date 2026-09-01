@@ -1,0 +1,16 @@
+{
+  "totalEstimatedCostUsd": 0.602,
+  "totalEstimatedCostBrl": 3.1,
+  "bestIdentity": "Google Veo 3.1 Lite & LTX-Video 13B (95/100)",
+  "bestMotion": "Google Veo 3.1 Lite (96/100)",
+  "bestHands": "Google Veo 3.1 Lite (95/100)",
+  "bestProduct": "Google Veo 3.1 Lite (96/100)",
+  "bestRealism": "Google Veo 3.1 Lite & LTX-Video 13B (96/100)",
+  "bestCostQuality": "LTX-Video 13B Distilled (R$0.52 para 5s com nota 94/100)",
+  "scenesUsable": [
+    1,
+    2,
+    3
+  ],
+  "finalVideoPossible": true
+}

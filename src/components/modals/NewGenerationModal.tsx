@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   X,
   Sparkles,
@@ -40,6 +40,7 @@ interface NewGenerationModalProps {
   onRun3sTest: (profile: Profile, product?: Product) => void;
   onStartJob: (plan: CreativePlan, profile: Profile, product?: Product) => void;
   onOpenPromptEnhancer: (res: PromptEnhanceResult) => void;
+  initialContentUrl?: string;
 }
 
 export const NewGenerationModal: React.FC<NewGenerationModalProps> = ({
@@ -52,20 +53,20 @@ export const NewGenerationModal: React.FC<NewGenerationModalProps> = ({
   onRun3sTest,
   onStartJob,
   onOpenPromptEnhancer,
+  initialContentUrl,
 }) => {
   // Box A - Profile Base
-  const [characterLock, setCharacterLock] = useState<CharacterLock>({
-    face: true,
-    age: true,
-    hair: true,
-    body: true,
-    voice: true,
-    personality: true,
-  });
+  const [characterLock, setCharacterLock] = useState<CharacterLock>(selectedProfile.characterLock);
 
   // Box B - Conteúdo
   const [contentUrl, setContentUrl] = useState('');
-  const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
+  const [uploading,setUploading]=useState(false);
+  const [uploadStatus,setUploadStatus]=useState('');
+
+  useEffect(() => { if (initialContentUrl) setContentUrl(initialContentUrl); }, [initialContentUrl]);
+  useEffect(() => { setCharacterLock(selectedProfile.characterLock); }, [selectedProfile]);
+
+  const uploadReference=async(file?:File)=>{if(!file)return;setUploading(true);setUploadStatus('');try{const form=new FormData();form.append('file',file);const response=await fetch('/api/uploads',{method:'POST',body:form});const data=await response.json();if(!response.ok)throw new Error(data.error||'Não foi possível enviar.');setContentUrl(data.url);setUploadStatus(`${data.name} enviado com sucesso.`);}catch(error){setUploadStatus(error instanceof Error?error.message:'Não foi possível enviar.');}finally{setUploading(false);}};
 
   // Box C - Produto
   const [selectedProductId, setSelectedProductId] = useState<string>(products[0]?.id || '');
@@ -90,7 +91,7 @@ export const NewGenerationModal: React.FC<NewGenerationModalProps> = ({
 
   const handleEnhancePrompt = () => {
     const res = PromptEnhancer.enhance({
-      rawPrompt,
+      rawPrompt: `${rawPrompt}${contentUrl?`\nReferência: ${contentUrl}`:''}`,
       profile: selectedProfile,
       product: selectedProduct,
       objective,
@@ -103,10 +104,12 @@ export const NewGenerationModal: React.FC<NewGenerationModalProps> = ({
     const plan = CreativeDirector.createPlan({
       profile: selectedProfile,
       product: selectedProduct,
-      prompt: rawPrompt,
+      prompt: `${rawPrompt}${contentUrl?`\nReferência editorial: ${contentUrl}`:''}`,
       objective,
       funnelStage,
     });
+    const lockedIdentity=Object.entries(characterLock).filter(([,enabled])=>enabled).map(([key])=>key).join(', ')||'nenhum';
+    plan.fullScript += `\n\n[CHARACTER LOCK]\nPreservar: ${lockedIdentity}.`;
     onStartJob(plan, selectedProfile, selectedProduct);
     onClose();
   };
@@ -142,9 +145,9 @@ export const NewGenerationModal: React.FC<NewGenerationModalProps> = ({
               <h3 className="text-xs font-bold text-white flex items-center gap-1.5">
                 <span className="text-brand-400 font-mono">A.</span> Profile base
               </h3>
-              <div className="flex items-center gap-1 text-[10px] text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">
+              <div className={`flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded border ${Object.values(characterLock).every(Boolean)?'text-emerald-400 bg-emerald-500/10 border-emerald-500/30':'text-amber-300 bg-amber-500/10 border-amber-500/30'}`}>
                 <Lock className="w-3 h-3" />
-                <span>Character Lock ON</span>
+                <span>{Object.values(characterLock).every(Boolean)?'Character Lock ON':'Lock parcial'}</span>
               </div>
             </div>
 
@@ -222,16 +225,17 @@ export const NewGenerationModal: React.FC<NewGenerationModalProps> = ({
               />
             </div>
 
-            {/* Upload Zone */}
-            <div className="border border-dashed border-[#282834] bg-[#0C0C0F]/60 rounded-xl p-3 text-center flex flex-col items-center justify-center min-h-[90px] cursor-pointer hover:bg-[#121218]">
+            <label className="border border-dashed border-[#353044] bg-[#0C0C0F]/60 rounded-xl p-3 text-center flex flex-col items-center justify-center min-h-[90px] cursor-pointer hover:border-brand-500/50">
+              <input type="file" className="hidden" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,video/webm,audio/mpeg,audio/wav,audio/mp4,application/pdf" onChange={event=>void uploadReference(event.target.files?.[0])}/>
               <Upload className="w-5 h-5 text-brand-400 mb-1" />
               <span className="text-[11px] font-semibold text-zinc-200">
-                Arraste arquivos aqui (Vídeo, Imagem, PDF)
+                {uploading?'Enviando referência...':'Enviar vídeo, imagem, áudio ou PDF'}
               </span>
               <span className="text-[9.5px] text-zinc-400">
-                A IA analisará texto, imagens e áudios como fonte
+                Armazenamento local seguro · máximo de 50 MB
               </span>
-            </div>
+              {uploadStatus&&<span role="status" className="mt-1 text-[9.5px] text-emerald-300">{uploadStatus}</span>}
+            </label>
           </div>
 
           {/* BOX C: Produto ou Objeto */}
@@ -361,7 +365,7 @@ export const NewGenerationModal: React.FC<NewGenerationModalProps> = ({
             className="px-4 py-2.5 bg-[#1C182A] hover:bg-[#27213C] border border-brand-500/40 text-brand-300 font-bold text-xs rounded-xl flex items-center gap-2 transition-all"
           >
             <Zap className="w-4 h-4 text-amber-400" />
-            <span>⚡ Fazer Teste Rápido de 3s Primeiro</span>
+            <span>⚡ Fazer teste rápido de 5s primeiro</span>
           </button>
 
           <div className="flex items-center gap-2.5">
@@ -373,7 +377,9 @@ export const NewGenerationModal: React.FC<NewGenerationModalProps> = ({
             </button>
             <button
               onClick={handleGenerateCreativePlan}
-              className="px-6 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs rounded-xl shadow-purple-glow flex items-center gap-2 transition-all"
+              disabled={!rawPrompt.trim()}
+              title={!rawPrompt.trim() ? 'Escreva o briefing do vídeo antes de gerar.' : undefined}
+              className="px-6 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs rounded-xl shadow-purple-glow flex items-center gap-2 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
             >
               <Sparkles className="w-4 h-4" />
               <span>Gerar Plano Criativo & Render</span>

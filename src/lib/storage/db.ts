@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { randomUUID } from 'crypto';
 import {
   Profile,
   Product,
@@ -93,27 +94,55 @@ class DatabaseStore {
   }
 
   private save() {
+    let tempFile: string | undefined;
     try {
       if (!fs.existsSync(DATA_DIR)) {
         fs.mkdirSync(DATA_DIR, { recursive: true });
       }
       this.data.updatedAt = new Date().toISOString();
-      fs.writeFileSync(DB_FILE, JSON.stringify(this.data, null, 2), 'utf-8');
+      tempFile = path.join(DATA_DIR, `db.${process.pid}.${randomUUID()}.tmp`);
+      fs.writeFileSync(tempFile, JSON.stringify(this.data, null, 2), 'utf-8');
+      for (let attempt = 0; ; attempt += 1) {
+        try {
+          fs.renameSync(tempFile, DB_FILE);
+          break;
+        } catch (error) {
+          const code = (error as NodeJS.ErrnoException).code;
+          if (!['EPERM', 'EACCES', 'EBUSY'].includes(code || '') || attempt >= 5) throw error;
+          Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 20 * (attempt + 1));
+        }
+      }
     } catch (e) {
       console.error('Failed to persist database file:', e);
+      if (tempFile && fs.existsSync(tempFile)) {
+        try { fs.unlinkSync(tempFile); } catch { /* cleanup is best-effort */ }
+      }
+    }
+  }
+
+  private refresh() {
+    try {
+      if (!fs.existsSync(DB_FILE)) return;
+      const parsed = JSON.parse(fs.readFileSync(DB_FILE, 'utf-8'));
+      if (parsed && typeof parsed === 'object') this.data = { ...this.getDefaultData(), ...parsed };
+    } catch (e) {
+      console.error('Failed to refresh database file:', e);
     }
   }
 
   // --- Profiles ---
   getProfiles(): Profile[] {
+    this.refresh();
     return this.data.profiles;
   }
 
   getProfileById(id: string): Profile | undefined {
+    this.refresh();
     return this.data.profiles.find((p) => p.id === id);
   }
 
   saveProfile(profile: Profile): Profile {
+    this.refresh();
     const idx = this.data.profiles.findIndex((p) => p.id === profile.id);
     const updated = { ...profile, updatedAt: new Date().toISOString() };
     if (idx >= 0) {
@@ -126,6 +155,7 @@ class DatabaseStore {
   }
 
   deleteProfile(id: string): boolean {
+    this.refresh();
     const len = this.data.profiles.length;
     this.data.profiles = this.data.profiles.filter((p) => p.id !== id);
     if (this.data.profiles.length !== len) {
@@ -137,14 +167,17 @@ class DatabaseStore {
 
   // --- Products ---
   getProducts(): Product[] {
+    this.refresh();
     return this.data.products;
   }
 
   getProductById(id: string): Product | undefined {
+    this.refresh();
     return this.data.products.find((p) => p.id === id);
   }
 
   saveProduct(product: Product): Product {
+    this.refresh();
     const idx = this.data.products.findIndex((p) => p.id === product.id);
     const updated = { ...product, updatedAt: new Date().toISOString() };
     if (idx >= 0) {
@@ -157,6 +190,7 @@ class DatabaseStore {
   }
 
   deleteProduct(id: string): boolean {
+    this.refresh();
     const len = this.data.products.length;
     this.data.products = this.data.products.filter((p) => p.id !== id);
     if (this.data.products.length !== len) {
@@ -168,14 +202,17 @@ class DatabaseStore {
 
   // --- Generation Jobs ---
   getJobs(): GenerationJob[] {
+    this.refresh();
     return this.data.jobs;
   }
 
   getJobById(id: string): GenerationJob | undefined {
+    this.refresh();
     return this.data.jobs.find((j) => j.id === id);
   }
 
   saveJob(job: GenerationJob): GenerationJob {
+    this.refresh();
     const idx = this.data.jobs.findIndex((j) => j.id === job.id);
     if (idx >= 0) {
       this.data.jobs[idx] = job;
@@ -220,14 +257,17 @@ class DatabaseStore {
 
   // --- Quality Checks ---
   getQualityChecks(): QualityCheck[] {
+    this.refresh();
     return this.data.qualityChecks;
   }
 
   getQualityCheckByJobId(jobId: string): QualityCheck | undefined {
+    this.refresh();
     return this.data.qualityChecks.find((qc) => qc.jobId === jobId);
   }
 
   saveQualityCheck(qc: QualityCheck): QualityCheck {
+    this.refresh();
     const idx = this.data.qualityChecks.findIndex((q) => q.id === qc.id);
     if (idx >= 0) {
       this.data.qualityChecks[idx] = qc;
@@ -240,19 +280,23 @@ class DatabaseStore {
 
   // --- Dark Radar ---
   getRadarConcepts(): DarkRadarConcept[] {
+    this.refresh();
     return this.data.radarConcepts;
   }
 
   getRadarConceptById(id: string): DarkRadarConcept | undefined {
+    this.refresh();
     return this.data.radarConcepts.find((c) => c.id === id);
   }
 
   // --- Provider Health ---
   getProviderHealth(): ProviderHealth[] {
+    this.refresh();
     return this.data.providerHealth;
   }
 
   updateProviderHealth(service: ProviderHealth['service'], update: Partial<ProviderHealth>) {
+    this.refresh();
     const idx = this.data.providerHealth.findIndex((p) => p.service === service);
     if (idx >= 0) {
       this.data.providerHealth[idx] = {
@@ -266,10 +310,12 @@ class DatabaseStore {
 
   // --- Credits & Transactions ---
   getCredits(): UserCredits {
+    this.refresh();
     return this.data.credits;
   }
 
   reserveCredits(amount: number, description: string, jobId?: string): boolean {
+    this.refresh();
     if (this.data.credits.remainingCredits < amount) {
       return false;
     }
@@ -288,6 +334,7 @@ class DatabaseStore {
   }
 
   refundCredits(amount: number, description: string, jobId?: string) {
+    this.refresh();
     this.data.credits.remainingCredits += amount;
     this.data.credits.usedCredits = Math.max(0, this.data.credits.usedCredits - amount);
     this.data.transactions.unshift({
@@ -303,15 +350,27 @@ class DatabaseStore {
 
   // --- Library ---
   getLibraryItems(): MediaLibraryItem[] {
+    this.refresh();
     return this.data.libraryItems;
+  }
+
+  saveLibraryItem(item: MediaLibraryItem): MediaLibraryItem {
+    this.refresh();
+    const index = this.data.libraryItems.findIndex((current) => current.id === item.id);
+    if (index >= 0) this.data.libraryItems[index] = item;
+    else this.data.libraryItems.unshift(item);
+    this.save();
+    return item;
   }
 
   // --- Affiliate links ---
   getAffiliateLinks(): AffiliateLink[] {
+    this.refresh();
     return this.data.affiliateLinks;
   }
 
   saveAffiliateLink(link: AffiliateLink): AffiliateLink {
+    this.refresh();
     const idx = this.data.affiliateLinks.findIndex((item) => item.id === link.id);
     if (idx >= 0) this.data.affiliateLinks[idx] = link;
     else this.data.affiliateLinks.unshift(link);

@@ -1,131 +1,29 @@
 'use client';
 
-import React, { useState } from 'react';
-import { FolderOpen, Search, Filter, Download, Play, MoreVertical } from 'lucide-react';
-import { MediaLibraryItem } from '@/lib/types';
-import { INITIAL_LIBRARY_ITEMS } from '@/lib/constants';
-import { DownloadPackageModal } from '@/components/modals/DownloadPackageModal';
+import { useEffect, useMemo, useState } from 'react';
+import { CalendarPlus, CheckCircle2, FolderOpen, Image as ImageIcon, Loader2, Search, Video, X } from 'lucide-react';
+import type { Profile } from '@/lib/types';
+import type { SocialAccount, SocialMediaAsset } from '@/lib/social/types';
+
+type Dashboard = { profiles: Profile[]; media: SocialMediaAsset[]; accounts: SocialAccount[] };
+const PLATFORMS = [{ id: 'instagram', label: 'Instagram' }, { id: 'tiktok', label: 'TikTok' }, { id: 'shopee', label: 'Shopee' }] as const;
 
 export default function LibraryPage() {
-  const [items, setItems] = useState<MediaLibraryItem[]>(INITIAL_LIBRARY_ITEMS);
-  const [search, setSearch] = useState('');
-  const [activeType, setActiveType] = useState<'todos' | 'videos' | 'imagens' | 'audios'>('todos');
-  const [downloadItem, setDownloadItem] = useState<MediaLibraryItem | null>(null);
-
-  const filteredItems = items.filter((item) => {
-    const matchSearch =
-      item.title.toLowerCase().includes(search.toLowerCase()) ||
-      item.profileName.toLowerCase().includes(search.toLowerCase());
-    return matchSearch;
-  });
-
-  return (
-    <div className="p-8 space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2">
-            <FolderOpen className="w-5 h-5 text-brand-400" />
-            Biblioteca de Conteúdos & Criativos
-          </h1>
-          <p className="text-xs text-zinc-400 mt-1">
-            Todos os seus vídeos renderizados, thumbnails, áudios e roteiros organizados por personagem.
-          </p>
-        </div>
-      </div>
-
-      {/* Filters & Search */}
-      <div className="flex items-center justify-between gap-4">
-        {/* Search */}
-        <div className="relative flex-1 max-w-md">
-          <Search className="w-4 h-4 text-zinc-500 absolute left-3.5 top-3" />
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Buscar por título, personagem ou produto..."
-            className="w-full pl-10 pr-4 py-2.5 bg-[#121216] border border-[#20202A] rounded-xl text-xs text-white placeholder:text-zinc-500 focus:outline-none focus:border-brand-500"
-          />
-        </div>
-
-        {/* Type Tabs */}
-        <div className="flex items-center gap-1.5 bg-[#121216] p-1 rounded-xl border border-[#20202A]">
-          {(['todos', 'videos', 'imagens', 'audios'] as const).map((t) => (
-            <button
-              key={t}
-              onClick={() => setActiveType(t)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold capitalize transition-all ${
-                activeType === t
-                  ? 'bg-brand-600 text-white shadow-purple-glow'
-                  : 'text-zinc-400 hover:text-zinc-200'
-              }`}
-            >
-              {t}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Grid */}
-      <div className="grid grid-cols-4 gap-5">
-        {filteredItems.map((item) => (
-          <div
-            key={item.id}
-            className="bg-[#121216] border border-[#1F1F28] hover:border-brand-500/40 rounded-2xl overflow-hidden group transition-all flex flex-col justify-between shadow-subtle"
-          >
-            <div className="relative aspect-video w-full bg-zinc-900 overflow-hidden">
-              <img
-                src={item.thumbnailUrl}
-                alt={item.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-black/75 text-[9.5px] font-bold text-zinc-200 uppercase">
-                {item.resolution}
-              </div>
-              <div className="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-black/75 text-[9px] font-medium text-zinc-300">
-                {item.duration}
-              </div>
-            </div>
-
-            <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
-              <div>
-                <h3 className="text-xs font-bold text-white line-clamp-1 group-hover:text-brand-300 transition-colors">
-                  {item.title}
-                </h3>
-                <div className="text-[11px] text-zinc-400 mt-0.5 truncate">
-                  Profile: {item.profileName}
-                </div>
-                <div className="text-[10px] text-zinc-500 mt-1">
-                  Tamanho: {item.fileSizeMb} MB
-                </div>
-              </div>
-
-              <div className="pt-2 border-t border-[#1C1C24] flex items-center gap-2">
-                <button
-                  onClick={() => alert(`Visualizando vídeo: ${item.title}`)}
-                  className="flex-1 py-1.5 bg-[#181822] hover:bg-[#222230] border border-[#272736] rounded-xl text-xs font-semibold text-zinc-200 transition-colors flex items-center justify-center gap-1.5"
-                >
-                  <Play className="w-3.5 h-3.5" />
-                  <span>Assistir</span>
-                </button>
-                <button
-                  onClick={() => setDownloadItem(item)}
-                  className="flex-1 py-1.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs font-bold transition-all shadow-purple-glow flex items-center justify-center gap-1.5"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Baixar ZIP</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <DownloadPackageModal
-        isOpen={!!downloadItem}
-        onClose={() => setDownloadItem(null)}
-        item={downloadItem}
-      />
-    </div>
-  );
+  const [dashboard, setDashboard] = useState<Dashboard | null>(null), [query, setQuery] = useState(''), [profileId, setProfileId] = useState('all');
+  const [selected, setSelected] = useState<SocialMediaAsset | null>(null), [platform, setPlatform] = useState<'instagram' | 'tiktok' | 'shopee'>('instagram');
+  const [accountIds, setAccountIds] = useState<string[]>([]), [scheduledAt, setScheduledAt] = useState(''), [caption, setCaption] = useState('');
+  const [busy, setBusy] = useState(false), [message, setMessage] = useState('');
+  const load = async () => { const response = await fetch('/api/social', { cache: 'no-store' }); const data = await response.json(); if (!response.ok) throw new Error(data.error); setDashboard(data); };
+  useEffect(() => { load().catch((error) => setMessage(error.message)); }, []);
+  const groups = useMemo(() => dashboard?.profiles.map((profile) => ({ profile, media: dashboard.media.filter((item) => item.profileId === profile.id && (profileId === 'all' || profile.id === profileId) && `${item.fileName} ${item.relativeFolder}`.toLowerCase().includes(query.toLowerCase())) })).filter((group) => group.media.length) || [], [dashboard, profileId, query]);
+  const accounts = dashboard?.accounts.filter((account) => account.platform === platform && account.status === 'connected') || [];
+  function openScheduler(media: SocialMediaAsset) { setSelected(media); setPlatform('instagram'); setAccountIds([]); setCaption(''); setMessage(''); const date = new Date(Date.now() + 3600000); date.setMinutes(date.getMinutes() - date.getTimezoneOffset()); setScheduledAt(date.toISOString().slice(0, 16)); }
+  async function schedule() { if (!selected || !scheduledAt) return; setBusy(true); setMessage(''); try { const response = await fetch('/api/social', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'schedule_media', profileId: selected.profileId, mediaId: selected.id, platform, accountIds, scheduledAt: new Date(scheduledAt).toISOString(), caption }) }); const data = await response.json(); if (!response.ok) throw new Error(data.error); setDashboard(data.dashboard); setSelected(null); setMessage(accountIds.length ? 'Postagem aprovada e adicionada à fila.' : 'Rascunho salvo. Conecte uma conta para ativar a publicação automática.'); } catch (error) { setMessage(error instanceof Error ? error.message : 'Não foi possível agendar.'); } finally { setBusy(false); } }
+  return <div className="mx-auto max-w-[1600px] space-y-6 p-4 sm:p-6 xl:p-8">
+    <header><div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.18em] text-brand-300"><FolderOpen className="h-4 w-4"/>Acervo operacional</div><h1 className="mt-2 text-2xl font-bold text-white">Mídias organizadas por perfil</h1><p className="mt-1 text-xs text-zinc-400">Vídeos, imagens de perfil e carrosséis, com agendamento individual para cada conta conectada.</p></header>
+    <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_260px]"><div className="relative"><Search className="absolute left-3 top-3 h-4 w-4 text-zinc-500"/><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar mídia ou pasta..." className="w-full rounded-xl border border-white/10 bg-[#111115] py-2.5 pl-10 pr-3 text-xs text-white outline-none focus:border-brand-500"/></div><select value={profileId} onChange={(e) => setProfileId(e.target.value)} className="rounded-xl border border-white/10 bg-[#111115] px-3 text-xs text-white"><option value="all">Todos os perfis</option>{dashboard?.profiles.map((profile) => <option key={profile.id} value={profile.id}>{profile.name}</option>)}</select></div>
+    {message && <div className="rounded-xl border border-brand-400/20 bg-brand-400/5 px-4 py-3 text-xs text-brand-200">{message}</div>}
+    {!dashboard ? <div className="flex justify-center py-20"><Loader2 className="h-6 w-6 animate-spin text-brand-400"/></div> : <div className="space-y-5">{groups.map(({ profile, media }) => <section key={profile.id} className="overflow-hidden rounded-2xl border border-white/8 bg-[#111115]"><div className="flex items-center gap-3 border-b border-white/7 p-4"><img src={profile.avatarUrl} alt="" className="h-10 w-10 rounded-full object-cover"/><div><h2 className="text-sm font-bold text-white">{profile.name}</h2><p className="text-[10px] text-zinc-500">{media.length} arquivos · {new Set(media.map((item) => item.relativeFolder)).size} pastas</p></div></div><div className="divide-y divide-white/5">{media.map((item) => <article key={item.id} className="grid items-center gap-3 p-3 hover:bg-white/[.02] sm:grid-cols-[56px_minmax(0,1fr)_auto]"><div className="h-14 w-14 overflow-hidden rounded-xl bg-black">{item.kind === 'video' ? <video src={item.url} muted preload="metadata" className="h-full w-full object-cover"/> : <img src={item.url} alt={item.fileName} className="h-full w-full object-cover"/>}</div><div className="min-w-0"><div className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-wider text-zinc-500">{item.kind === 'video' ? <Video className="h-3 w-3"/> : <ImageIcon className="h-3 w-3"/>}{item.relativeFolder}</div><div className="mt-1 truncate text-xs font-semibold text-zinc-200">{item.fileName}</div><div className="mt-0.5 text-[9px] text-zinc-600">{(item.sizeBytes / 1048576).toFixed(1)} MB</div></div><button onClick={() => openScheduler(item)} className="flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-3 py-2 text-[10px] font-bold text-white hover:bg-brand-500"><CalendarPlus className="h-3.5 w-3.5"/>Adicionar à postagem automática</button></article>)}</div></section>)}</div>}
+    {selected && <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm"><div className="w-full max-w-lg rounded-2xl border border-white/10 bg-[#15151b] p-5 shadow-2xl"><div className="flex items-start justify-between"><div><h2 className="text-base font-bold text-white">Programar esta mídia</h2><p className="mt-1 max-w-sm truncate text-[10px] text-zinc-500">{selected.fileName}</p></div><button onClick={() => setSelected(null)} className="rounded-lg p-1 text-zinc-500 hover:text-white"><X className="h-5 w-5"/></button></div><div className="mt-5 space-y-4"><label className="block text-[10px] font-bold uppercase tracking-wider text-zinc-500">Rede social<select value={platform} onChange={(e) => { setPlatform(e.target.value as typeof platform); setAccountIds([]); }} className="mt-1.5 w-full rounded-xl border border-white/10 bg-[#0d0d11] px-3 py-2.5 text-xs normal-case text-white">{PLATFORMS.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label><div><div className="text-[10px] font-bold uppercase tracking-wider text-zinc-500">Contas de destino</div>{accounts.length ? <div className="mt-2 space-y-2">{accounts.map((account) => <label key={account.id} className="flex items-center gap-2 rounded-xl border border-white/7 p-3 text-xs text-zinc-300"><input type="checkbox" checked={accountIds.includes(account.id)} onChange={(e) => setAccountIds(e.target.checked ? [...accountIds, account.id] : accountIds.filter((id) => id !== account.id))}/>{account.displayName} {account.handle && <span className="text-zinc-600">{account.handle}</span>}</label>)}</div> : <div className="mt-2 rounded-xl border border-amber-400/20 bg-amber-400/5 p-3 text-[10px] leading-4 text-amber-200">Nenhuma conta conectada. O agendamento será salvo como rascunho e não será apresentado como publicação automática.</div>}</div><label className="block text-[10px] font-bold uppercase tracking-wider text-zinc-500">Dia e horário<input type="datetime-local" value={scheduledAt} onChange={(e) => setScheduledAt(e.target.value)} className="mt-1.5 w-full rounded-xl border border-white/10 bg-[#0d0d11] px-3 py-2.5 text-xs normal-case text-white"/></label><label className="block text-[10px] font-bold uppercase tracking-wider text-zinc-500">Legenda opcional<textarea value={caption} onChange={(e) => setCaption(e.target.value)} rows={3} placeholder="O PD sugere uma legenda se ficar vazio." className="mt-1.5 w-full resize-none rounded-xl border border-white/10 bg-[#0d0d11] px-3 py-2.5 text-xs normal-case text-white"/></label></div><button onClick={schedule} disabled={busy || !scheduledAt} className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 to-fuchsia-600 py-3 text-xs font-bold text-white disabled:opacity-40">{busy ? <Loader2 className="h-4 w-4 animate-spin"/> : <CheckCircle2 className="h-4 w-4"/>}{accountIds.length ? 'Confirmar postagem automática' : 'Salvar como rascunho'}</button></div></div>}
+  </div>;
 }

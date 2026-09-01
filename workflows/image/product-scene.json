@@ -1,0 +1,92 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple"
+  },
+  "2": {
+    "inputs": {
+      "image": "master_reference.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage"
+  },
+  "3": {
+    "inputs": {
+      "image": "product_reference.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage"
+  },
+  "4": {
+    "inputs": {
+      "ipadapter_file": "ip-adapter-plus_sdxl_vit-h.safetensors"
+    },
+    "class_type": "IPAdapterModelLoader"
+  },
+  "5": {
+    "inputs": {
+      "weight": 0.85,
+      "weight_type": "standard",
+      "combine_embeds": "concat",
+      "start_at": 0.0,
+      "end_at": 1.0,
+      "model": ["1", 0],
+      "ipadapter": ["4", 0],
+      "image": ["2", 0]
+    },
+    "class_type": "IPAdapterApply"
+  },
+  "6": {
+    "inputs": {
+      "text": "Ultra realistic product interaction scene, identical character holding the product naturally with studio lighting",
+      "clip": ["1", 1]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "7": {
+    "inputs": {
+      "text": "blurry, deformed hands, extra fingers, cartoon, low resolution",
+      "clip": ["1", 1]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "8": {
+    "inputs": {
+      "width": 768,
+      "height": 1360,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage"
+  },
+  "9": {
+    "inputs": {
+      "seed": 1001,
+      "steps": 25,
+      "cfg": 6.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1.0,
+      "model": ["5", 0],
+      "positive": ["6", 0],
+      "negative": ["7", 0],
+      "latent_image": ["8", 0]
+    },
+    "class_type": "KSampler"
+  },
+  "10": {
+    "inputs": {
+      "samples": ["9", 0],
+      "vae": ["1", 2]
+    },
+    "class_type": "VAEDecode"
+  },
+  "11": {
+    "inputs": {
+      "filename_prefix": "PD_Product_Scene",
+      "images": ["10", 0]
+    },
+    "class_type": "SaveImage"
+  }
+}

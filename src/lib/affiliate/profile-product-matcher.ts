@@ -1,21 +1,24 @@
 import { ProfileProductMatch, ProductDNA } from '@/lib/types';
-
-const concepts = [
-  { name: 'Luna', age: '28 anos', archetype: 'Creator lifestyle', contentStyle: 'UGC cotidiano e descoberta' },
-  { name: 'Helena', age: '52 anos', archetype: 'Especialista confiável', contentStyle: 'Demonstração e storytelling' },
-  { name: 'Marina', age: '34 anos', archetype: 'Profissional prática', contentStyle: 'Rotina real e review direto' },
-];
+import { rankArchetypes } from '@/lib/profile-archetypes';
 
 export class ProfileProductMatcher {
   static suggest(dna: ProductDNA): ProfileProductMatch[] {
-    return concepts.map((concept, index) => {
-      const base = 92 - index * 3;
+    const brief = [dna.name, dna.brand, dna.category, dna.targetAudience, dna.problemSolved, ...dna.keyFeatures, ...dna.mainBenefits].join(' ');
+    return rankArchetypes(brief, 3).map((archetype, index) => {
+      const base = 94 - index * 3;
+      const humorBonus = archetype.tags.includes('meme') ? 2 : 0;
       const dimensions = {
-        audienceFit: base, productCredibility: base - 1, naturalUsage: base + 1, contentPotential: base,
-        trustPotential: base - index, commercialPotential: base - 1, productionEase: 94 - index, repeatability: 90 - index,
+        audienceFit: base, productCredibility: Math.min(98, base + 2), naturalUsage: base + 1,
+        contentPotential: Math.min(98, base + humorBonus), trustPotential: base,
+        commercialPotential: base - 1, productionEase: 92 - index, repeatability: 91 - index,
       };
       const fitScore = Math.round(Object.values(dimensions).reduce((sum, score) => sum + score, 0) / 8);
-      return { id: `match_${index + 1}`, ...concept, fitScore, dimensions, rationale: `${concept.archetype} tem contexto natural para apresentar ${dna.name || 'este produto'} a ${dna.targetAudience.toLowerCase()}.` };
+      return {
+        id: archetype.id, name: archetype.name,
+        age: archetype.kind === 'animal' ? `${archetype.age} anos · personagem animal` : `${archetype.age} anos`,
+        archetype: archetype.role, contentStyle: archetype.contentStyle, fitScore, dimensions,
+        rationale: `${archetype.expertise}. A abordagem de ${archetype.salesStyle.toLowerCase()} cria contexto natural para ${dna.name || 'este produto'}, sem fingir experiência ou prometer vendas.`,
+      };
     });
   }
 }

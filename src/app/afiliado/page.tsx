@@ -1,8 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import { AlertCircle, ArrowRight, Check, ExternalLink, Loader2, PackageSearch, Pencil, ShieldCheck, ShoppingBag, Sparkles } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { AlertCircle, ArrowRight, Check, ExternalLink, Loader2, PackageSearch, ShieldCheck, ShoppingBag, Sparkles } from 'lucide-react';
 import { AffiliateLink, Product, ProductDNA, ProfileProductMatch } from '@/lib/types';
+import { useRouter } from 'next/navigation';
+import { ManualProductForm } from '@/components/affiliate/ManualProductForm';
 
 type Analysis = {
   resolved: { platform: string; resolutionSource: string; warnings: string[]; data: Record<string, string | undefined> };
@@ -21,6 +23,13 @@ export default function AffiliatePage() {
   const [error, setError] = useState('');
   const [analysis, setAnalysis] = useState<Analysis | null>(null);
   const [selectedMatch, setSelectedMatch] = useState<string>();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!selectedMatch || !analysis?.product) return;
+    const params = new URLSearchParams({ create: '1', product: analysis.product.name, archetype: selectedMatch });
+    router.push(`/profiles?${params.toString()}`);
+  }, [selectedMatch, analysis, router]);
 
   async function analyze() {
     setLoading(true); setError(''); setAnalysis(null);
@@ -53,12 +62,14 @@ export default function AffiliatePage() {
         {error && <div role="alert" className="mt-4 flex gap-2 rounded-xl border border-red-500/25 bg-red-500/10 p-3 text-sm text-red-200"><AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />{error}</div>}
       </section>
 
-      {analysis?.requiresManualInput && <section className="mt-6 rounded-2xl border border-amber-500/25 bg-amber-500/5 p-6"><div className="flex gap-3"><AlertCircle className="w-5 h-5 text-amber-400 shrink-0" /><div><h2 className="font-semibold text-white">Precisamos de algumas informações</h2><p className="mt-1 text-sm text-zinc-400">{analysis.resolved.warnings[0]}</p><button disabled title="Editor manual será disponibilizado na próxima etapa" className="mt-4 rounded-lg border border-zinc-700 px-4 py-2 text-xs text-zinc-500 cursor-not-allowed">Adicionar manualmente — em implementação</button></div></div></section>}
+      {analysis?.requiresManualInput && <section className="mt-6 rounded-2xl border border-amber-500/25 bg-amber-500/5 p-6"><div className="flex gap-3"><AlertCircle className="w-5 h-5 text-amber-400 shrink-0" /><div><h2 className="font-semibold text-white">Precisamos de algumas informações</h2><p className="mt-1 text-sm text-zinc-400">{analysis.resolved.warnings[0]}</p><p className="mt-3 text-xs font-medium text-amber-200">Preencha o formulário abaixo para continuar sem perder seu link afiliado.</p></div></div></section>}
+
+      {analysis?.requiresManualInput && <ManualProductForm affiliateUrl={url} onCompleted={setAnalysis} />}
 
       {analysis?.product && analysis.productDNA && <>
         <section className="mt-6 grid lg:grid-cols-[260px_1fr] gap-6 rounded-2xl border border-[#24242d] bg-[#101014] p-5 sm:p-6">
           <div className="aspect-square rounded-xl overflow-hidden bg-[#17171d] flex items-center justify-center">{analysis.product.imageUrl ? <img src={analysis.product.imageUrl} alt={analysis.product.name} className="w-full h-full object-cover" /> : <ShoppingBag className="w-12 h-12 text-zinc-700" />}</div>
-          <div><div className="flex flex-wrap gap-2 mb-3"><span className="rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 text-[11px] text-emerald-300"><Check className="inline w-3 h-3 mr-1" /> Link preservado</span><span className="rounded-full bg-brand-500/10 border border-brand-500/20 px-2.5 py-1 text-[11px] text-brand-300">{platformLabels[analysis.resolved.platform] || analysis.resolved.platform}</span></div><h2 className="text-2xl font-bold text-white">{analysis.product.name}</h2><p className="mt-2 text-brand-300 font-semibold">{analysis.product.price || 'Preço não publicado'}</p><p className="mt-4 text-sm leading-6 text-zinc-400">{analysis.product.description}</p><div className="mt-5 flex flex-wrap gap-3"><button disabled title="Edição será habilitada na próxima etapa" className="inline-flex items-center gap-2 rounded-lg border border-zinc-700 px-4 py-2 text-xs text-zinc-500 cursor-not-allowed"><Pencil className="w-3.5 h-3.5" /> Editar informações</button><a href={analysis.product.buyUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-[#302a3d] px-4 py-2 text-xs text-zinc-300 hover:text-white"><ExternalLink className="w-3.5 h-3.5" /> Conferir link original</a></div></div>
+          <div><div className="flex flex-wrap gap-2 mb-3"><span className="rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 text-[11px] text-emerald-300"><Check className="inline w-3 h-3 mr-1" /> Link preservado</span><span className="rounded-full bg-brand-500/10 border border-brand-500/20 px-2.5 py-1 text-[11px] text-brand-300">{platformLabels[analysis.resolved.platform] || analysis.resolved.platform}</span></div><h2 className="text-2xl font-bold text-white">{analysis.product.name}</h2><p className="mt-2 text-brand-300 font-semibold">{analysis.product.price || 'Preço não publicado'}</p><p className="mt-4 text-sm leading-6 text-zinc-400">{analysis.product.description}</p><div className="mt-5 flex flex-wrap gap-3"><a href={analysis.product.buyUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-[#302a3d] px-4 py-2 text-xs text-zinc-300 hover:text-white"><ExternalLink className="w-3.5 h-3.5" /> Conferir link original</a></div></div>
         </section>
 
         <section className="mt-6 rounded-2xl border border-[#24242d] bg-[#101014] p-5 sm:p-6"><div className="flex items-center gap-2"><Sparkles className="w-5 h-5 text-brand-400" /><h2 className="text-lg font-bold text-white">Product DNA</h2></div><div className="mt-5 grid md:grid-cols-2 gap-4"><div className="rounded-xl bg-[#0b0b0f] border border-[#202028] p-4"><div className="text-[11px] font-semibold tracking-wider text-zinc-500 uppercase">Dados do produto</div><dl className="mt-3 space-y-2 text-sm"><div><dt className="text-zinc-500">Marca</dt><dd className="text-zinc-200">{analysis.productDNA.brand}</dd></div><div><dt className="text-zinc-500">Categoria</dt><dd className="text-zinc-200">{analysis.productDNA.category}</dd></div><div><dt className="text-zinc-500">Preço</dt><dd className="text-zinc-200">{analysis.productDNA.price || 'Não publicado'}</dd></div></dl></div><div className="rounded-xl bg-brand-500/5 border border-brand-500/15 p-4"><div className="text-[11px] font-semibold tracking-wider text-brand-300 uppercase">Análise da IA</div><dl className="mt-3 space-y-2 text-sm"><div><dt className="text-zinc-500">Público provável</dt><dd className="text-zinc-200">{analysis.productDNA.targetAudience}</dd></div><div><dt className="text-zinc-500">Desejo associado</dt><dd className="text-zinc-200">{analysis.productDNA.desireExploited}</dd></div><div><dt className="text-zinc-500">Observação</dt><dd className="text-zinc-200">Hipóteses para revisão, não dados da plataforma.</dd></div></dl></div></div></section>

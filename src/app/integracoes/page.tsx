@@ -1,42 +1,52 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Plug, Zap, CheckCircle2, AlertCircle, RefreshCw, Key, ShieldCheck } from 'lucide-react';
 
 export default function IntegracoesPage() {
   const [testingService, setTestingService] = useState<string | null>(null);
   const [testOutput, setTestOutput] = useState<Record<string, any>>({});
 
-  const providers = [
+  const [providers, setProviders] = useState([
     {
       id: 'llm',
       name: 'LLM & Context Engine (Texto / Roteiros)',
-      provider: 'Google Gemini 1.5 Pro / OpenAI GPT-4o',
-      configured: true,
-      status: 'Operacional',
+      provider: 'Nenhum',
+      configured: false,
+      status: 'Não configurado',
     },
     {
       id: 'image',
       name: 'Gerador de Imagens & Rosto Hiper-Realista',
-      provider: 'FLUX 1.1 Pro / Fal.ai / Replicate',
-      configured: true,
-      status: 'Operacional',
+      provider: 'Nenhum',
+      configured: false,
+      status: 'Não configurado',
     },
     {
       id: 'voice',
       name: 'Síntese de Voz & TTS (Áudio Natural)',
-      provider: 'ElevenLabs Multilingual v2',
-      configured: true,
-      status: 'Operacional',
+      provider: 'Nenhum',
+      configured: false,
+      status: 'Não configurado',
     },
     {
       id: 'video',
       name: 'Renderizador de Vídeo & Lip-Sync',
-      provider: 'Runway Gen-3 Alpha / Luma Dream Machine',
-      configured: true,
-      status: 'Operacional (Teste 3s Disponível)',
+      provider: 'Nenhum',
+      configured: false,
+      status: 'Não configurado',
     },
-  ];
+  ]);
+
+  useEffect(() => {
+    fetch('/api/health').then((response) => response.json()).then((data) => {
+      if (!data.details) return;
+      setProviders((items) => items.map((item) => {
+        const health = data.details.find((detail: any) => detail.service === item.id);
+        return health ? { ...item, provider:data.activeProviders?.[item.id]||'Nenhum', configured: health.isConfigured, status: health.status === 'operational' ? 'Operacional' : health.status === 'degraded' ? 'Aguardando teste' : 'Não configurado' } : item;
+      }));
+    }).catch(() => {});
+  }, []);
 
   const handleTest = async (serviceId: string) => {
     setTestingService(serviceId);
@@ -56,7 +66,7 @@ export default function IntegracoesPage() {
   };
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-5 sm:p-8 space-y-6">
       {/* Header */}
       <div>
         <h1 className="text-xl font-bold text-white flex items-center gap-2">
@@ -64,7 +74,7 @@ export default function IntegracoesPage() {
           Integrações de IA & Smart Provider Router
         </h1>
         <p className="text-xs text-zinc-400 mt-1">
-          Gerenciamento de credenciais de API, testes controlados e fallback automático entre múltiplos modelos.
+          Diagnóstico de credenciais e testes controlados. Um serviço só fica verde depois de responder com sucesso real.
         </p>
       </div>
 
@@ -73,13 +83,14 @@ export default function IntegracoesPage() {
         {providers.map((p) => {
           const isTesting = testingService === p.id;
           const output = testOutput[p.id];
+          const operational=p.status==='Operacional';
 
           return (
             <div
               key={p.id}
               className="bg-[#121216] border border-[#1F1F28] rounded-2xl p-5 space-y-3 shadow-subtle"
             >
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                 <div>
                   <h3 className="text-sm font-bold text-white">{p.name}</h3>
                   <div className="text-xs text-zinc-400 mt-0.5">
@@ -87,9 +98,9 @@ export default function IntegracoesPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <span className="px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className={`px-2.5 py-1 rounded-lg border text-xs font-bold flex items-center gap-1.5 ${operational ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' : 'bg-amber-500/10 border-amber-500/30 text-amber-300'}`}>
+                    {operational ? <CheckCircle2 className="w-3.5 h-3.5" /> : <AlertCircle className="w-3.5 h-3.5" />}
                     <span>{p.status}</span>
                   </span>
 
@@ -116,12 +127,12 @@ export default function IntegracoesPage() {
               {/* Output preview */}
               {output && (
                 <div className="p-3 bg-[#0C0C0F] border border-[#1C1C24] rounded-xl text-xs space-y-1 font-mono text-[11px]">
-                  <div className="text-emerald-400 font-bold">
-                    ✓ Teste concluído com sucesso ({output.latencyMs}ms)
+                  <div className={output.success ? 'text-emerald-400 font-bold' : 'text-amber-300 font-bold'}>
+                    {output.success ? `✓ Teste real concluído (${output.latencyMs}ms)` : `Configuração necessária: ${output.userFriendlyError || output.error}`}
                   </div>
-                  <div className="text-zinc-400">
-                    Provider: {output.provider} • Modelo: {output.model} • Custo: {output.costCredits} créditos
-                  </div>
+                  {output.success && <div className="text-zinc-400">
+                    Motor: {output.provider} • Modelo: {output.model} • Cobrança: bloqueada
+                  </div>}
                 </div>
               )}
             </div>

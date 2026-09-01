@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ChevronRight, Play, Download, MoreVertical } from 'lucide-react';
+import { ChevronRight, Play } from 'lucide-react';
 import { MediaLibraryItem } from '@/lib/types';
 
 interface RecentLibraryCardProps {
@@ -33,7 +33,8 @@ export const RecentLibraryCard: React.FC<RecentLibraryCardProps> = ({
       </div>
 
       {/* 5 Cards Grid */}
-      <div className="grid grid-cols-5 gap-3">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
+        {items.length===0&&<div className="col-span-full rounded-xl border border-dashed border-[#292933] py-10 text-center text-xs text-zinc-500">Nenhuma mídia real gerada. Exemplos demonstrativos ficam identificados na biblioteca completa.</div>}
         {items.slice(0, 5).map((item) => {
           const isRendering = item.status === 'renderizando';
 
@@ -115,9 +116,6 @@ export const RecentLibraryCard: React.FC<RecentLibraryCardProps> = ({
                       className="flex-1 py-1 text-[10px] font-semibold text-brand-300 hover:text-white bg-brand-950/40 hover:bg-brand-900/60 border border-brand-500/30 rounded-lg transition-colors"
                     >
                       Baixar
-                    </button>
-                    <button className="p-1 text-zinc-500 hover:text-zinc-300 transition-colors">
-                      <MoreVertical className="w-3 h-3" />
                     </button>
                   </div>
                 </div>

@@ -14,10 +14,8 @@ export async function POST(req: Request) {
 
     const updatedJob = await AIOrchestrator.retryScene(jobId, sceneNumber);
 
-    return NextResponse.json({
-      message: `Correção automática da Cena ${sceneNumber} iniciada mantendo Profile e Produto bloqueados.`,
-      job: updatedJob,
-    });
+    if(updatedJob.status==='falhou')return NextResponse.json({error:updatedJob.userFriendlyError||'A regeneração real não foi concluída.',job:updatedJob},{status:503});
+    return NextResponse.json({message:`Cena ${sceneNumber} regenerada pelo provider real configurado. Revise o novo vídeo antes de aprovar.`,job:updatedJob});
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }

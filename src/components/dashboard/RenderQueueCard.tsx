@@ -36,6 +36,7 @@ export const RenderQueueCard: React.FC<RenderQueueCardProps> = ({
 
         {/* Rows */}
         <div className="divide-y divide-[#18181E] overflow-y-auto max-h-[265px] pr-1">
+          {jobs.length===0&&<div className="flex min-h-[220px] items-center justify-center px-6 text-center text-xs leading-5 text-zinc-500">Nenhum render real na fila. Jobs demonstrativos não são exibidos aqui.</div>}
           {jobs.slice(0, 5).map((job) => {
             const badge = getStatusBadge(job.status);
             const isCompleted = job.status === 'concluido';

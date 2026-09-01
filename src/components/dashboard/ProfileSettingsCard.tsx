@@ -18,14 +18,14 @@ export const ProfileSettingsCard: React.FC<ProfileSettingsCardProps> = ({
   onEditProfile,
 }) => {
   const [isPlayingVoice, setIsPlayingVoice] = useState(false);
-  const [realismVal, setRealismVal] = useState(selectedProfile?.realismScore || 90);
 
   const toggleVoicePlayback = () => {
-    setIsPlayingVoice((prev) => !prev);
-    // Simulate voice audio playback stop after 3s
-    if (!isPlayingVoice) {
-      setTimeout(() => setIsPlayingVoice(false), 3000);
-    }
+    if (!selectedProfile.voiceSampleUrl || isPlayingVoice) return;
+    const audio = new Audio(selectedProfile.voiceSampleUrl);
+    setIsPlayingVoice(true);
+    audio.onended = () => setIsPlayingVoice(false);
+    audio.onerror = () => setIsPlayingVoice(false);
+    void audio.play().catch(() => setIsPlayingVoice(false));
   };
 
   return (
@@ -75,7 +75,8 @@ export const ProfileSettingsCard: React.FC<ProfileSettingsCardProps> = ({
             </label>
             <select
               value={selectedProfile?.niche || 'Lifestyle & Beleza'}
-              onChange={() => {}}
+              disabled
+              title="Edite o nicho na gestão completa do Profile"
               className="w-full py-1.5 px-2.5 bg-[#0E0E12] border border-[#24242C] rounded-xl text-xs text-zinc-100 focus:outline-none focus:border-brand-500 cursor-pointer"
             >
               <option>{selectedProfile?.niche || 'Lifestyle & Beleza'}</option>
@@ -92,7 +93,8 @@ export const ProfileSettingsCard: React.FC<ProfileSettingsCardProps> = ({
             </label>
             <select
               value={selectedProfile?.personality || 'Carismática'}
-              onChange={() => {}}
+              disabled
+              title="Edite a personalidade na gestão completa do Profile"
               className="w-full py-1.5 px-2.5 bg-[#0E0E12] border border-[#24242C] rounded-xl text-xs text-zinc-100 focus:outline-none focus:border-brand-500 cursor-pointer"
             >
               <option>{selectedProfile?.personality || 'Carismática'}</option>
@@ -109,7 +111,8 @@ export const ProfileSettingsCard: React.FC<ProfileSettingsCardProps> = ({
             </label>
             <select
               value={selectedProfile?.toneOfVoice || 'Acolhedor'}
-              onChange={() => {}}
+              disabled
+              title="Edite o tom de voz na gestão completa do Profile"
               className="w-full py-1.5 px-2.5 bg-[#0E0E12] border border-[#24242C] rounded-xl text-xs text-zinc-100 focus:outline-none focus:border-brand-500 cursor-pointer"
             >
               <option>{selectedProfile?.toneOfVoice || 'Acolhedor'}</option>
@@ -129,16 +132,17 @@ export const ProfileSettingsCard: React.FC<ProfileSettingsCardProps> = ({
                 Realismo
               </label>
               <span className="text-[10px] font-semibold text-brand-400">
-                Alto ({realismVal}%)
+                {selectedProfile.realismScore > 0 ? `Demo (${selectedProfile.realismScore}%)` : 'Aguardando validação'}
               </span>
             </div>
             <input
               type="range"
-              min="50"
+              min="0"
               max="100"
-              value={realismVal}
-              onChange={(e) => setRealismVal(Number(e.target.value))}
-              className="w-full cursor-pointer"
+              value={selectedProfile?.realismScore || 0}
+              disabled
+              title="O score é definido pelo Quality Check após gerar uma referência"
+              className="w-full cursor-not-allowed opacity-50"
             />
           </div>
 
@@ -149,7 +153,8 @@ export const ProfileSettingsCard: React.FC<ProfileSettingsCardProps> = ({
             </label>
             <select
               value={selectedProfile?.language || 'Português (BR)'}
-              onChange={() => {}}
+              disabled
+              title="Edite o idioma na gestão completa do Profile"
               className="w-full py-1.5 px-2.5 bg-[#0E0E12] border border-[#24242C] rounded-xl text-xs text-zinc-100 focus:outline-none focus:border-brand-500 cursor-pointer"
             >
               <option>Português (BR)</option>
@@ -180,7 +185,9 @@ export const ProfileSettingsCard: React.FC<ProfileSettingsCardProps> = ({
             </div>
             <button
               onClick={toggleVoicePlayback}
-              className="w-5 h-5 rounded-full bg-brand-600 hover:bg-brand-500 flex items-center justify-center text-white transition-colors"
+              disabled={!selectedProfile.voiceSampleUrl}
+              title={selectedProfile.voiceSampleUrl ? 'Ouvir amostra real da voz' : 'Nenhuma amostra de voz configurada'}
+              className="w-5 h-5 rounded-full bg-brand-600 hover:bg-brand-500 flex items-center justify-center text-white transition-colors disabled:bg-zinc-700 disabled:text-zinc-500 disabled:cursor-not-allowed"
             >
               {isPlayingVoice ? <Pause className="w-2.5 h-2.5" /> : <Play className="w-2.5 h-2.5 ml-0.5" />}
             </button>

@@ -36,7 +36,7 @@ export const CreativePlanModal: React.FC<CreativePlanModalProps> = ({
               Plano Criativo & Roteiro por Cenas
             </h2>
             <p className="text-xs text-zinc-400 mt-0.5">
-              Revise a estrutura de cenas e faça um teste de 3 segundos antes do render completo.
+              Revise a estrutura de cenas e faça um teste rápido de 5 segundos antes do render completo.
             </p>
           </div>
           <button onClick={onClose} className="p-1 text-zinc-500 hover:text-zinc-300">
@@ -62,7 +62,7 @@ export const CreativePlanModal: React.FC<CreativePlanModalProps> = ({
             </div>
             <div>
               <span className="text-[10px] text-zinc-500 block">Duração Estimada</span>
-              <span className="text-zinc-200 font-semibold">{plan.targetDurationSeconds}s ({plan.estimatedCredits} créditos)</span>
+              <span className="text-zinc-200 font-semibold">{plan.targetDurationSeconds}s · modo gratuito</span>
             </div>
           </div>
 
@@ -147,7 +147,7 @@ export const CreativePlanModal: React.FC<CreativePlanModalProps> = ({
               className="px-4 py-2.5 bg-[#1E1A2C] hover:bg-[#2A243E] border border-brand-500/40 text-brand-300 font-bold text-xs rounded-xl flex items-center gap-2 transition-all shadow-sm"
             >
               <Zap className="w-4 h-4 text-amber-400" />
-              <span>⚡ Teste de 3 segundos (15 créditos)</span>
+              <span>⚡ Teste gratuito de 5 segundos</span>
             </button>
 
             {/* Full Render Button */}
@@ -159,7 +159,7 @@ export const CreativePlanModal: React.FC<CreativePlanModalProps> = ({
               className="px-5 py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs rounded-xl shadow-purple-glow flex items-center gap-2 transition-all"
             >
               <Check className="w-4 h-4" />
-              <span>Aprovar e Renderizar ({plan.estimatedCredits} créditos)</span>
+              <span>Aprovar e gerar gratuitamente</span>
             </button>
           </div>
         </div>

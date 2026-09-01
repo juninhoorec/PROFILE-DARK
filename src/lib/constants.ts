@@ -13,7 +13,7 @@ export const INITIAL_USER_CREDITS: UserCredits = {
   totalCredits: 20000,
   usedCredits: 7550,
   remainingCredits: 12450,
-  planName: 'Plano Pro',
+  planName: 'Modo Gratuito',
   renewalDate: '10/06/2026',
 };
 
@@ -27,7 +27,6 @@ export const INITIAL_PROFILES: Profile[] = [
     personality: 'Carismática',
     toneOfVoice: 'Acolhedor',
     voiceName: 'Luna (Natural)',
-    voiceSampleUrl: '/assets/audio/luna_sample.mp3',
     realismScore: 90,
     language: 'Português (BR)',
     characterLock: {
@@ -99,7 +98,6 @@ export const INITIAL_PROFILES: Profile[] = [
     personality: 'Analítico e Preciso',
     toneOfVoice: 'Autoridade Técnica',
     voiceName: 'Orion (Grave e Firme)',
-    voiceSampleUrl: '/assets/audio/orion_sample.mp3',
     realismScore: 95,
     language: 'Português (BR)',
     characterLock: {
@@ -523,6 +521,7 @@ export const INITIAL_LIBRARY_ITEMS: MediaLibraryItem[] = [
     createdAt: '2026-08-22T12:00:00Z',
     tags: ['Lifestyle', 'Luna Star', 'Hábitos'],
     fileSizeMb: 42.5,
+    isDemo: true,
   },
   {
     id: 'lib_2',
@@ -537,6 +536,7 @@ export const INITIAL_LIBRARY_ITEMS: MediaLibraryItem[] = [
     createdAt: '2026-08-22T11:45:00Z',
     tags: ['Tech', 'Automotivo', 'Orion Tech'],
     fileSizeMb: 28.1,
+    isDemo: true,
   },
   {
     id: 'lib_3',
@@ -551,6 +551,7 @@ export const INITIAL_LIBRARY_ITEMS: MediaLibraryItem[] = [
     createdAt: '2026-08-22T11:30:00Z',
     tags: ['Esportes', 'Tênis', 'Review'],
     fileSizeMb: 54.0,
+    isDemo: true,
   },
   {
     id: 'lib_4',
@@ -565,6 +566,7 @@ export const INITIAL_LIBRARY_ITEMS: MediaLibraryItem[] = [
     createdAt: '2026-08-22T11:00:00Z',
     tags: ['Luxo', 'Perfumaria', 'Essence Noir'],
     fileSizeMb: 38.4,
+    isDemo: true,
   },
   {
     id: 'lib_5',
@@ -579,6 +581,7 @@ export const INITIAL_LIBRARY_ITEMS: MediaLibraryItem[] = [
     createdAt: '2026-08-22T10:30:00Z',
     tags: ['Skincare', 'Bela Skin', 'Rotina'],
     fileSizeMb: 26.8,
+    isDemo: true,
   },
 ];
 
@@ -586,56 +589,32 @@ export const INITIAL_PROVIDER_HEALTH: ProviderHealth[] = [
   {
     service: 'llm',
     name: 'LLM (IA)',
-    status: 'operational',
-    latencyMs: 340,
-    successRate: 99.8,
-    lastChecked: 'Agora',
-    isConfigured: true,
+    status: 'not_configured', latencyMs: 0, successRate: 0, lastChecked: 'Ainda não testado', isConfigured: false,
   },
   {
     service: 'image',
     name: 'Imagem (FLUX)',
-    status: 'operational',
-    latencyMs: 820,
-    successRate: 99.4,
-    lastChecked: 'Agora',
-    isConfigured: true,
+    status: 'not_configured', latencyMs: 0, successRate: 0, lastChecked: 'Ainda não testado', isConfigured: false,
   },
   {
     service: 'voice',
     name: 'Voz (TTS)',
-    status: 'operational',
-    latencyMs: 520,
-    successRate: 99.5,
-    lastChecked: 'Agora',
-    isConfigured: true,
+    status: 'not_configured', latencyMs: 0, successRate: 0, lastChecked: 'Ainda não testado', isConfigured: false,
   },
   {
     service: 'talking_head',
     name: 'Talking Head',
-    status: 'operational',
-    latencyMs: 1400,
-    successRate: 98.9,
-    lastChecked: 'Agora',
-    isConfigured: true,
+    status: 'not_configured', latencyMs: 0, successRate: 0, lastChecked: 'Ainda não testado', isConfigured: false,
   },
   {
     service: 'video',
     name: 'Vídeo (Runway/Luma)',
-    status: 'operational',
-    latencyMs: 1800,
-    successRate: 99.2,
-    lastChecked: 'Agora',
-    isConfigured: true,
+    status: 'not_configured', latencyMs: 0, successRate: 0, lastChecked: 'Ainda não testado', isConfigured: false,
   },
   {
     service: 'render',
     name: 'Render',
-    status: 'operational',
-    latencyMs: 2100,
-    successRate: 99.1,
-    lastChecked: 'Agora',
-    isConfigured: true,
+    status: 'not_configured', latencyMs: 0, successRate: 0, lastChecked: 'Ainda não testado', isConfigured: false,
   },
   {
     service: 'storage',

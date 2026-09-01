@@ -1,171 +1,139 @@
 'use client';
 
-import React, { useState } from 'react';
-import { X, Sparkles, User, Flame, Link2, Check, RefreshCw, Copy, CheckCheck, Camera } from 'lucide-react';
-import { Profile, ProfileDNA } from '@/lib/types';
-import { DARK_RADAR_CONCEPTS } from '@/lib/constants';
+import React, { useEffect, useState } from 'react';
+import { X, Sparkles, User, Flame, Link2, Check, Copy, CheckCheck, Camera } from 'lucide-react';
+import { Profile } from '@/lib/types';
 import { RealismEngine } from '@/lib/ai/realism-engine';
+import { dnaFromArchetype, PROFILE_ARCHETYPES, ProfileArchetype, rankArchetypes } from '@/lib/profile-archetypes';
 
 interface CreateProfileModalProps {
   isOpen: boolean;
   onClose: () => void;
   onProfileCreated: (profile: Profile) => void;
+  initialProduct?: string;
+  initialArchetype?: string;
 }
 
 export const CreateProfileModal: React.FC<CreateProfileModalProps> = ({
   isOpen,
   onClose,
   onProfileCreated,
+  initialProduct,
+  initialArchetype,
 }) => {
   const [activeTab, setActiveTab] = useState<'ai' | 'manual' | 'radar' | 'url'>('ai');
-  const [isGenerating, setIsGenerating] = useState(false);
   const [copiedPrompt, setCopiedPrompt] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveError, setSaveError] = useState('');
 
   // AI Form state
-  const [whatToSell, setWhatToSell] = useState('Cosméticos e Perfumaria de Luxo');
-  const [targetAudience, setTargetAudience] = useState('Mulheres de 25 a 45 anos que buscam elegância e sofisticação');
-  const [profileVibe, setProfileVibe] = useState('Criadora refinada, empática, comunicativa e confiante');
+  const [whatToSell, setWhatToSell] = useState(initialProduct || '');
+  const [targetAudience, setTargetAudience] = useState('');
+  const [profileVibe, setProfileVibe] = useState('');
   const [country, setCountry] = useState('Brasil');
 
   // Manual Form state
   const [manualName, setManualName] = useState('');
-  const [manualNiche, setManualNiche] = useState('Lifestyle & Beleza');
-  const [manualPersonality, setManualPersonality] = useState('Carismática');
+  const [manualNiche, setManualNiche] = useState('Profissões & Vida Real');
+  const [manualPersonality, setManualPersonality] = useState('');
+  const [manualExpertise, setManualExpertise] = useState('');
+  const [manualAudience, setManualAudience] = useState('');
 
   // Preview state
   const [generatedProfile, setGeneratedProfile] = useState<Profile | null>(null);
 
+  useEffect(() => {
+    if (initialProduct) setWhatToSell(initialProduct);
+  }, [initialProduct]);
+
+  useEffect(() => {
+    if (!initialArchetype) return;
+    const archetype = PROFILE_ARCHETYPES.find((item) => item.id === initialArchetype);
+    if (!archetype) return;
+    setTargetAudience(archetype.audience);
+    setProfileVibe(`${archetype.role}; ${archetype.personality}. Tom: ${archetype.tone}.`);
+  }, [initialArchetype]);
+
   if (!isOpen) return null;
 
-  const handleGenerateWithAI = () => {
-    setIsGenerating(true);
-    setTimeout(() => {
-      const name = 'Clara Montez';
-      const masterPromptData = RealismEngine.buildMasterImagePrompt({
-        name,
-        ageApparent: 29,
-        nationality: 'Brasileira',
-        niche: 'Beleza & Autocuidado',
-        visualAppearance: 'Morena com cabelo castanho iluminado, pele radiante e traços expressivos',
-        wardrobeStyle: 'Blazers neutros, alfaiataria moderna e joias delicadas',
-        environmentPreference: 'Apartamento contemporâneo com luz natural',
+  const persistProfile = async (profile: Profile) => {
+    setIsSaving(true);
+    setSaveError('');
+    try {
+      const response = await fetch('/api/profiles', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(profile),
       });
+      const data = await response.json();
+      if (!response.ok || !data.profile) throw new Error(data.error || 'Não foi possível salvar o Profile.');
+      onProfileCreated(data.profile);
+      onClose();
+      return data.profile as Profile;
+    } catch (error) {
+      setSaveError(error instanceof Error ? error.message : 'Não foi possível salvar o Profile.');
+      return null;
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
-      const mockDna: ProfileDNA = {
-        name,
-        ageApparent: 29,
-        nationality: 'Brasileira',
-        niche: 'Beleza & Autocuidado',
-        subNiche: 'Alta Perfumaria & Cuidados com a Pele',
-        personality: 'Elegante, carismática, didática e sofisticada',
-        toneOfVoice: 'Acolhedor e confiante',
-        speechPattern: 'Tom natural, pausas dinâmicas e ênfase sensorial',
-        visualAppearance: 'Morena com cabelo castanho iluminado, pele radiante e traços expressivos',
-        wardrobeStyle: 'Blazers neutros, alfaiataria moderna e joias delicadas',
-        environmentPreference: 'Apartamento contemporâneo com luz natural',
-        voiceStyle: 'Feminina, clara e calorosa',
-        voiceLanguage: 'pt-BR',
-        suggestedUsernames: ['@claramontez', '@clararecomenda', '@dicasdapara', '@montezestilo'],
-        targetAudience,
-        buyerPersona: 'Mulheres independentes buscando produtos com recomendação autêntica',
-        primaryCommercialGoal: 'conversao',
-        mainCTA: 'Acesse o link oficial na minha bio para garantir com frete grátis.',
-        secondaryCTA: 'Envie um direct com a palavra QUERO.',
-        salesStyle: 'Storytelling sensorial e demonstração de benefícios',
-        aggressivenessLevel: 'moderado',
-        editorialStrategy: '70% Conteúdo de rotina & lifestyle, 30% Apresentação direta de produto',
-        initialIdeas: [
-          '3 segredos para fixar perfume por 24 horas',
-          'Minha rotina matinal em 5 minutos',
-          'O produto que transformou minha confiança',
-          'Como escolher a fragrância certa para o trabalho',
-        ],
-        imageGenerationPrompt: masterPromptData.prompt,
-        masterNegativePrompt: masterPromptData.negativePrompt,
-      };
+  const handleGenerateWithAI = () => {
+    setSaveError('');
+    if (!whatToSell.trim() || !targetAudience.trim()) {
+      setSaveError('Informe o produto ou serviço e o público-alvo para receber uma recomendação profissional.');
+      return;
+    }
+    const archetype = PROFILE_ARCHETYPES.find((item) => item.id === initialArchetype) || rankArchetypes(`${whatToSell} ${targetAudience} ${profileVibe}`, 1)[0];
+      const profileDna = dnaFromArchetype(archetype, whatToSell, targetAudience);
+      profileDna.personality = `${archetype.personality}. Direção solicitada: ${profileVibe}.`;
+      profileDna.nationality = country.startsWith('Brasil') ? 'Brasileiro(a)' : country;
+      const masterPromptData = RealismEngine.buildMasterImagePrompt(profileDna);
+      profileDna.imageGenerationPrompt = masterPromptData.prompt;
+      profileDna.masterNegativePrompt = masterPromptData.negativePrompt;
 
       const newProf: Profile = {
         id: `prof_${Date.now()}`,
-        name,
-        avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
-        bio: mockDna.personality,
-        niche: mockDna.niche,
-        personality: 'Elegante e Didática',
-        toneOfVoice: mockDna.toneOfVoice,
-        voiceName: 'Clara (Natural)',
-        realismScore: 96,
+        name: archetype.name,
+        avatarUrl: archetype.avatarUrl,
+        bio: `${archetype.role} — ${archetype.expertise}.`,
+        niche: archetype.niche,
+        personality: archetype.personality,
+        toneOfVoice: archetype.tone,
+        voiceName: `${archetype.name.split(' ')[0]} (Natural)`,
+        realismScore: 0,
         language: 'Português (BR)',
         characterLock: {
-          face: true,
-          age: true,
-          hair: true,
-          body: true,
-          voice: true,
-          personality: true,
+          face: false,
+          age: false,
+          hair: false,
+          body: false,
+          voice: false,
+          personality: false,
         },
-        dna: mockDna,
+        dna: profileDna,
         references: [],
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };
 
       setGeneratedProfile(newProf);
-      setIsGenerating(false);
-    }, 1200);
   };
 
-  const handleSelectRadarConcept = (concept: (typeof DARK_RADAR_CONCEPTS)[0]) => {
-    const promptData = RealismEngine.buildMasterImagePrompt({
-      name: concept.suggestedProfileDNA?.name || concept.name,
-      niche: concept.category,
-      toneOfVoice: concept.suggestedProfileDNA?.toneOfVoice,
+  const handleSelectRadarConcept = async (archetype: ProfileArchetype) => {
+    const dna = dnaFromArchetype(archetype, whatToSell, targetAudience);
+    const promptData = RealismEngine.buildMasterImagePrompt(dna);
+    dna.imageGenerationPrompt = promptData.prompt;
+    dna.masterNegativePrompt = promptData.negativePrompt;
+    const now = new Date().toISOString();
+    await persistProfile({
+      id: `prof_${Date.now()}`, name: archetype.name, avatarUrl: archetype.avatarUrl,
+      bio: `${archetype.role} — ${archetype.expertise}.`, niche: archetype.niche,
+      personality: archetype.personality, toneOfVoice: archetype.tone,
+      voiceName: `${archetype.name.split(' ')[0]} (Natural)`, realismScore: 0,
+      language: 'Português (BR)', characterLock: { face: false, age: false, hair: false, body: false, voice: false, personality: false },
+      dna, references: [], createdAt: now, updatedAt: now,
     });
-
-    const prof: Profile = {
-      id: `prof_radar_${Date.now()}`,
-      name: concept.suggestedProfileDNA?.name || concept.name,
-      avatarUrl: concept.imageUrl,
-      bio: concept.targetAudience,
-      niche: concept.category,
-      personality: concept.suggestedProfileDNA?.toneOfVoice || 'Autêntico',
-      toneOfVoice: concept.suggestedProfileDNA?.toneOfVoice || 'Natural',
-      voiceName: 'Voz Nativa IA',
-      realismScore: concept.opportunityScore,
-      language: 'Português (BR)',
-      characterLock: { face: true, age: true, hair: true, body: true, voice: true, personality: true },
-      dna: {
-        name: concept.suggestedProfileDNA?.name || concept.name,
-        ageApparent: 30,
-        nationality: 'Brasileiro',
-        niche: concept.category,
-        subNiche: concept.possibleProducts[0] || 'Geral',
-        personality: concept.suggestedProfileDNA?.toneOfVoice || 'Autêntico',
-        toneOfVoice: concept.suggestedProfileDNA?.toneOfVoice || 'Acolhedor',
-        speechPattern: 'Conversacional',
-        visualAppearance: 'Conforme referência de imagem',
-        wardrobeStyle: 'Adaptado ao nicho',
-        environmentPreference: 'Cenário temático',
-        voiceStyle: 'Português BR Natural',
-        voiceLanguage: 'pt-BR',
-        suggestedUsernames: [`@${concept.name.toLowerCase().replace(/[^a-z0-9]/g, '')}`],
-        targetAudience: concept.targetAudience,
-        buyerPersona: 'Consumidor interessado',
-        primaryCommercialGoal: concept.suggestedProfileDNA?.primaryCommercialGoal || 'conversao',
-        mainCTA: concept.suggestedProfileDNA?.mainCTA || 'Clique no link da bio!',
-        secondaryCTA: 'Comente para saber mais.',
-        salesStyle: 'Recomendação consultiva',
-        aggressivenessLevel: 'moderado',
-        editorialStrategy: 'Conteúdo de valor e conversão',
-        initialIdeas: concept.recommendedFormats,
-        imageGenerationPrompt: promptData.prompt,
-        masterNegativePrompt: promptData.negativePrompt,
-      },
-      references: [],
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
-    onProfileCreated(prof);
-    onClose();
   };
 
   const handleCopyPrompt = (textToCopy: string) => {
@@ -174,10 +142,9 @@ export const CreateProfileModal: React.FC<CreateProfileModalProps> = ({
     setTimeout(() => setCopiedPrompt(false), 2500);
   };
 
-  const handleSaveGenerated = () => {
+  const handleSaveGenerated = async () => {
     if (generatedProfile) {
-      onProfileCreated(generatedProfile);
-      onClose();
+      await persistProfile(generatedProfile);
     }
   };
 
@@ -211,7 +178,7 @@ export const CreateProfileModal: React.FC<CreateProfileModalProps> = ({
             }`}
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Criar com IA</span>
+            <span>Criar assistido</span>
           </button>
 
           <button
@@ -314,20 +281,11 @@ export const CreateProfileModal: React.FC<CreateProfileModalProps> = ({
               <div className="pt-2">
                 <button
                   onClick={handleGenerateWithAI}
-                  disabled={isGenerating}
+                  disabled={!whatToSell.trim() || !targetAudience.trim()}
                   className="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-purple-glow transition-all disabled:opacity-50"
                 >
-                  {isGenerating ? (
-                    <>
-                      <RefreshCw className="w-4 h-4 animate-spin" />
-                      <span>Gerando Profile DNA, prompt para Gemini/ChatGPT e estratégia...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Sparkles className="w-4 h-4" />
-                      <span>✨ Criar Profile completo com IA</span>
-                    </>
-                  )}
+                  <Sparkles className="w-4 h-4" />
+                  <span>Montar Profile profissional</span>
                 </button>
               </div>
             </div>
@@ -348,7 +306,7 @@ export const CreateProfileModal: React.FC<CreateProfileModalProps> = ({
                       {generatedProfile.name}
                     </h3>
                     <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-semibold">
-                      Realismo: {generatedProfile.realismScore}%
+                      {generatedProfile.realismScore > 0 ? `Realismo: ${generatedProfile.realismScore}%` : 'Aguardando imagem mestre'}
                     </span>
                   </div>
                   <p className="text-xs text-zinc-300">
@@ -430,10 +388,11 @@ export const CreateProfileModal: React.FC<CreateProfileModalProps> = ({
                 </button>
                 <button
                   onClick={handleSaveGenerated}
+                  disabled={isSaving}
                   className="flex-1 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-purple-glow transition-all"
                 >
                   <Check className="w-4 h-4" />
-                  <span>Aprovar & Salvar Profile</span>
+                  <span>{isSaving ? 'Salvando no Profile Dark...' : 'Aprovar & Salvar Profile'}</span>
                 </button>
               </div>
             </div>
@@ -446,19 +405,19 @@ export const CreateProfileModal: React.FC<CreateProfileModalProps> = ({
                 Selecione um conceito com alto potencial comercial validado pelo Dark Radar:
               </p>
               <div className="grid grid-cols-2 gap-2.5">
-                {DARK_RADAR_CONCEPTS.map((c) => (
+                {PROFILE_ARCHETYPES.map((c) => (
                   <div
                     key={c.id}
                     onClick={() => handleSelectRadarConcept(c)}
                     className="p-3 bg-[#131318] hover:bg-[#1A1A22] border border-[#22222C] hover:border-brand-500/50 rounded-xl cursor-pointer transition-all flex items-center gap-3 group"
                   >
-                    <img src={c.imageUrl} alt={c.name} className="w-12 h-12 rounded-lg object-cover" />
+                    <img src={c.avatarUrl} alt={c.name} className="w-12 h-12 rounded-lg object-cover" />
                     <div className="truncate flex-1">
                       <div className="text-xs font-bold text-zinc-200 group-hover:text-white truncate">
                         {c.name}
                       </div>
                       <div className="text-[10px] text-amber-400 font-medium">
-                        Score: {c.opportunityScore} • {c.commercialPotential}
+                        {c.role} • {c.kind === 'pessoa' ? `${c.age} anos` : c.kind === 'animal' ? 'Personagem animal' : 'Ficção original'}
                       </div>
                     </div>
                   </div>
@@ -493,6 +452,12 @@ export const CreateProfileModal: React.FC<CreateProfileModalProps> = ({
                     <option>Esportes & Fitness</option>
                     <option>Gastronomia</option>
                     <option>Finanças & Negócios</option>
+                    <option>Construção & Ferramentas</option>
+                    <option>Automotivo & Oficina</option>
+                    <option>Vendas & Consórcios</option>
+                    <option>Pets & Animais</option>
+                    <option>Humor & Memes</option>
+                    <option>Profissões & Vida Real</option>
                   </select>
                 </div>
                 <div>
@@ -506,63 +471,48 @@ export const CreateProfileModal: React.FC<CreateProfileModalProps> = ({
                   />
                 </div>
               </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-semibold text-zinc-200 block mb-1">Experiência comprovável</label>
+                  <input value={manualExpertise} onChange={(e)=>setManualExpertise(e.target.value)} placeholder="Ex: 12 anos vendendo consórcios" className="w-full py-2 px-3 bg-[#0D0D10] border border-[#262630] rounded-xl text-xs text-white focus:outline-none focus:border-brand-500" />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-zinc-200 block mb-1">Público-alvo</label>
+                  <input value={manualAudience} onChange={(e)=>setManualAudience(e.target.value)} placeholder="Ex: Famílias planejando o primeiro carro" className="w-full py-2 px-3 bg-[#0D0D10] border border-[#262630] rounded-xl text-xs text-white focus:outline-none focus:border-brand-500" />
+                </div>
+              </div>
               <button
-                onClick={() => {
-                  if (!manualName) return alert('Insira um nome.');
-                  const pData = RealismEngine.buildMasterImagePrompt({
-                    name: manualName,
-                    niche: manualNiche,
-                  });
+                onClick={async () => {
+                  if (!manualName.trim() || !manualPersonality.trim() || !manualExpertise.trim() || !manualAudience.trim()) { setSaveError('Preencha nome, personalidade, experiência e público-alvo. Um Profile profissional não pode nascer genérico.'); return; }
+                  const base=rankArchetypes(`${manualNiche} ${manualExpertise} ${manualAudience}`,1)[0];
+                  const manualDna=dnaFromArchetype(base,manualNiche,manualAudience);
+                  manualDna.name=manualName.trim(); manualDna.personality=manualPersonality.trim();
+                  const pData = RealismEngine.buildMasterImagePrompt(manualDna);
+                  manualDna.imageGenerationPrompt=pData.prompt; manualDna.masterNegativePrompt=pData.negativePrompt;
 
                   const p: Profile = {
                     id: `prof_${Date.now()}`,
                     name: manualName,
                     avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
-                    bio: manualPersonality,
+                    bio: `${manualExpertise.trim()}. ${manualPersonality.trim()}`,
                     niche: manualNiche,
                     personality: manualPersonality,
-                    toneOfVoice: 'Natural',
-                    voiceName: 'Voz IA',
-                    realismScore: 92,
+                    toneOfVoice: base.tone,
+                    voiceName: `${manualName.split(' ')[0]} (Natural)`,
+                    realismScore: 0,
                     language: 'Português (BR)',
-                    characterLock: { face: true, age: true, hair: true, body: true, voice: true, personality: true },
-                    dna: {
-                      name: manualName,
-                      ageApparent: 28,
-                      nationality: 'Brasileira',
-                      niche: manualNiche,
-                      subNiche: 'Geral',
-                      personality: manualPersonality,
-                      toneOfVoice: 'Natural',
-                      speechPattern: 'Conversacional',
-                      visualAppearance: 'Autêntico',
-                      wardrobeStyle: 'Casual elegante',
-                      environmentPreference: 'Estúdio moderno',
-                      voiceStyle: 'Natural pt-BR',
-                      voiceLanguage: 'pt-BR',
-                      suggestedUsernames: [`@${manualName.toLowerCase().replace(/\s+/g, '')}`],
-                      targetAudience: 'Público geral',
-                      buyerPersona: 'Consumidor',
-                      primaryCommercialGoal: 'conversao',
-                      mainCTA: 'Confira no link!',
-                      secondaryCTA: 'Comente para saber mais.',
-                      salesStyle: 'Recomendação consultiva',
-                      aggressivenessLevel: 'moderado',
-                      editorialStrategy: 'Conteúdo de valor',
-                      initialIdeas: ['Apresentação'],
-                      imageGenerationPrompt: pData.prompt,
-                      masterNegativePrompt: pData.negativePrompt,
-                    },
+                    characterLock: { face: false, age: false, hair: false, body: false, voice: false, personality: false },
+                    dna: manualDna,
                     references: [],
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString(),
                   };
-                  onProfileCreated(p);
-                  onClose();
+                  await persistProfile(p);
                 }}
+                disabled={isSaving}
                 className="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs rounded-xl mt-2"
               >
-                Salvar Profile Manual
+                {isSaving ? 'Salvando...' : 'Salvar Profile Manual'}
               </button>
             </div>
           )}
@@ -579,18 +529,16 @@ export const CreateProfileModal: React.FC<CreateProfileModalProps> = ({
                 className="w-full py-2 px-3 bg-[#0D0D10] border border-[#262630] rounded-xl text-xs text-white focus:outline-none focus:border-brand-500"
               />
               <button
-                onClick={() => {
-                  alert('URL analisada. Extraindo DNA visual e gerando prompt mestre de imagem.');
-                  handleGenerateWithAI();
-                  setActiveTab('ai');
-                }}
-                className="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs rounded-xl"
+                disabled
+                title="A importação de redes sociais exige conexão oficial da conta"
+                className="w-full py-2.5 bg-zinc-800 text-zinc-500 font-bold text-xs rounded-xl cursor-not-allowed"
               >
-                Analisar e Criar Profile
+                Conecte a conta em Integrações para importar
               </button>
             </div>
           )}
         </div>
+        {saveError && <div role="alert" className="mx-6 mb-4 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-xs text-red-200">{saveError}</div>}
       </div>
     </div>
   );

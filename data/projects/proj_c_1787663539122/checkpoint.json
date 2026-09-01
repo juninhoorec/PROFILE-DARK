@@ -1,0 +1,35 @@
+{
+  "projectId": "proj_c_1787663539122",
+  "state": "COMPLETED",
+  "completedSceneNumbers": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "sceneVideoPaths": {
+    "1": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\projects\\proj_c_1787663539122\\scene_1\\lipsync.mp4",
+    "2": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\uploads\\576db62f-1c3c-4ab8-bf2b-afcf2b29ef2d.mp4",
+    "3": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\uploads\\62cb4a76-8d1c-4535-b84d-3962377dd345.mp4",
+    "4": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\uploads\\cdb50908-3505-4b8f-88ce-8cd14cdcd6ea.mp4",
+    "5": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\projects\\proj_c_1787663539122\\scene_5\\lipsync.mp4"
+  },
+  "sceneAudioPaths": {
+    "1": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\projects\\proj_c_1787663539122\\scene_1\\scene_audio.wav",
+    "2": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\projects\\proj_c_1787663539122\\scene_2\\scene_audio.wav",
+    "3": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\projects\\proj_c_1787663539122\\scene_3\\scene_audio.wav",
+    "4": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\projects\\proj_c_1787663539122\\scene_4\\scene_audio.wav",
+    "5": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\projects\\proj_c_1787663539122\\scene_5\\scene_audio.wav"
+  },
+  "lastApprovedFramePaths": {
+    "1": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\projects\\proj_c_1787663539122\\scene_1\\scene-end-reference.png",
+    "2": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\projects\\proj_c_1787663539122\\scene_2\\scene-end-reference.png",
+    "3": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\projects\\proj_c_1787663539122\\scene_3\\scene-end-reference.png",
+    "4": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\projects\\proj_c_1787663539122\\scene_4\\scene-end-reference.png",
+    "5": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\projects\\proj_c_1787663539122\\scene_5\\scene-end-reference.png"
+  },
+  "lastSavedAt": "2026-08-25T13:15:26.891Z",
+  "fullAudioPath": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\projects\\proj_c_1787663539122\\full_audio.wav",
+  "finalVideoPath": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\data\\projects\\proj_c_1787663539122\\final_production.mp4"
+}

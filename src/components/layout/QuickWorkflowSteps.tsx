@@ -19,8 +19,8 @@ export const QuickWorkflowSteps: React.FC = () => {
     },
     {
       number: 3,
-      title: 'Enviar link, imagem ou vídeo',
-      desc: 'Cole um link ou envie seu arquivo de referência.',
+      title: 'Adicionar referência',
+      desc: 'Cole um link ou envie uma referência de até 50 MB.',
       icon: LinkIcon,
     },
     {
@@ -32,13 +32,13 @@ export const QuickWorkflowSteps: React.FC = () => {
     {
       number: 5,
       title: 'Gerar',
-      desc: 'A IA criará roteiro, voz e estrutura do vídeo.',
+      desc: 'Provedores validados criam roteiro, voz e estrutura.',
       icon: Wand2,
     },
     {
       number: 6,
       title: 'Renderizar',
-      desc: 'Seu vídeo será renderizado com alta qualidade.',
+      desc: 'Render real somente com integração operacional.',
       icon: Film,
     },
     {
@@ -65,9 +65,9 @@ export const QuickWorkflowSteps: React.FC = () => {
       </div>
 
       {/* 7 Steps with connecting line */}
-      <div className="relative grid grid-cols-7 gap-2">
+      <div className="relative grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-7 gap-3">
         {/* Dotted connecting line */}
-        <div className="absolute top-5 left-12 right-12 h-[1px] border-t border-dashed border-[#2E2E38] z-0" />
+        <div className="hidden xl:block absolute top-5 left-12 right-12 h-[1px] border-t border-dashed border-[#2E2E38] z-0" />
 
         {steps.map((s, idx) => {
           const Icon = s.icon;

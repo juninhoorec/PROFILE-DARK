@@ -243,6 +243,7 @@ export interface GenerationJob {
   modelUsed?: string;
   qualityScore?: number;
   isSmokeTest?: boolean;
+  isDemo?: boolean;
   costCredits: number;
   errorMessage?: string;
   userFriendlyError?: string;
@@ -348,4 +349,5 @@ export interface MediaLibraryItem {
   createdAt: string;
   tags: string[];
   fileSizeMb: number;
+  isDemo?: boolean;
 }

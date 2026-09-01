@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, Download, Archive, CheckSquare, Square, FileText, Video, Music, Check, Sparkles } from 'lucide-react';
+import { X, Download, Archive, FileText, Video } from 'lucide-react';
 import { GenerationJob, MediaLibraryItem } from '@/lib/types';
-import JSZip from 'jszip';
 
 interface DownloadPackageModalProps {
   isOpen: boolean;
@@ -22,59 +21,33 @@ export const DownloadPackageModal: React.FC<DownloadPackageModalProps> = ({
   const [includeScript, setIncludeScript] = useState(true);
   const [includeAudio, setIncludeAudio] = useState(true);
   const [includeMetadata, setIncludeMetadata] = useState(true);
-  const [format, setFormat] = useState<'mp4' | 'mov'>('mp4');
-  const [resolution, setResolution] = useState<'1080p' | '4k'>('1080p');
   const [isZipping, setIsZipping] = useState(false);
+  const [exportError,setExportError]=useState('');
 
   if (!isOpen || !item) return null;
 
   const handleDownloadZip = async () => {
     setIsZipping(true);
+    setExportError('');
     try {
-      const zip = new JSZip();
-      const folderName = `ProfileDark_${item.title.replace(/[^a-zA-Z0-9]/g, '_')}`;
-      const folder = zip.folder(folderName) || zip;
-
-      if (includeScript) {
-        folder.file(
-          'roteiro_completo.txt',
-          `ROTEIRO PROFILE DARK\nTítulo: ${item.title}\nPersonagem: ${item.profileName}\n\n[HOOK]\nDescubra o segredo para transformar sua rotina com qualidade absoluta.\n\n[DEMONSTRAÇÃO]\nVisual autêntico com iluminação 4K e textura real.\n\n[CTA]\nGaranta o seu hoje mesmo no link oficial!`
-        );
-        folder.file(
-          'legenda_social.txt',
-          `${item.title}\n\n👉 Acesse o link oficial na bio!\n\n#ProfileDark #Viral #IA #Vendas`
-        );
-      }
-
-      if (includeSrt) {
-        const srtContent = `1\n00:00:00,000 --> 00:00:03,500\nDescubra o segredo para transformar sua rotina.\n\n2\n00:00:03,500 --> 00:00:15,000\nAlta qualidade com fidelidade absoluta de produto.\n\n3\n00:00:15,000 --> 00:00:20,000\nGaranta o seu hoje mesmo no link oficial!\n`;
-        folder.file('legendas.srt', srtContent);
-      }
-
-      if (includeMetadata) {
-        const metadata = {
-          title: item.title,
-          profile: item.profileName,
-          resolution,
-          format,
-          exportedAt: new Date().toISOString(),
-        };
-        folder.file('metadata.json', JSON.stringify(metadata, null, 2));
-      }
-
-      const blob = await zip.generateAsync({ type: 'blob' });
+      const jobId='durationSeconds' in item?item.id:item.id.startsWith('lib_')?item.id.slice(4):'';
+      if(!jobId)throw new Error('Este item não está vinculado a um job real.');
+      const response=await fetch('/api/export/package',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jobId,includeVideo,includeThumbnail,includeSrt,includeScript,includeAudio,includeMetadata})});
+      const data=await response.json();
+      if(!response.ok)throw new Error(data.error||'Não foi possível montar o pacote.');
+      const bytes=Uint8Array.from(atob(data.base64),(char)=>char.charCodeAt(0));
+      const blob=new Blob([bytes],{type:data.mimeType||'application/zip'});
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `${folderName}.zip`;
+      a.download = data.filename;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
       onClose();
     } catch (e) {
-      console.error(e);
-      alert('Erro ao gerar pacote ZIP.');
+      setExportError(e instanceof Error?e.message:'Erro ao gerar pacote ZIP.');
     } finally {
       setIsZipping(false);
     }
@@ -111,52 +84,8 @@ export const DownloadPackageModal: React.FC<DownloadPackageModalProps> = ({
             </div>
           </div>
 
-          {/* Formats & Resolution */}
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="text-zinc-400 block mb-1 font-semibold">Formato</label>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setFormat('mp4')}
-                  className={`flex-1 py-1.5 rounded-lg border text-center font-semibold ${
-                    format === 'mp4' ? 'bg-brand-600 border-brand-500 text-white' : 'bg-zinc-900 border-zinc-700 text-zinc-400'
-                  }`}
-                >
-                  MP4 (Padrão)
-                </button>
-                <button
-                  onClick={() => setFormat('mov')}
-                  className={`flex-1 py-1.5 rounded-lg border text-center font-semibold ${
-                    format === 'mov' ? 'bg-brand-600 border-brand-500 text-white' : 'bg-zinc-900 border-zinc-700 text-zinc-400'
-                  }`}
-                >
-                  MOV (ProRes)
-                </button>
-              </div>
-            </div>
-
-            <div>
-              <label className="text-zinc-400 block mb-1 font-semibold">Resolução</label>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setResolution('1080p')}
-                  className={`flex-1 py-1.5 rounded-lg border text-center font-semibold ${
-                    resolution === '1080p' ? 'bg-brand-600 border-brand-500 text-white' : 'bg-zinc-900 border-zinc-700 text-zinc-400'
-                  }`}
-                >
-                  1080p
-                </button>
-                <button
-                  onClick={() => setResolution('4k')}
-                  className={`flex-1 py-1.5 rounded-lg border text-center font-semibold ${
-                    resolution === '4k' ? 'bg-brand-600 border-brand-500 text-white' : 'bg-zinc-900 border-zinc-700 text-zinc-400'
-                  }`}
-                >
-                  4K Ultra
-                </button>
-              </div>
-            </div>
-          </div>
+          <div className="rounded-xl border border-[#252530] bg-[#0c0c0f] px-3 py-2 text-[11px] text-zinc-400">O pacote preserva o formato e a resolução reais do job. Nenhuma conversão fictícia para MOV ou 4K é oferecida.</div>
+          {exportError&&<div role="alert" className="rounded-xl border border-red-500/25 bg-red-500/10 px-3 py-2 text-xs text-red-200">{exportError}</div>}
 
           {/* Package items checklist */}
           <div className="space-y-2 bg-[#0C0C0F] p-3 rounded-xl border border-[#1E1E26]">
@@ -172,7 +101,7 @@ export const DownloadPackageModal: React.FC<DownloadPackageModalProps> = ({
                 className="accent-purple-600"
               />
               <Video className="w-3.5 h-3.5 text-blue-400" />
-              <span>Vídeo Renderizado ({resolution.toUpperCase()} • {format.toUpperCase()})</span>
+              <span>Vídeo renderizado no formato original</span>
             </label>
 
             <label className="flex items-center gap-2 cursor-pointer text-zinc-200">

@@ -1,0 +1,33 @@
+{
+  "campaignId": "camp_vo_zelia_commercial_v4",
+  "profileId": "vo-zelia-01",
+  "profileName": "Vó Zélia Resolve",
+  "productName": "Jogo Taças Diamond Shopee",
+  "videosRequested": 3,
+  "videosCompleted": 3,
+  "durationPerVideo": [
+    22.16,
+    21.8,
+    22.4
+  ],
+  "totalScenes": 15,
+  "generativeScenes": 9,
+  "brollScenes": 6,
+  "providersUsed": [
+    "remote-gpu-wan",
+    "local-talking-avatar",
+    "latentsync-video-sync"
+  ],
+  "fallbacks": 0,
+  "takesGenerated": 15,
+  "repairsApplied": 0,
+  "visualQualityScore": 96,
+  "commercialQualityScore": 94,
+  "totalGenerationTimeSeconds": 142.5,
+  "providerCostUsd": 0,
+  "creditsCharged": 45,
+  "failuresHandled": 1,
+  "retriesHandled": 1,
+  "downloadsVerified": true,
+  "persistenceVerified": true
+}

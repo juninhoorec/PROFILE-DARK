@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Zap, Bot, Sliders, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
 
 export default function AutopilotPage() {
@@ -12,6 +12,21 @@ export default function AutopilotPage() {
     autoridade: 15,
     vendaDireta: 10,
   });
+  const [saved, setSaved] = useState(false);
+  const total = Object.values(mix).reduce((sum, value) => sum + value, 0);
+
+  useEffect(() => {
+    const raw = localStorage.getItem('profile-dark-autopilot');
+    if (!raw) return;
+    try { const data = JSON.parse(raw); if (data.mode && data.mix) { setMode(data.mode); setMix(data.mix); } } catch { /* ignore invalid local preference */ }
+  }, []);
+
+  function saveStrategy() {
+    if (total !== 100) return;
+    localStorage.setItem('profile-dark-autopilot', JSON.stringify({ mode, mix }));
+    setSaved(true);
+    window.setTimeout(() => setSaved(false), 2500);
+  }
 
   return (
     <div className="p-8 space-y-6">
@@ -60,11 +75,12 @@ export default function AutopilotPage() {
             ].map((m) => (
               <div
                 key={m.id}
-                onClick={() => setMode(m.id as any)}
+                onClick={() => m.id !== 'automatico' && setMode(m.id as typeof mode)}
+                title={m.id === 'automatico' ? 'Requer providers reais e uma rede social conectada' : undefined}
                 className={`p-3.5 rounded-xl border cursor-pointer transition-all flex items-start gap-3 ${
                   mode === m.id
                     ? 'bg-[#1E1730] border-brand-500/50 shadow-purple-glow'
-                    : 'bg-[#0C0C0F] border-[#1C1C24] hover:bg-[#141418]'
+                    : m.id === 'automatico' ? 'bg-[#0C0C0F] border-[#1C1C24] opacity-45 cursor-not-allowed' : 'bg-[#0C0C0F] border-[#1C1C24] hover:bg-[#141418]'
                 }`}
               >
                 <div
@@ -87,7 +103,7 @@ export default function AutopilotPage() {
         <div className="col-span-6 space-y-4 bg-[#121216] border border-[#1F1F28] rounded-2xl p-6 shadow-subtle">
           <h2 className="text-xs font-bold text-white uppercase tracking-wider flex items-center justify-between">
             <span>Sales Mix — Distribuição de Conteúdo</span>
-            <span className="text-brand-400 font-mono text-[11px]">Total: 100%</span>
+            <span className={`font-mono text-[11px] ${total === 100 ? 'text-brand-400' : 'text-red-400'}`}>Total: {total}%</span>
           </h2>
 
           <p className="text-xs text-zinc-400">
@@ -158,10 +174,12 @@ export default function AutopilotPage() {
 
           <div className="pt-3 border-t border-[#1E1E26]">
             <button
-              onClick={() => alert('Configurações do Autopilot salvas com sucesso!')}
+              onClick={saveStrategy}
+              disabled={total !== 100}
+              title={total !== 100 ? 'A distribuição precisa somar exatamente 100%' : 'Salvar preferências localmente'}
               className="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs rounded-xl shadow-purple-glow transition-all"
             >
-              Salvar Estratégia do Autopilot
+              {saved ? 'Estratégia salva neste dispositivo' : 'Salvar Estratégia do Autopilot'}
             </button>
           </div>
         </div>

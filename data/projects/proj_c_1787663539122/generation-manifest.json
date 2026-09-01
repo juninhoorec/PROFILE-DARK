@@ -1,0 +1,91 @@
+{
+  "projectId": "proj_c_1787663539122",
+  "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+  "profileName": "Vó Zélia Resolve",
+  "productId": "prod_2742a714-7793-490a-aab8-e7c49e02e3d6",
+  "productName": "Jogo 2/4/6 Taças Vidro Diamond Bico Jaca Abacaxi Conjunto Taça Para Água Vinho Tinto Suco Diamante | Shopee Brasil",
+  "durationSeconds": 22.16,
+  "scenes": [
+    {
+      "sceneNumber": 1,
+      "sceneTitle": "Cena 1 — Gancho Visual de Estilo",
+      "provider": "PD Local Synthesizer",
+      "model": "Local Talking Avatar Synthesizer (2D Envelope)",
+      "generationType": "GENERATIVE_I2V",
+      "fallbackUsed": true,
+      "fallbackReason": "GPU_UNAVAILABLE_BALANCED_FALLBACK",
+      "generationTimeSeconds": 7.9,
+      "measuredCost": 0,
+      "qualityScore": 95
+    },
+    {
+      "sceneNumber": 2,
+      "sceneTitle": "Cena 2 — Integração ao Ambiente",
+      "provider": "PD Local Synthesizer",
+      "model": "Local Talking Avatar Synthesizer (2D Envelope)",
+      "generationType": "B_ROLL",
+      "fallbackUsed": true,
+      "fallbackReason": "GPU_UNAVAILABLE_BALANCED_FALLBACK",
+      "generationTimeSeconds": 7.5,
+      "measuredCost": 0,
+      "qualityScore": 95
+    },
+    {
+      "sceneNumber": 3,
+      "sceneTitle": "Cena 3 — Uso no Cotidiano",
+      "provider": "PD Local Synthesizer",
+      "model": "Local Talking Avatar Synthesizer (2D Envelope)",
+      "generationType": "B_ROLL",
+      "fallbackUsed": true,
+      "fallbackReason": "GPU_UNAVAILABLE_BALANCED_FALLBACK",
+      "generationTimeSeconds": 9,
+      "measuredCost": 0,
+      "qualityScore": 95
+    },
+    {
+      "sceneNumber": 4,
+      "sceneTitle": "Cena 4 — Atmosfera de Bem-Estar",
+      "provider": "PD Local Synthesizer",
+      "model": "Local Talking Avatar Synthesizer (2D Envelope)",
+      "generationType": "B_ROLL",
+      "fallbackUsed": true,
+      "fallbackReason": "GPU_UNAVAILABLE_BALANCED_FALLBACK",
+      "generationTimeSeconds": 7.2,
+      "measuredCost": 0,
+      "qualityScore": 95
+    },
+    {
+      "sceneNumber": 5,
+      "sceneTitle": "Cena 5 — Convite com Link",
+      "provider": "PD Local Synthesizer",
+      "model": "Local Talking Avatar Synthesizer (2D Envelope)",
+      "generationType": "GENERATIVE_I2V",
+      "fallbackUsed": true,
+      "fallbackReason": "GPU_UNAVAILABLE_BALANCED_FALLBACK",
+      "generationTimeSeconds": 9.3,
+      "measuredCost": 0,
+      "qualityScore": 95
+    }
+  ],
+  "providers": [
+    "PD Local Synthesizer"
+  ],
+  "models": [
+    "Local Talking Avatar Synthesizer (2D Envelope)"
+  ],
+  "takesGenerated": 5,
+  "repairsApplied": 0,
+  "fallbacksRecorded": 5,
+  "voiceProvider": "chatterbox-multilingual-sapi",
+  "lipSyncProvider": "latentsync-video-sync",
+  "sourceResolution": "720x1280",
+  "finalResolution": "1080x1920",
+  "upscaled": true,
+  "creditsCharged": 0,
+  "providerCostUsd": 0,
+  "generationTimeSeconds": 63.8,
+  "visualQualityScore": 97,
+  "commercialQualityScore": 93,
+  "isCompleted": true,
+  "createdAt": "2026-08-25T13:15:26.890Z"
+}

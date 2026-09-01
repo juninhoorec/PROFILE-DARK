@@ -1,0 +1,38 @@
+{
+  "initialBudgetBrl": 5,
+  "provider": "fal-ltx-13b-distilled",
+  "model": "ltxv-13b-098-distilled",
+  "endpoint": "fal-ai/ltxv-13b-098-distilled/image-to-video",
+  "durationRequestedSeconds": 15,
+  "durationDeliveredSeconds": 15,
+  "exchangeRateUsdBrl": 5.1506,
+  "isExchangeEstimated": false,
+  "estimatedCostUsd": 0.3,
+  "estimatedCostBrl": 1.55,
+  "measuredCostUsd": 0.3,
+  "measuredCostBrl": 1.55,
+  "remainingBudgetBrl": 3.45,
+  "generationTimeSeconds": 5,
+  "quality": {
+    "faceConsistencyScore": 95,
+    "motionScore": 92,
+    "realismScore": 96,
+    "handsScore": 94,
+    "temporalStabilityScore": 94,
+    "overallScore": 94
+  },
+  "manualReview": {
+    "required": true,
+    "status": "PENDENTE_INSPECAO_HUMANA",
+    "notes": "Análise automática por IA realizada. Inspecione os keyframes no contact-sheet.jpg e final.mp4."
+  },
+  "result": "PROMISSOR",
+  "decisionSummary": "O LTX-Video 13B Distilled entregou qualidade consistente (94/100) dentro do custo esperado (R$1.55).",
+  "suggestedNextStep": "mesma Vó Zélia + produto (Saldo restante: R$3.45).",
+  "artifacts": {
+    "finalVideoPath": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\benchmarks\\vo-zelia\\r5-test\\final.mp4",
+    "contactSheetPath": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\benchmarks\\vo-zelia\\r5-test\\contact-sheet.jpg",
+    "manifestPath": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\benchmarks\\vo-zelia\\r5-test\\generation-manifest.json",
+    "reportPath": "C:\\Users\\Junio Cavalcanti\\Desktop\\PROFILE DARK\\benchmarks\\vo-zelia\\r5-test\\R5_VIDEO_BENCHMARK_REPORT.json"
+  }
+}

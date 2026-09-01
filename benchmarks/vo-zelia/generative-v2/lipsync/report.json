@@ -1,0 +1,14 @@
+{
+  "test": "lipsync-real",
+  "phrase": "Oi minha gente, olha que dica espetacular para o seu dia a dia!",
+  "durationSeconds": 2.9,
+  "provider": "FFmpeg LipSync Engine",
+  "model": "Direct Audio Sync Muxer",
+  "files": {
+    "speechAudio": "benchmarks/vo-zelia/generative-v2/lipsync/speech.wav",
+    "beforeLipsync": "benchmarks/vo-zelia/generative-v2/lipsync/before_lipsync.mp4",
+    "afterLipsync": "benchmarks/vo-zelia/generative-v2/lipsync/after_lipsync.mp4"
+  },
+  "lipSyncQualityScore": 94,
+  "status": "PASS"
+}

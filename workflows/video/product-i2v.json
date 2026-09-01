@@ -1,0 +1,44 @@
+{
+  "1": {
+    "inputs": {
+      "unet_name": "wan2.1_i2v_480p_14B.safetensors"
+    },
+    "class_type": "UNETLoader"
+  },
+  "2": {
+    "inputs": {
+      "image": "product_scene_frame.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage"
+  },
+  "3": {
+    "inputs": {
+      "text": "Smooth close-up movement demonstrating the product, elegant lighting, gentle hand motion",
+      "clip_name": "umt5_xxl_fp8.safetensors"
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "4": {
+    "inputs": {
+      "model": ["1", 0],
+      "image": ["2", 0],
+      "positive": ["3", 0],
+      "steps": 20,
+      "cfg": 5.5,
+      "frames": 75,
+      "fps": 25
+    },
+    "class_type": "WanVideoSampler"
+  },
+  "5": {
+    "inputs": {
+      "frame_rate": 25,
+      "loop_count": 0,
+      "filename_prefix": "PD_Product_I2V",
+      "format": "video/h264-mp4",
+      "images": ["4", 0]
+    },
+    "class_type": "VHS_VideoCombine"
+  }
+}

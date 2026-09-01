@@ -22,8 +22,8 @@ export class SystemDoctor {
         issuesFound.push(`Serviço ${p.name} não está operacional (${p.status}).`);
         recommendedActions.push(`Configure a chave de API para o serviço ${p.name} nas Configurações.`);
       } else if (p.status === 'degraded') {
-        issuesFound.push(`Serviço ${p.name} com latência elevada (${p.latencyMs}ms).`);
-        recommendedActions.push(`Verifique a quota e disponibilidade do provider de ${p.name}.`);
+        issuesFound.push(`Serviço ${p.name} aguardando validação: ${p.lastError || 'teste real pendente'}`);
+        recommendedActions.push(`Execute o teste real do provider de ${p.name} antes de liberar gerações.`);
       }
     });
 

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Sliders, Sparkles, Smartphone, Check, Layers, Play } from 'lucide-react';
 import { Profile, Product } from '@/lib/types';
 import { INITIAL_PROFILES, INITIAL_PRODUCTS } from '@/lib/constants';
+import { BulkVariation } from '@/lib/ai/bulk-variation-engine';
 
 export default function BulkGenerationPage() {
   const [profiles, setProfiles] = useState<Profile[]>(INITIAL_PROFILES);
@@ -14,6 +15,17 @@ export default function BulkGenerationPage() {
   const [quantity, setQuantity] = useState(10);
   const [format, setFormat] = useState<'reels' | 'shorts' | 'tiktok'>('reels');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [providerConfigured, setProviderConfigured] = useState(false);
+  const [matrix, setMatrix] = useState<BulkVariation[]>([]);
+  const [feedback, setFeedback] = useState('');
+
+  useEffect(() => {
+    Promise.all([fetch('/api/profiles').then(r=>r.json()),fetch('/api/products').then(r=>r.json()),fetch('/api/health').then(r=>r.json())]).then(([profileData,productData,health])=>{
+      if(profileData.profiles?.length){setProfiles(profileData.profiles);setSelectedProfileId(profileData.profiles[0].id);}
+      if(productData.products?.length){setProducts(productData.products);setSelectedProductId(productData.products[0].id);}
+      const video=health.details?.find((item:any)=>item.service==='video'); setProviderConfigured(video?.status==='operational');
+    }).catch(()=>setFeedback('Não foi possível carregar os dados da geração.'));
+  },[]);
 
   // Variation Matrix
   const [varyOptions, setVaryOptions] = useState({
@@ -45,16 +57,26 @@ export default function BulkGenerationPage() {
           productId: selectedProductId,
           quantity,
           format,
+          variations:Object.entries(varyOptions).filter(([,enabled])=>enabled).map(([key])=>key),
         }),
       });
       const data = await res.json();
-      alert(`Geração em massa concluída! ${quantity} vídeos enfileirados no Render Center.`);
+      if(!res.ok) throw new Error(data.error || 'Não foi possível iniciar a geração.');
+      setFeedback(`${data.jobs.length} vídeos foram adicionados ao Render Center.`);
     } catch (e) {
-      console.error(e);
-      alert('Erro na geração em massa.');
+      setFeedback(e instanceof Error?e.message:'Erro na geração em massa.');
     } finally {
       setIsGenerating(false);
     }
+  };
+
+  const handlePreview=async()=>{
+    setFeedback('');
+    const variations=Object.entries(varyOptions).filter(([,enabled])=>enabled).map(([key])=>key);
+    try{
+      const response=await fetch('/api/generate/bulk',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({profileId:selectedProfileId,productId:selectedProductId,quantity,format,variations,previewOnly:true})});
+      const data=await response.json(); if(!response.ok)throw new Error(data.error); setMatrix(data.matrix); setFeedback(`Anti-spam aprovado: ${data.antiSpam.uniqueSignatures}/${data.antiSpam.total} variações únicas.`);
+    }catch(error){setMatrix([]);setFeedback(error instanceof Error?error.message:'Não foi possível validar a matriz.');}
   };
 
   return (
@@ -201,16 +223,19 @@ export default function BulkGenerationPage() {
           </div>
 
           {/* Submit Button */}
+          <button onClick={handlePreview} className="w-full py-3 border border-brand-500/40 bg-brand-500/10 hover:bg-brand-500/15 text-brand-200 font-bold text-xs rounded-xl transition-all">Validar matriz e anti-spam</button>
           <button
             onClick={handleGenerate}
-            disabled={isGenerating}
+            disabled={isGenerating || !providerConfigured || matrix.length!==quantity}
+            title={!providerConfigured?'Configure um provider de vídeo real em Integrações':matrix.length!==quantity?'Valide a matriz antes de renderizar':'Enfileirar renderizações reais'}
             className="w-full py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs rounded-xl shadow-purple-glow flex items-center justify-center gap-2 transition-all disabled:opacity-50"
           >
             <Sparkles className="w-4 h-4" />
             <span>
-              {isGenerating ? 'Processando Matriz...' : `✨ Gerar ${quantity} Criativos em Massa (${quantity * 80} créditos)`}
+              {isGenerating ? 'Processando Matriz...' : `✨ Preparar ${quantity} criativos gratuitamente`}
             </span>
           </button>
+          {feedback&&<div role="status" className="rounded-xl border border-[#292933] bg-[#0d0d11] px-3 py-2.5 text-xs text-zinc-300">{feedback}</div>}
         </div>
 
         {/* Right Matrix Preview: 5 Cols */}
@@ -222,7 +247,7 @@ export default function BulkGenerationPage() {
 
           <div className="p-3.5 bg-[#0C0C0F] border border-[#1E1E26] rounded-xl text-xs space-y-2 font-mono text-[11px]">
             <div className="text-brand-300">
-              5 Hooks Diferentes × 2 Cenários × 2 CTAs = {quantity} Criativos Únicos
+              {matrix.length?`${matrix.length} combinações únicas validadas`:`Selecione as dimensões e valide a matriz`}
             </div>
             <div className="text-zinc-400 text-[10.5px]">
               • Ângulo 1: Curiosidade & Quebra de Padrão
@@ -232,6 +257,8 @@ export default function BulkGenerationPage() {
               <br />• Ângulo 5: Oferta e Urgência
             </div>
           </div>
+
+          {matrix.length>0&&<div className="space-y-2 max-h-56 overflow-y-auto">{matrix.slice(0,5).map(item=><div key={item.index} className="rounded-xl border border-[#24242d] bg-[#0c0c0f] p-3 text-[10px]"><div className="font-bold text-brand-300">#{item.index} · {item.angle}</div><div className="mt-1 text-zinc-300">{item.hook}</div><div className="mt-1 text-zinc-500">{item.scenario} · {item.framing} · {item.durationSeconds}s</div></div>)}</div>}
 
           <div className="p-3.5 bg-[#171424] border border-brand-500/30 rounded-xl text-xs text-zinc-300">
             <strong className="text-white block mb-1">Garantia Anti-Spam:</strong>

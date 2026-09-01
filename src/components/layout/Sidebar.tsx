@@ -16,10 +16,11 @@ import {
   Plug,
   Settings,
   ChevronDown,
-  Sparkles,
+  ShieldCheck,
   Zap,
   ShoppingBag,
   Radar,
+  WandSparkles,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -34,16 +35,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ onOpenCreateProfile }) => {
     { label: 'Início', href: '/', icon: Home },
     { label: 'Profiles', href: '/profiles', icon: Users },
     { label: 'Afiliado Plataforma', href: '/afiliado', icon: ShoppingBag },
-    {
-      label: 'Criar Profile',
-      href: '#',
-      icon: PlusCircle,
-      onClick: (e: React.MouseEvent) => {
-        e.preventDefault();
-        onOpenCreateProfile?.();
-      },
-    },
+    { label: 'Criar Profile', href: '/profiles?create=1', icon: PlusCircle },
     { label: 'Geração em Massa', href: '/geracao-em-massa', icon: Sliders },
+    { label: 'Estúdio Grátis', href: '/estudio', icon: WandSparkles },
     { label: 'Biblioteca', href: '/biblioteca', icon: FolderOpen },
     { label: 'Renderizações', href: '/render-center', icon: Film },
     { label: 'Downloads', href: '/downloads', icon: Download },
@@ -58,7 +52,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onOpenCreateProfile }) => {
   ];
 
   return (
-    <aside className="w-64 bg-[#0B0B0E] border-r border-[#1E1E22] flex flex-col justify-between h-screen sticky top-0 select-none z-30">
+    <aside className="w-64 bg-[#0B0B0E] border-r border-[#1E1E22] hidden lg:flex flex-col justify-between h-screen sticky top-0 select-none z-30">
       {/* Brand Header */}
       <div className="p-5 pb-3">
         <Link href="/" className="flex items-center gap-3 group">
@@ -88,7 +82,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ onOpenCreateProfile }) => {
               <Link
                 key={item.label}
                 href={item.href}
-                onClick={item.onClick}
                 className={cn(
                   'flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-150 relative group',
                   isActive
@@ -143,37 +136,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ onOpenCreateProfile }) => {
 
       {/* Bottom Section: Plan card + User info */}
       <div className="p-3 space-y-2 border-t border-[#1C1C20] bg-[#09090B]/60">
-        {/* Pro Plan Card */}
-        <div className="bg-[#141418] border border-[#232328] rounded-xl p-3.5 space-y-2.5">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-zinc-100 flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-brand-400" />
-              Plano Pro
-            </span>
-            <button className="px-2 py-0.5 rounded-md bg-brand-600 hover:bg-brand-500 text-[10px] font-semibold text-white transition-colors shadow-sm">
-              Upgrade
-            </button>
+        <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-3.5">
+          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-200">
+            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            Modo 100% gratuito
           </div>
-
-          <div className="space-y-1">
-            <div className="flex justify-between text-[11px]">
-              <span className="text-zinc-400">Créditos restantes</span>
-              <span className="font-semibold text-zinc-200">
-                12.450 <span className="text-zinc-500 font-normal">/ 20.000</span>
-              </span>
-            </div>
-            {/* Progress bar */}
-            <div className="w-full bg-zinc-800 rounded-full h-1.5 overflow-hidden">
-              <div
-                className="bg-gradient-to-r from-brand-600 to-brand-400 h-full rounded-full"
-                style={{ width: '62%' }}
-              />
-            </div>
-          </div>
-
-          <div className="text-[10px] text-zinc-500 text-right">
-            Renova em 10/06/2026
-          </div>
+          <p className="mt-2 text-[10px] leading-4 text-zinc-500">Provedores com cobrança estão bloqueados. O PD usa apenas recursos locais ou filas gratuitas.</p>
         </div>
 
         {/* User Profile */}

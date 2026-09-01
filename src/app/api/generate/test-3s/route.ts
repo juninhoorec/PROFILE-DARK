@@ -15,12 +15,15 @@ export async function POST(req: Request) {
     const product = productId ? db.getProductById(productId) : undefined;
 
     const job = await AIOrchestrator.run3SecondTest(profile, product);
+    if (job.status === 'falhou') {
+      return NextResponse.json({ error: job.userFriendlyError || 'O teste de vídeo falhou.', jobId: job.id }, { status: 503 });
+    }
     const qualityCheck = db.getQualityCheckByJobId(job.id);
 
     return NextResponse.json({
       job,
       qualityCheck,
-      message: 'Teste de 3 segundos executado com sucesso.',
+      message: `Teste rápido de ${job.durationSeconds} segundos executado com sucesso.`,
     });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });

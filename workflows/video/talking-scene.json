@@ -1,0 +1,37 @@
+{
+  "1": {
+    "inputs": {
+      "video": "scene_raw_video.mp4",
+      "force_rate": 25,
+      "custom_width": 544,
+      "custom_height": 704
+    },
+    "class_type": "VHS_LoadVideo"
+  },
+  "2": {
+    "inputs": {
+      "audio": "scene_audio.wav"
+    },
+    "class_type": "LoadAudio"
+  },
+  "3": {
+    "inputs": {
+      "video_frames": ["1", 0],
+      "audio": ["2", 0],
+      "smooth_factor": 0.8,
+      "model_checkpoint": "latentsync_unet.safetensors"
+    },
+    "class_type": "LatentSyncNode"
+  },
+  "4": {
+    "inputs": {
+      "frame_rate": 25,
+      "loop_count": 0,
+      "filename_prefix": "PD_Talking_Scene",
+      "format": "video/h264-mp4",
+      "images": ["3", 0],
+      "audio": ["2", 0]
+    },
+    "class_type": "VHS_VideoCombine"
+  }
+}

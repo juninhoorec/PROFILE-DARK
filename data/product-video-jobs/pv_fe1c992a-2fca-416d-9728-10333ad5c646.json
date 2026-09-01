@@ -1,0 +1,51 @@
+{
+  "id": "pv_fe1c992a-2fca-416d-9728-10333ad5c646",
+  "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+  "productId": "prod_2742a714-7793-490a-aab8-e7c49e02e3d6",
+  "status": "failed",
+  "progress": 29,
+  "currentScene": 2,
+  "message": "fetch failed",
+  "resolution": "480p",
+  "plan": {
+    "title": "Vó Zélia Resolve apresenta jogo de taças de vidro Diamond",
+    "productName": "jogo de taças de vidro Diamond",
+    "profileName": "Vó Zélia Resolve",
+    "durationSeconds": 20,
+    "scenes": [
+      {
+        "number": 1,
+        "title": "Apresentação do produto",
+        "narration": "Olha este jogo de taças de vidro Diamond. Eu analisei e vou mostrar o que importa.",
+        "motionPrompt": "Vó Zélia Resolve, especialista experiente em Casa & Família, com jeito Afetuosa, esperta, econômica e sem paciência para propaganda enga, fala diretamente para a câmera em Cozinha ou lavanderia real. Mantém exatamente o mesmo rosto, cabelo, roupa, ambiente e o mesmo jogo de taças de vidro Diamond. O produto permanece fiel à referência, sem mudar formato, cor, marca ou detalhes. Movimentos naturais, mãos anatomicamente corretas, câmera estável, sem cortes. segura o jogo de taças de vidro Diamond naturalmente junto ao corpo, olha para ele e depois para a câmera, apresentando-o com segurança."
+      },
+      {
+        "number": 2,
+        "title": "Benefício principal",
+        "narration": "Taça Diamante traz um toque de sofistição e elegância para sua mesa. Isso faz diferença no uso diário.",
+        "motionPrompt": "Vó Zélia Resolve, especialista experiente em Casa & Família, com jeito Afetuosa, esperta, econômica e sem paciência para propaganda enga, fala diretamente para a câmera em Cozinha ou lavanderia real. Mantém exatamente o mesmo rosto, cabelo, roupa, ambiente e o mesmo jogo de taças de vidro Diamond. O produto permanece fiel à referência, sem mudar formato, cor, marca ou detalhes. Movimentos naturais, mãos anatomicamente corretas, câmera estável, sem cortes. demonstra lentamente como o jogo de taças de vidro Diamond é usado e aponta para sua parte principal e reage com aprovação sincera."
+      },
+      {
+        "number": 3,
+        "title": "Experiência e detalhe",
+        "narration": "Na prática, destaco Modelo: Taça Diamante e Cor: Transparente. É uma escolha funcional e bem pensada.",
+        "motionPrompt": "Vó Zélia Resolve, especialista experiente em Casa & Família, com jeito Afetuosa, esperta, econômica e sem paciência para propaganda enga, fala diretamente para a câmera em Cozinha ou lavanderia real. Mantém exatamente o mesmo rosto, cabelo, roupa, ambiente e o mesmo jogo de taças de vidro Diamond. O produto permanece fiel à referência, sem mudar formato, cor, marca ou detalhes. Movimentos naturais, mãos anatomicamente corretas, câmera estável, sem cortes. aproxima o jogo de taças de vidro Diamond da câmera para mostrar um detalhe e volta à posição original com movimento suave."
+      },
+      {
+        "number": 4,
+        "title": "Recomendação e chamada",
+        "narration": "Se combina com a sua necessidade, confira os detalhes no link e escolha com segurança.",
+        "motionPrompt": "Vó Zélia Resolve, especialista experiente em Casa & Família, com jeito Afetuosa, esperta, econômica e sem paciência para propaganda enga, fala diretamente para a câmera em Cozinha ou lavanderia real. Mantém exatamente o mesmo rosto, cabelo, roupa, ambiente e o mesmo jogo de taças de vidro Diamond. O produto permanece fiel à referência, sem mudar formato, cor, marca ou detalhes. Movimentos naturais, mãos anatomicamente corretas, câmera estável, sem cortes. mantém o jogo de taças de vidro Diamond visível, sorri e faz um gesto discreto indicando o link abaixo."
+      }
+    ],
+    "fullScript": "Olha este jogo de taças de vidro Diamond. Eu analisei e vou mostrar o que importa. Taça Diamante traz um toque de sofistição e elegância para sua mesa. Isso faz diferença no uso diário. Na prática, destaco Modelo: Taça Diamante e Cor: Transparente. É uma escolha funcional e bem pensada. Se combina com a sua necessidade, confira os detalhes no link e escolha com segurança."
+  },
+  "sceneUrls": [
+    "/api/uploads/d273531b-448b-42c9-94f8-f12740ca34f2.mp4"
+  ],
+  "attempts": 5,
+  "createdAt": "2026-08-24T21:58:30.621Z",
+  "updatedAt": "2026-08-24T23:58:17.800Z",
+  "nextRetryAt": "2026-08-24T23:47:37.140Z",
+  "error": "fetch failed"
+}

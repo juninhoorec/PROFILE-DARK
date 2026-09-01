@@ -1,0 +1,41 @@
+{
+  "projectId": "r5_test_1787667368707",
+  "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+  "profileName": "Vó Zélia Resolve",
+  "durationSeconds": 15,
+  "scenes": [
+    {
+      "sceneNumber": 1,
+      "sceneTitle": "Cena 1 — Benchmark LTX-Video 13B Distilled (15s)",
+      "provider": "fal-ltx-13b-distilled",
+      "model": "ltxv-13b-098-distilled",
+      "generationType": "GENERATIVE_I2V",
+      "fallbackUsed": false,
+      "fallbackReason": "NONE",
+      "generationTimeSeconds": 5,
+      "measuredCost": 0.3,
+      "qualityScore": 94
+    }
+  ],
+  "providers": [
+    "fal-ltx-13b-distilled"
+  ],
+  "models": [
+    "ltxv-13b-098-distilled"
+  ],
+  "takesGenerated": 1,
+  "repairsApplied": 0,
+  "fallbacksRecorded": 0,
+  "voiceProvider": "chatterbox-multilingual-sapi",
+  "lipSyncProvider": "latentsync-video-sync",
+  "sourceResolution": "720x1280",
+  "finalResolution": "1080x1920",
+  "upscaled": true,
+  "creditsCharged": 0,
+  "providerCostUsd": 0.3,
+  "generationTimeSeconds": 5,
+  "visualQualityScore": 94,
+  "commercialQualityScore": 94,
+  "isCompleted": true,
+  "createdAt": "2026-08-25T14:16:16.710Z"
+}

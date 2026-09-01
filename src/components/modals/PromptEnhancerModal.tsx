@@ -30,10 +30,10 @@ export const PromptEnhancerModal: React.FC<PromptEnhancerModalProps> = ({
             </div>
             <div>
               <h2 className="text-sm font-bold text-white">
-                Otimizador de Prompt com IA
+                Otimizador de Prompt
               </h2>
               <p className="text-xs text-zinc-400">
-                A IA adicionou contexto de iluminação, enquadramento, consistência e conversão.
+                O motor editorial adicionou contexto de iluminação, enquadramento, consistência e conversão.
               </p>
             </div>
           </div>
@@ -64,7 +64,7 @@ export const PromptEnhancerModal: React.FC<PromptEnhancerModalProps> = ({
                 Prompt Original
               </span>
               <div className="p-3.5 bg-[#0D0D10] border border-[#202028] rounded-xl text-xs text-zinc-300 min-h-[180px] whitespace-pre-wrap leading-relaxed">
-                {enhanceResult.originalPrompt || '(Sem prompt inicial - criado do zero pela IA)'}
+                {enhanceResult.originalPrompt || '(Sem prompt inicial — estrutura criada pelo motor editorial)'}
               </div>
             </div>
 

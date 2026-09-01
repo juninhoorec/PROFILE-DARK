@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Lightbulb } from 'lucide-react';
+import Link from 'next/link';
 
 export const QuickTipsWidget: React.FC = () => {
   return (
@@ -13,9 +14,9 @@ export const QuickTipsWidget: React.FC = () => {
             Dicas rápidas
           </h3>
         </div>
-        <button className="text-[10.5px] text-zinc-500 hover:text-brand-300 transition-colors">
+        <Link href="/ajuda" className="text-[10.5px] text-zinc-500 hover:text-brand-300 transition-colors">
           Ver todas
-        </button>
+        </Link>
       </div>
 
       <div className="space-y-2.5 text-[11px] text-zinc-300">

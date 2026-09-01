@@ -1,0 +1,1356 @@
+{
+  "version": 1,
+  "posts": [
+    {
+      "id": "post_c8a1485a-a149-4a9b-9eec-17a7898cc0b4",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "platform": "instagram",
+      "mediaId": "media_619bed9529f531d9",
+      "scheduledAt": "2026-08-26T15:15:00.000Z",
+      "caption": "Você já reparou nisso? Biscoito e Batata Avalia mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#pets",
+        "#animais",
+        "#cachorrocriticodeprodutospet",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.020Z"
+    },
+    {
+      "id": "post_82718d6a-b51c-4c8b-a780-30eaeb3b9fae",
+      "profileId": "prof_ca70db55-2dc0-403d-b5b4-5bff2f6336c8",
+      "profileName": "Léo Sem Lag",
+      "platform": "instagram",
+      "mediaId": "media_4f85e36b15885119",
+      "scheduledAt": "2026-08-26T15:15:00.000Z",
+      "caption": "Você já reparou nisso? Léo Sem Lag mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#games",
+        "#tecnologia",
+        "#analistadetecnologiaegamer",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.024Z"
+    },
+    {
+      "id": "post_b9f6b00d-1beb-44ef-a2f6-0ce5f164367e",
+      "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+      "profileName": "Vó Zélia Resolve",
+      "platform": "instagram",
+      "mediaId": "media_aab38a5d75576865",
+      "scheduledAt": "2026-08-26T15:15:00.000Z",
+      "caption": "Você já reparou nisso? Vó Zélia Resolve mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#casa",
+        "#familia",
+        "#especialistaemcasaeeconomiadomestica",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.035Z"
+    },
+    {
+      "id": "post_816f53c8-b114-4c3d-874a-98ec899431d7",
+      "profileId": "prof_02bbfc52-8ed0-45a9-87f9-8333533b0aeb",
+      "profileName": "Carlos Cinco Estrelas",
+      "platform": "instagram",
+      "mediaId": "media_4cad1b0b122b1184",
+      "scheduledAt": "2026-08-26T15:15:00.000Z",
+      "caption": "Você já reparou nisso? Carlos Cinco Estrelas mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#automotivo",
+        "#vidareal",
+        "#motoristadeaplicativo",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.038Z"
+    },
+    {
+      "id": "post_35b2b4e0-fb7a-4646-af7c-ee5b56e2d589",
+      "profileId": "prof_db0a31d1-4d89-4140-a175-fca5aa112a33",
+      "profileName": "Célia do Céu",
+      "platform": "instagram",
+      "mediaId": "media_387cb80465cf44a2",
+      "scheduledAt": "2026-08-26T15:15:00.000Z",
+      "caption": "Você já reparou nisso? Célia do Céu mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#beleza",
+        "#skincare",
+        "#esteticistaeconsultoradebeleza",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.040Z"
+    },
+    {
+      "id": "post_dd0d6cf6-b676-4149-8f05-7104abb34710",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "shoppingUrl": "https://s.shopee.com.br/5ArzdKKBBT",
+      "purchasePlacement": "pinned_comment",
+      "purchaseText": "Onde comprar Bebedouro H2O Plus para Cães e Gatos 1,5 L: https://s.shopee.com.br/5ArzdKKBBT",
+      "platform": "tiktok",
+      "mediaId": "media_606088eaf45203bb",
+      "scheduledAt": "2026-08-28T00:10:00.000Z",
+      "caption": "Uma dica rápida e honesta de Biscoito e Batata Avalia para facilitar sua rotina.",
+      "hashtags": [
+        "#pets",
+        "#animais",
+        "#cachorrocriticodeprodutospet",
+        "#dicadodia"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.021Z"
+    },
+    {
+      "id": "post_093853dc-d54e-430a-944b-ea46c7ec6232",
+      "profileId": "prof_ca70db55-2dc0-403d-b5b4-5bff2f6336c8",
+      "profileName": "Léo Sem Lag",
+      "platform": "tiktok",
+      "mediaId": "media_1bd8c9f93fb8fdd1",
+      "scheduledAt": "2026-08-28T00:10:00.000Z",
+      "caption": "Uma dica rápida e honesta de Léo Sem Lag para facilitar sua rotina.",
+      "hashtags": [
+        "#games",
+        "#tecnologia",
+        "#analistadetecnologiaegamer",
+        "#dicadodia"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.024Z"
+    },
+    {
+      "id": "post_6eb227f7-dcd3-4831-9ede-1316d8e52865",
+      "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+      "profileName": "Vó Zélia Resolve",
+      "platform": "tiktok",
+      "mediaId": "media_dd646417142f3a5e",
+      "scheduledAt": "2026-08-28T00:10:00.000Z",
+      "caption": "Uma dica rápida e honesta de Vó Zélia Resolve para facilitar sua rotina.",
+      "hashtags": [
+        "#casa",
+        "#familia",
+        "#especialistaemcasaeeconomiadomestica",
+        "#dicadodia"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.035Z"
+    },
+    {
+      "id": "post_c7a10a67-f891-4bdd-87a0-0f195c28088c",
+      "profileId": "prof_02bbfc52-8ed0-45a9-87f9-8333533b0aeb",
+      "profileName": "Carlos Cinco Estrelas",
+      "platform": "tiktok",
+      "mediaId": "media_927c7fd2ebeba468",
+      "scheduledAt": "2026-08-28T00:10:00.000Z",
+      "caption": "Uma dica rápida e honesta de Carlos Cinco Estrelas para facilitar sua rotina.",
+      "hashtags": [
+        "#automotivo",
+        "#vidareal",
+        "#motoristadeaplicativo",
+        "#dicadodia"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.038Z"
+    },
+    {
+      "id": "post_cb014f1c-258b-4d02-8b46-0f576706ecec",
+      "profileId": "prof_db0a31d1-4d89-4140-a175-fca5aa112a33",
+      "profileName": "Célia do Céu",
+      "platform": "tiktok",
+      "mediaId": "media_9089c900967c1e9c",
+      "scheduledAt": "2026-08-28T00:10:00.000Z",
+      "caption": "Uma dica rápida e honesta de Célia do Céu para facilitar sua rotina.",
+      "hashtags": [
+        "#beleza",
+        "#skincare",
+        "#esteticistaeconsultoradebeleza",
+        "#dicadodia"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.040Z"
+    },
+    {
+      "id": "post_7b333f50-3c5e-4df1-9c67-4a9e053e1511",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "platform": "youtube",
+      "mediaId": "media_7a8cd5c0bdace3a3",
+      "scheduledAt": "2026-08-28T15:00:00.000Z",
+      "caption": "Biscoito e Batata Avalia explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#pets",
+        "#animais",
+        "#cachorrocriticodeprodutospet"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.021Z"
+    },
+    {
+      "id": "post_eeba5be2-c406-4f81-8edd-14970a053433",
+      "profileId": "prof_ca70db55-2dc0-403d-b5b4-5bff2f6336c8",
+      "profileName": "Léo Sem Lag",
+      "platform": "youtube",
+      "mediaId": "media_2c31cc065ad4dbfb",
+      "scheduledAt": "2026-08-28T15:00:00.000Z",
+      "caption": "Léo Sem Lag explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#games",
+        "#tecnologia",
+        "#analistadetecnologiaegamer"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.024Z"
+    },
+    {
+      "id": "post_0f89bc6d-9445-4ec6-95dc-07ab8ec1215f",
+      "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+      "profileName": "Vó Zélia Resolve",
+      "platform": "youtube",
+      "mediaId": "media_37034eed8693b614",
+      "scheduledAt": "2026-08-28T15:00:00.000Z",
+      "caption": "Vó Zélia Resolve explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#casa",
+        "#familia",
+        "#especialistaemcasaeeconomiadomestica"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.035Z"
+    },
+    {
+      "id": "post_e1ae0202-0030-441f-ba20-57689d6b9806",
+      "profileId": "prof_02bbfc52-8ed0-45a9-87f9-8333533b0aeb",
+      "profileName": "Carlos Cinco Estrelas",
+      "platform": "youtube",
+      "mediaId": "media_b2ba9d1f6f6387c8",
+      "scheduledAt": "2026-08-28T15:00:00.000Z",
+      "caption": "Carlos Cinco Estrelas explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#automotivo",
+        "#vidareal",
+        "#motoristadeaplicativo"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.038Z"
+    },
+    {
+      "id": "post_1a696b81-2b43-4b51-bc94-60d7f415f8f3",
+      "profileId": "prof_db0a31d1-4d89-4140-a175-fca5aa112a33",
+      "profileName": "Célia do Céu",
+      "platform": "youtube",
+      "mediaId": "media_f8948a84a80f1c45",
+      "scheduledAt": "2026-08-28T15:00:00.000Z",
+      "caption": "Célia do Céu explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#beleza",
+        "#skincare",
+        "#esteticistaeconsultoradebeleza"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.040Z"
+    },
+    {
+      "id": "post_a48ca85d-73ea-4395-a581-798309488c74",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "platform": "shopee",
+      "mediaId": "media_f8875c659c910784",
+      "scheduledAt": "2026-08-29T23:30:00.000Z",
+      "caption": "Antes de comprar, veja a análise de Biscoito e Batata Avalia e escolha com mais segurança.",
+      "hashtags": [
+        "#pets",
+        "#animais",
+        "#cachorrocriticodeprodutospet",
+        "#dicadodia"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.021Z"
+    },
+    {
+      "id": "post_1f91e6c8-ec1c-4729-ac57-b04df386f916",
+      "profileId": "prof_ca70db55-2dc0-403d-b5b4-5bff2f6336c8",
+      "profileName": "Léo Sem Lag",
+      "productId": "prod_cb87c50f-1d65-4a3c-8d9c-224e7da632b7",
+      "productName": "Capacete profissional para ciclistas urbanos",
+      "platform": "shopee",
+      "mediaId": "media_3521edb26702b13d",
+      "scheduledAt": "2026-08-29T23:30:00.000Z",
+      "caption": "Léo Sem Lag analisou Capacete profissional para ciclistas urbanos: Capacete leve para ciclistas urbanos, com ventilação, ajuste traseiro e faixas refletivas para entregas noturnas.. R$ 129,90. Confira os detalhes no link antes que a condição mude.",
+      "hashtags": [
+        "#games",
+        "#tecnologia",
+        "#analistadetecnologiaegamer",
+        "#ciclismoeseguranca"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.024Z"
+    },
+    {
+      "id": "post_f1e8b270-2b5b-40e7-9e44-bd7c0adf9c50",
+      "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+      "profileName": "Vó Zélia Resolve",
+      "productId": "prod_3f0433b8-ed0a-439a-9a99-562188ea2302",
+      "productName": "Conjunto de Taças de Vidro 340 ml",
+      "platform": "shopee",
+      "mediaId": "media_e87f44081f38e9e5",
+      "scheduledAt": "2026-08-29T23:30:00.000Z",
+      "caption": "Vó Zélia Resolve analisou Conjunto de Taças de Vidro 340 ml: Conjunto com taças de vidro para água, vinho e suco, indicado para uso cotidiano e ocasiões especiais.. R$ 89,90. Confira os detalhes no link antes que a condição mude.",
+      "hashtags": [
+        "#casa",
+        "#familia",
+        "#especialistaemcasaeeconomiadomestica",
+        "#mesaecozinha"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.035Z"
+    },
+    {
+      "id": "post_deb162d0-7aa7-434a-89d6-0d191f7f2cb0",
+      "profileId": "prof_02bbfc52-8ed0-45a9-87f9-8333533b0aeb",
+      "profileName": "Carlos Cinco Estrelas",
+      "productId": "prod_cb87c50f-1d65-4a3c-8d9c-224e7da632b7",
+      "productName": "Capacete profissional para ciclistas urbanos",
+      "platform": "shopee",
+      "mediaId": "media_0fc982598f400677",
+      "scheduledAt": "2026-08-29T23:30:00.000Z",
+      "caption": "Carlos Cinco Estrelas analisou Capacete profissional para ciclistas urbanos: Capacete leve para ciclistas urbanos, com ventilação, ajuste traseiro e faixas refletivas para entregas noturnas.. R$ 129,90. Confira os detalhes no link antes que a condição mude.",
+      "hashtags": [
+        "#automotivo",
+        "#vidareal",
+        "#motoristadeaplicativo",
+        "#ciclismoeseguranca"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.038Z"
+    },
+    {
+      "id": "post_d8bddcf7-b05f-4586-9294-031d4511b400",
+      "profileId": "prof_db0a31d1-4d89-4140-a175-fca5aa112a33",
+      "profileName": "Célia do Céu",
+      "productId": "prod_2742a714-7793-490a-aab8-e7c49e02e3d6",
+      "productName": "Jogo 2/4/6 Taças Vidro Diamond Bico Jaca Abacaxi Conjunto Taça Para Água Vinho Tinto Suco Diamante | Shopee Brasil",
+      "platform": "shopee",
+      "mediaId": "media_70159d5f81996c60",
+      "scheduledAt": "2026-08-29T23:30:00.000Z",
+      "caption": "Célia do Céu analisou Jogo 2/4/6 Taças Vidro Diamond Bico Jaca Abacaxi Conjunto Taça Para Água Vinho Tinto Suco Diamante: Compre Jogo 2/4/6 Taças Vidro Diamond Bico Jaca Abacaxi Conjunto Taça Para Água Vinho Tinto Suco Diamante na Shopee Brasil! Seja Bem Vindo a LifeHack !\r\nESCOLHA AS UNIDADES DESEJAD. Confira os detalhes no link antes que a condição mude.",
+      "hashtags": [
+        "#beleza",
+        "#skincare",
+        "#esteticistaeconsultoradebeleza",
+        "#produto"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.040Z"
+    },
+    {
+      "id": "post_3bbeaa1f-3a00-4304-8e60-1caa7cd3164d",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "platform": "mercado_livre",
+      "mediaId": "media_daa1c0c64b57aa43",
+      "scheduledAt": "2026-08-30T12:30:00.000Z",
+      "caption": "Você já reparou nisso? Biscoito e Batata Avalia mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.021Z"
+    },
+    {
+      "id": "post_8e246dc5-1c9d-430f-a50e-5466cf3691a6",
+      "profileId": "prof_ca70db55-2dc0-403d-b5b4-5bff2f6336c8",
+      "profileName": "Léo Sem Lag",
+      "platform": "mercado_livre",
+      "mediaId": "media_97d1772aa9bfd799",
+      "scheduledAt": "2026-08-30T12:30:00.000Z",
+      "caption": "Você já reparou nisso? Léo Sem Lag mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.024Z"
+    },
+    {
+      "id": "post_4f1ad179-1ff5-42e6-993f-4e691637556c",
+      "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+      "profileName": "Vó Zélia Resolve",
+      "platform": "mercado_livre",
+      "mediaId": "media_3f8faf2e10242311",
+      "scheduledAt": "2026-08-30T12:30:00.000Z",
+      "caption": "Você já reparou nisso? Vó Zélia Resolve mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.035Z"
+    },
+    {
+      "id": "post_c0894c5b-5534-4ba4-92e7-83a14e4c9ad7",
+      "profileId": "prof_02bbfc52-8ed0-45a9-87f9-8333533b0aeb",
+      "profileName": "Carlos Cinco Estrelas",
+      "platform": "mercado_livre",
+      "mediaId": "media_3c32f6a0889f5ef5",
+      "scheduledAt": "2026-08-30T12:30:00.000Z",
+      "caption": "Você já reparou nisso? Carlos Cinco Estrelas mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.038Z"
+    },
+    {
+      "id": "post_9dc4380c-988c-4d27-9d47-7ead78cd803a",
+      "profileId": "prof_db0a31d1-4d89-4140-a175-fca5aa112a33",
+      "profileName": "Célia do Céu",
+      "platform": "mercado_livre",
+      "mediaId": "media_af2f9b6100ae6336",
+      "scheduledAt": "2026-08-30T12:30:00.000Z",
+      "caption": "Você já reparou nisso? Célia do Céu mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.040Z"
+    },
+    {
+      "id": "post_00479fea-6cee-4975-aee0-105754854f44",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "platform": "instagram",
+      "mediaId": "media_ec167c0c689c5b7a",
+      "scheduledAt": "2026-08-31T22:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Biscoito e Batata Avalia para facilitar sua rotina.",
+      "hashtags": [
+        "#pets",
+        "#animais",
+        "#cachorrocriticodeprodutospet",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.021Z"
+    },
+    {
+      "id": "post_575ffdd2-ccf9-4bf9-a8bf-2090edd6e1a9",
+      "profileId": "prof_ca70db55-2dc0-403d-b5b4-5bff2f6336c8",
+      "profileName": "Léo Sem Lag",
+      "platform": "instagram",
+      "mediaId": "media_4b893d6d998cede9",
+      "scheduledAt": "2026-08-31T22:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Léo Sem Lag para facilitar sua rotina.",
+      "hashtags": [
+        "#games",
+        "#tecnologia",
+        "#analistadetecnologiaegamer",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.024Z"
+    },
+    {
+      "id": "post_b1081c68-86c2-413e-b5c7-8ec5d9de6f15",
+      "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+      "profileName": "Vó Zélia Resolve",
+      "platform": "instagram",
+      "mediaId": "media_cee2e90330de84cf",
+      "scheduledAt": "2026-08-31T22:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Vó Zélia Resolve para facilitar sua rotina.",
+      "hashtags": [
+        "#casa",
+        "#familia",
+        "#especialistaemcasaeeconomiadomestica",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.035Z"
+    },
+    {
+      "id": "post_b558d454-cb51-4231-af9d-b77a0123c8b5",
+      "profileId": "prof_02bbfc52-8ed0-45a9-87f9-8333533b0aeb",
+      "profileName": "Carlos Cinco Estrelas",
+      "platform": "instagram",
+      "mediaId": "media_00b66426abe47257",
+      "scheduledAt": "2026-08-31T22:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Carlos Cinco Estrelas para facilitar sua rotina.",
+      "hashtags": [
+        "#automotivo",
+        "#vidareal",
+        "#motoristadeaplicativo",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.038Z"
+    },
+    {
+      "id": "post_fb494ba2-ac2b-4aca-9b96-11f41b6f9fee",
+      "profileId": "prof_db0a31d1-4d89-4140-a175-fca5aa112a33",
+      "profileName": "Célia do Céu",
+      "platform": "instagram",
+      "mediaId": "media_bcfbff6d0e18e89c",
+      "scheduledAt": "2026-08-31T22:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Célia do Céu para facilitar sua rotina.",
+      "hashtags": [
+        "#beleza",
+        "#skincare",
+        "#esteticistaeconsultoradebeleza",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.040Z"
+    },
+    {
+      "id": "post_a3a809f2-5719-489d-bcf1-ae906cdbda65",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "platform": "instagram",
+      "accountIds": [],
+      "mediaId": "media_409f2f60a16dd723",
+      "scheduledAt": "2026-09-01T13:20:00.000Z",
+      "caption": "Uma dica rápida e honesta de Biscoito e Batata Avalia para facilitar sua rotina.",
+      "hashtags": [
+        "#pets",
+        "#animais",
+        "#cachorrocriticodeprodutospet",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-09-01T12:20:57.976Z"
+    },
+    {
+      "id": "post_2a48f516-7f80-4002-b34f-dc5b7dfecb78",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "shoppingUrl": "https://s.shopee.com.br/3qMc2u6zDM",
+      "purchasePlacement": "pinned_comment",
+      "purchaseText": "Onde comprar Dispensador Interativo de Comida para Pets em Forma de Pato: https://s.shopee.com.br/3qMc2u6zDM",
+      "platform": "tiktok",
+      "mediaId": "media_83dfcda872ab1484",
+      "scheduledAt": "2026-09-01T21:45:00.000Z",
+      "caption": "Biscoito e Batata Avalia explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#pets",
+        "#animais",
+        "#cachorrocriticodeprodutospet",
+        "#dicadodia"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.021Z"
+    },
+    {
+      "id": "post_2c5a25b9-a975-4687-ba56-728510b728e7",
+      "profileId": "prof_ca70db55-2dc0-403d-b5b4-5bff2f6336c8",
+      "profileName": "Léo Sem Lag",
+      "platform": "tiktok",
+      "mediaId": "media_b8c6f94bcb021be9",
+      "scheduledAt": "2026-09-01T21:45:00.000Z",
+      "caption": "Léo Sem Lag explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#games",
+        "#tecnologia",
+        "#analistadetecnologiaegamer",
+        "#dicadodia"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.024Z"
+    },
+    {
+      "id": "post_37eee99a-b9ac-4e9b-aefc-a7ebdea01435",
+      "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+      "profileName": "Vó Zélia Resolve",
+      "platform": "tiktok",
+      "mediaId": "media_d1c49f32785c8b90",
+      "scheduledAt": "2026-09-01T21:45:00.000Z",
+      "caption": "Vó Zélia Resolve explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#casa",
+        "#familia",
+        "#especialistaemcasaeeconomiadomestica",
+        "#dicadodia"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.035Z"
+    },
+    {
+      "id": "post_0b41021a-2c8b-422e-946a-c8af611ccef0",
+      "profileId": "prof_02bbfc52-8ed0-45a9-87f9-8333533b0aeb",
+      "profileName": "Carlos Cinco Estrelas",
+      "platform": "tiktok",
+      "mediaId": "media_48a58256392261fe",
+      "scheduledAt": "2026-09-01T21:45:00.000Z",
+      "caption": "Carlos Cinco Estrelas explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#automotivo",
+        "#vidareal",
+        "#motoristadeaplicativo",
+        "#dicadodia"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.038Z"
+    },
+    {
+      "id": "post_0a2dcbb8-26dc-4c5c-b58f-0f477a643c00",
+      "profileId": "prof_db0a31d1-4d89-4140-a175-fca5aa112a33",
+      "profileName": "Célia do Céu",
+      "platform": "tiktok",
+      "mediaId": "media_35a65b706b1ca4c7",
+      "scheduledAt": "2026-09-01T21:45:00.000Z",
+      "caption": "Célia do Céu explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#beleza",
+        "#skincare",
+        "#esteticistaeconsultoradebeleza",
+        "#dicadodia"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.040Z"
+    },
+    {
+      "id": "post_e87fa12f-1d2a-46a0-b28f-a7bf11fe93d8",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "platform": "youtube",
+      "mediaId": "media_3ac412ded469a138",
+      "scheduledAt": "2026-09-02T23:00:00.000Z",
+      "caption": "Antes de comprar, veja a análise de Biscoito e Batata Avalia e escolha com mais segurança.",
+      "hashtags": [
+        "#pets",
+        "#animais",
+        "#cachorrocriticodeprodutospet"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.021Z"
+    },
+    {
+      "id": "post_a855c309-a361-4d3a-84ca-af69f1413073",
+      "profileId": "prof_ca70db55-2dc0-403d-b5b4-5bff2f6336c8",
+      "profileName": "Léo Sem Lag",
+      "productId": "prod_cb87c50f-1d65-4a3c-8d9c-224e7da632b7",
+      "productName": "Capacete profissional para ciclistas urbanos",
+      "platform": "youtube",
+      "mediaId": "media_a4d94def52c99989",
+      "scheduledAt": "2026-09-02T23:00:00.000Z",
+      "caption": "Léo Sem Lag analisou Capacete profissional para ciclistas urbanos: Capacete leve para ciclistas urbanos, com ventilação, ajuste traseiro e faixas refletivas para entregas noturnas.. R$ 129,90. Confira os detalhes no link antes que a condição mude.",
+      "hashtags": [
+        "#games",
+        "#tecnologia",
+        "#analistadetecnologiaegamer"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.024Z"
+    },
+    {
+      "id": "post_2e1fb28f-f6cf-4959-8f6a-7d346713d146",
+      "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+      "profileName": "Vó Zélia Resolve",
+      "productId": "prod_3f0433b8-ed0a-439a-9a99-562188ea2302",
+      "productName": "Conjunto de Taças de Vidro 340 ml",
+      "platform": "youtube",
+      "mediaId": "media_32941af465b0ac51",
+      "scheduledAt": "2026-09-02T23:00:00.000Z",
+      "caption": "Vó Zélia Resolve analisou Conjunto de Taças de Vidro 340 ml: Conjunto com taças de vidro para água, vinho e suco, indicado para uso cotidiano e ocasiões especiais.. R$ 89,90. Confira os detalhes no link antes que a condição mude.",
+      "hashtags": [
+        "#casa",
+        "#familia",
+        "#especialistaemcasaeeconomiadomestica"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.035Z"
+    },
+    {
+      "id": "post_30712ba5-8cbb-4b0f-85ba-87b138dd1b5d",
+      "profileId": "prof_02bbfc52-8ed0-45a9-87f9-8333533b0aeb",
+      "profileName": "Carlos Cinco Estrelas",
+      "productId": "prod_cb87c50f-1d65-4a3c-8d9c-224e7da632b7",
+      "productName": "Capacete profissional para ciclistas urbanos",
+      "platform": "youtube",
+      "mediaId": "media_380e13b5e7c966e0",
+      "scheduledAt": "2026-09-02T23:00:00.000Z",
+      "caption": "Carlos Cinco Estrelas analisou Capacete profissional para ciclistas urbanos: Capacete leve para ciclistas urbanos, com ventilação, ajuste traseiro e faixas refletivas para entregas noturnas.. R$ 129,90. Confira os detalhes no link antes que a condição mude.",
+      "hashtags": [
+        "#automotivo",
+        "#vidareal",
+        "#motoristadeaplicativo"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.038Z"
+    },
+    {
+      "id": "post_30834242-36f0-4629-a7d7-fbb269d5a381",
+      "profileId": "prof_db0a31d1-4d89-4140-a175-fca5aa112a33",
+      "profileName": "Célia do Céu",
+      "productId": "prod_2742a714-7793-490a-aab8-e7c49e02e3d6",
+      "productName": "Jogo 2/4/6 Taças Vidro Diamond Bico Jaca Abacaxi Conjunto Taça Para Água Vinho Tinto Suco Diamante | Shopee Brasil",
+      "platform": "youtube",
+      "mediaId": "media_5b66e1b62ce6d697",
+      "scheduledAt": "2026-09-02T23:00:00.000Z",
+      "caption": "Célia do Céu analisou Jogo 2/4/6 Taças Vidro Diamond Bico Jaca Abacaxi Conjunto Taça Para Água Vinho Tinto Suco Diamante: Compre Jogo 2/4/6 Taças Vidro Diamond Bico Jaca Abacaxi Conjunto Taça Para Água Vinho Tinto Suco Diamante na Shopee Brasil! Seja Bem Vindo a LifeHack !\r\nESCOLHA AS UNIDADES DESEJAD. Confira os detalhes no link antes que a condição mude.",
+      "hashtags": [
+        "#beleza",
+        "#skincare",
+        "#esteticistaeconsultoradebeleza"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.041Z"
+    },
+    {
+      "id": "post_b9254e70-171f-462d-9253-e12212b1389a",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "platform": "shopee",
+      "mediaId": "media_4e2afdd882b4dc51",
+      "scheduledAt": "2026-09-03T13:30:00.000Z",
+      "caption": "Você já reparou nisso? Biscoito e Batata Avalia mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#pets",
+        "#animais",
+        "#cachorrocriticodeprodutospet",
+        "#dicadodia"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.021Z"
+    },
+    {
+      "id": "post_447f8a68-cd3e-41fa-9461-b4e7e8888ba3",
+      "profileId": "prof_ca70db55-2dc0-403d-b5b4-5bff2f6336c8",
+      "profileName": "Léo Sem Lag",
+      "platform": "shopee",
+      "mediaId": "media_c0d7a80b1b074364",
+      "scheduledAt": "2026-09-03T13:30:00.000Z",
+      "caption": "Você já reparou nisso? Léo Sem Lag mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#games",
+        "#tecnologia",
+        "#analistadetecnologiaegamer",
+        "#dicadodia"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.024Z"
+    },
+    {
+      "id": "post_5eaa1ebc-5e33-40e7-9827-11d515d706bf",
+      "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+      "profileName": "Vó Zélia Resolve",
+      "platform": "shopee",
+      "mediaId": "media_1910fef8b4c59675",
+      "scheduledAt": "2026-09-03T13:30:00.000Z",
+      "caption": "Você já reparou nisso? Vó Zélia Resolve mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#casa",
+        "#familia",
+        "#especialistaemcasaeeconomiadomestica",
+        "#dicadodia"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.035Z"
+    },
+    {
+      "id": "post_9ae31e43-94a7-410a-bead-127e9b3d5eee",
+      "profileId": "prof_02bbfc52-8ed0-45a9-87f9-8333533b0aeb",
+      "profileName": "Carlos Cinco Estrelas",
+      "platform": "shopee",
+      "mediaId": "media_d8bd6272db324a35",
+      "scheduledAt": "2026-09-03T13:30:00.000Z",
+      "caption": "Você já reparou nisso? Carlos Cinco Estrelas mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#automotivo",
+        "#vidareal",
+        "#motoristadeaplicativo",
+        "#dicadodia"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.038Z"
+    },
+    {
+      "id": "post_fc4533bf-5fed-48cf-8059-eb2a831a875a",
+      "profileId": "prof_db0a31d1-4d89-4140-a175-fca5aa112a33",
+      "profileName": "Célia do Céu",
+      "platform": "shopee",
+      "mediaId": "media_dd50d0a05d72d1c0",
+      "scheduledAt": "2026-09-03T13:30:00.000Z",
+      "caption": "Você já reparou nisso? Célia do Céu mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#beleza",
+        "#skincare",
+        "#esteticistaeconsultoradebeleza",
+        "#dicadodia"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.041Z"
+    },
+    {
+      "id": "post_40a07b3f-3651-4903-9af5-b7e70b2ef9fe",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "platform": "mercado_livre",
+      "mediaId": "media_3b4458ab54790339",
+      "scheduledAt": "2026-09-04T21:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Biscoito e Batata Avalia para facilitar sua rotina.",
+      "hashtags": [],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.021Z"
+    },
+    {
+      "id": "post_8daa9441-a6ad-46da-bc12-dbdfb5653b2b",
+      "profileId": "prof_ca70db55-2dc0-403d-b5b4-5bff2f6336c8",
+      "profileName": "Léo Sem Lag",
+      "platform": "mercado_livre",
+      "mediaId": "media_e75a6f439e05c8d8",
+      "scheduledAt": "2026-09-04T21:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Léo Sem Lag para facilitar sua rotina.",
+      "hashtags": [],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.024Z"
+    },
+    {
+      "id": "post_7ea09d31-652a-4f5a-a98f-b32aaa79a986",
+      "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+      "profileName": "Vó Zélia Resolve",
+      "platform": "mercado_livre",
+      "mediaId": "media_2583aca6592b9fd8",
+      "scheduledAt": "2026-09-04T21:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Vó Zélia Resolve para facilitar sua rotina.",
+      "hashtags": [],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.035Z"
+    },
+    {
+      "id": "post_d55fc9b0-c815-4d9b-84a2-12656c2e0743",
+      "profileId": "prof_02bbfc52-8ed0-45a9-87f9-8333533b0aeb",
+      "profileName": "Carlos Cinco Estrelas",
+      "platform": "mercado_livre",
+      "mediaId": "media_70cc747fb602083d",
+      "scheduledAt": "2026-09-04T21:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Carlos Cinco Estrelas para facilitar sua rotina.",
+      "hashtags": [],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.038Z"
+    },
+    {
+      "id": "post_84be8b61-2e2e-44af-b480-012a87573013",
+      "profileId": "prof_db0a31d1-4d89-4140-a175-fca5aa112a33",
+      "profileName": "Célia do Céu",
+      "platform": "mercado_livre",
+      "mediaId": "media_8234603a5ac843a1",
+      "scheduledAt": "2026-09-04T21:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Célia do Céu para facilitar sua rotina.",
+      "hashtags": [],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.041Z"
+    },
+    {
+      "id": "post_88278258-f26f-4093-b1c4-231720684958",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "platform": "instagram",
+      "mediaId": "media_f3f60df189b0480c",
+      "scheduledAt": "2026-09-05T15:15:00.000Z",
+      "caption": "Biscoito e Batata Avalia explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#pets",
+        "#animais",
+        "#cachorrocriticodeprodutospet",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.021Z"
+    },
+    {
+      "id": "post_09119237-024c-4949-9c2d-baaa170bf683",
+      "profileId": "prof_ca70db55-2dc0-403d-b5b4-5bff2f6336c8",
+      "profileName": "Léo Sem Lag",
+      "platform": "instagram",
+      "mediaId": "media_c27ea4fe61d3967c",
+      "scheduledAt": "2026-09-05T15:15:00.000Z",
+      "caption": "Léo Sem Lag explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#games",
+        "#tecnologia",
+        "#analistadetecnologiaegamer",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.024Z"
+    },
+    {
+      "id": "post_96162aed-f912-4058-b8bc-5d6e563a0a4f",
+      "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+      "profileName": "Vó Zélia Resolve",
+      "platform": "instagram",
+      "mediaId": "media_f7404a47364efefa",
+      "scheduledAt": "2026-09-05T15:15:00.000Z",
+      "caption": "Vó Zélia Resolve explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#casa",
+        "#familia",
+        "#especialistaemcasaeeconomiadomestica",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.035Z"
+    },
+    {
+      "id": "post_349687e4-20d0-496b-a924-06501d361caf",
+      "profileId": "prof_02bbfc52-8ed0-45a9-87f9-8333533b0aeb",
+      "profileName": "Carlos Cinco Estrelas",
+      "platform": "instagram",
+      "mediaId": "media_66ca0a9d4e1b7b04",
+      "scheduledAt": "2026-09-05T15:15:00.000Z",
+      "caption": "Carlos Cinco Estrelas explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#automotivo",
+        "#vidareal",
+        "#motoristadeaplicativo",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.038Z"
+    },
+    {
+      "id": "post_d7264646-6e56-48a8-908d-516347405833",
+      "profileId": "prof_db0a31d1-4d89-4140-a175-fca5aa112a33",
+      "profileName": "Célia do Céu",
+      "platform": "instagram",
+      "mediaId": "media_8d24a68df350f72f",
+      "scheduledAt": "2026-09-05T15:15:00.000Z",
+      "caption": "Célia do Céu explica o que realmente importa, sem promessa fácil e sem enrolação.",
+      "hashtags": [
+        "#beleza",
+        "#skincare",
+        "#esteticistaeconsultoradebeleza",
+        "#dicadodia",
+        "#achadinhos"
+      ],
+      "objective": "autoridade",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.041Z"
+    },
+    {
+      "id": "post_b4aa8f73-6b75-4121-9bd9-d978f46589c9",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "platform": "tiktok",
+      "mediaId": "media_d1af21f64e717906",
+      "scheduledAt": "2026-09-07T00:10:00.000Z",
+      "caption": "Antes de comprar, veja a análise de Biscoito e Batata Avalia e escolha com mais segurança.",
+      "hashtags": [
+        "#pets",
+        "#animais",
+        "#cachorrocriticodeprodutospet",
+        "#dicadodia"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.022Z"
+    },
+    {
+      "id": "post_79945a52-ab49-4ce0-b253-fffc9f128445",
+      "profileId": "prof_ca70db55-2dc0-403d-b5b4-5bff2f6336c8",
+      "profileName": "Léo Sem Lag",
+      "productId": "prod_cb87c50f-1d65-4a3c-8d9c-224e7da632b7",
+      "productName": "Capacete profissional para ciclistas urbanos",
+      "platform": "tiktok",
+      "mediaId": "media_5c45dcdf92bfefb4",
+      "scheduledAt": "2026-09-07T00:10:00.000Z",
+      "caption": "Léo Sem Lag analisou Capacete profissional para ciclistas urbanos: Capacete leve para ciclistas urbanos, com ventilação, ajuste traseiro e faixas refletivas para entregas noturnas.. R$ 129,90. Confira os detalhes no link antes que a condição mude.",
+      "hashtags": [
+        "#games",
+        "#tecnologia",
+        "#analistadetecnologiaegamer",
+        "#ciclismoeseguranca"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.024Z"
+    },
+    {
+      "id": "post_aea82e3b-f3c2-4f81-a580-8d8a11db3c1a",
+      "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+      "profileName": "Vó Zélia Resolve",
+      "productId": "prod_3f0433b8-ed0a-439a-9a99-562188ea2302",
+      "productName": "Conjunto de Taças de Vidro 340 ml",
+      "platform": "tiktok",
+      "mediaId": "media_597f2c63add00d47",
+      "scheduledAt": "2026-09-07T00:10:00.000Z",
+      "caption": "Vó Zélia Resolve analisou Conjunto de Taças de Vidro 340 ml: Conjunto com taças de vidro para água, vinho e suco, indicado para uso cotidiano e ocasiões especiais.. R$ 89,90. Confira os detalhes no link antes que a condição mude.",
+      "hashtags": [
+        "#casa",
+        "#familia",
+        "#especialistaemcasaeeconomiadomestica",
+        "#mesaecozinha"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.035Z"
+    },
+    {
+      "id": "post_432a2ec4-1489-4755-b902-47ea83add8cb",
+      "profileId": "prof_02bbfc52-8ed0-45a9-87f9-8333533b0aeb",
+      "profileName": "Carlos Cinco Estrelas",
+      "productId": "prod_cb87c50f-1d65-4a3c-8d9c-224e7da632b7",
+      "productName": "Capacete profissional para ciclistas urbanos",
+      "platform": "tiktok",
+      "mediaId": "media_7454b2dbc600937b",
+      "scheduledAt": "2026-09-07T00:10:00.000Z",
+      "caption": "Carlos Cinco Estrelas analisou Capacete profissional para ciclistas urbanos: Capacete leve para ciclistas urbanos, com ventilação, ajuste traseiro e faixas refletivas para entregas noturnas.. R$ 129,90. Confira os detalhes no link antes que a condição mude.",
+      "hashtags": [
+        "#automotivo",
+        "#vidareal",
+        "#motoristadeaplicativo",
+        "#ciclismoeseguranca"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.038Z"
+    },
+    {
+      "id": "post_93c08cb3-fc5d-4e6f-8357-c44f5a399618",
+      "profileId": "prof_db0a31d1-4d89-4140-a175-fca5aa112a33",
+      "profileName": "Célia do Céu",
+      "productId": "prod_2742a714-7793-490a-aab8-e7c49e02e3d6",
+      "productName": "Jogo 2/4/6 Taças Vidro Diamond Bico Jaca Abacaxi Conjunto Taça Para Água Vinho Tinto Suco Diamante | Shopee Brasil",
+      "platform": "tiktok",
+      "mediaId": "media_1aabfc2853466bd7",
+      "scheduledAt": "2026-09-07T00:10:00.000Z",
+      "caption": "Célia do Céu analisou Jogo 2/4/6 Taças Vidro Diamond Bico Jaca Abacaxi Conjunto Taça Para Água Vinho Tinto Suco Diamante: Compre Jogo 2/4/6 Taças Vidro Diamond Bico Jaca Abacaxi Conjunto Taça Para Água Vinho Tinto Suco Diamante na Shopee Brasil! Seja Bem Vindo a LifeHack !\r\nESCOLHA AS UNIDADES DESEJAD. Confira os detalhes no link antes que a condição mude.",
+      "hashtags": [
+        "#beleza",
+        "#skincare",
+        "#esteticistaeconsultoradebeleza",
+        "#produto"
+      ],
+      "objective": "conversao",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.041Z"
+    },
+    {
+      "id": "post_7c0294e2-8a47-4ce0-bbdc-968debc572c8",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "platform": "youtube",
+      "mediaId": "media_5a718402d1689767",
+      "scheduledAt": "2026-09-07T15:00:00.000Z",
+      "caption": "Você já reparou nisso? Biscoito e Batata Avalia mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#pets",
+        "#animais",
+        "#cachorrocriticodeprodutospet"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.022Z"
+    },
+    {
+      "id": "post_95fcccf5-6e4d-44ae-a540-74e7a2b97231",
+      "profileId": "prof_ca70db55-2dc0-403d-b5b4-5bff2f6336c8",
+      "profileName": "Léo Sem Lag",
+      "platform": "youtube",
+      "mediaId": "media_8545c8ae46214fc0",
+      "scheduledAt": "2026-09-07T15:00:00.000Z",
+      "caption": "Você já reparou nisso? Léo Sem Lag mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#games",
+        "#tecnologia",
+        "#analistadetecnologiaegamer"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.025Z"
+    },
+    {
+      "id": "post_8395c5ab-1b54-4e3e-b540-b7cdf3b62896",
+      "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+      "profileName": "Vó Zélia Resolve",
+      "shoppingUrl": "https://s.shopee.com.br/3B6tfafx0v",
+      "purchasePlacement": "description",
+      "purchaseText": "Onde comprar Porta Temperos Giratório Profissional 9 Potes de Vidro: https://s.shopee.com.br/3B6tfafx0v",
+      "platform": "youtube",
+      "mediaId": "media_2d893c5596c48c78",
+      "scheduledAt": "2026-09-07T15:00:00.000Z",
+      "caption": "Você já reparou nisso? Vó Zélia Resolve mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#casa",
+        "#familia",
+        "#especialistaemcasaeeconomiadomestica"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.035Z"
+    },
+    {
+      "id": "post_bb532207-2b9c-458e-ab34-a1d162ab9723",
+      "profileId": "prof_02bbfc52-8ed0-45a9-87f9-8333533b0aeb",
+      "profileName": "Carlos Cinco Estrelas",
+      "platform": "youtube",
+      "mediaId": "media_80e950516df30919",
+      "scheduledAt": "2026-09-07T15:00:00.000Z",
+      "caption": "Você já reparou nisso? Carlos Cinco Estrelas mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#automotivo",
+        "#vidareal",
+        "#motoristadeaplicativo"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.038Z"
+    },
+    {
+      "id": "post_fecb209e-014e-4d02-8b4d-f6e1d8ce693a",
+      "profileId": "prof_db0a31d1-4d89-4140-a175-fca5aa112a33",
+      "profileName": "Célia do Céu",
+      "platform": "youtube",
+      "mediaId": "media_51bd49bf6435c243",
+      "scheduledAt": "2026-09-07T15:00:00.000Z",
+      "caption": "Você já reparou nisso? Célia do Céu mostra um detalhe que quase todo mundo ignora.",
+      "hashtags": [
+        "#beleza",
+        "#skincare",
+        "#esteticistaeconsultoradebeleza"
+      ],
+      "objective": "alcance",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.041Z"
+    },
+    {
+      "id": "post_814dbf32-612d-41bc-b1f2-fab146bf4c84",
+      "profileId": "prof_c4db9b73-08a1-4ab1-9f05-abc3958d38b4",
+      "profileName": "Biscoito e Batata Avalia",
+      "platform": "shopee",
+      "mediaId": "media_fb71b8092f44e35d",
+      "scheduledAt": "2026-09-08T23:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Biscoito e Batata Avalia para facilitar sua rotina.",
+      "hashtags": [
+        "#pets",
+        "#animais",
+        "#cachorrocriticodeprodutospet",
+        "#dicadodia"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.022Z"
+    },
+    {
+      "id": "post_88bb04fc-9518-407e-9cf6-669c70e4f5fb",
+      "profileId": "prof_ca70db55-2dc0-403d-b5b4-5bff2f6336c8",
+      "profileName": "Léo Sem Lag",
+      "platform": "shopee",
+      "mediaId": "media_70afe76c9e77d528",
+      "scheduledAt": "2026-09-08T23:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Léo Sem Lag para facilitar sua rotina.",
+      "hashtags": [
+        "#games",
+        "#tecnologia",
+        "#analistadetecnologiaegamer",
+        "#dicadodia"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.026Z"
+    },
+    {
+      "id": "post_766517dc-c065-4439-ab73-a51e4279647c",
+      "profileId": "prof_a4c6a58c-714b-49c2-a44d-aa18625bb89a",
+      "profileName": "Vó Zélia Resolve",
+      "platform": "shopee",
+      "mediaId": "media_7dec2d3576b71cd3",
+      "scheduledAt": "2026-09-08T23:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Vó Zélia Resolve para facilitar sua rotina.",
+      "hashtags": [
+        "#casa",
+        "#familia",
+        "#especialistaemcasaeeconomiadomestica",
+        "#dicadodia"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.035Z"
+    },
+    {
+      "id": "post_2b6cbd7d-5512-4449-ba42-25816e904bb4",
+      "profileId": "prof_02bbfc52-8ed0-45a9-87f9-8333533b0aeb",
+      "profileName": "Carlos Cinco Estrelas",
+      "platform": "shopee",
+      "mediaId": "media_ca8d7fe834829828",
+      "scheduledAt": "2026-09-08T23:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Carlos Cinco Estrelas para facilitar sua rotina.",
+      "hashtags": [
+        "#automotivo",
+        "#vidareal",
+        "#motoristadeaplicativo",
+        "#dicadodia"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.038Z"
+    },
+    {
+      "id": "post_80b4d0fc-e566-439e-8449-75d83083f9cd",
+      "profileId": "prof_db0a31d1-4d89-4140-a175-fca5aa112a33",
+      "profileName": "Célia do Céu",
+      "platform": "shopee",
+      "mediaId": "media_61936d6e92e2c9ee",
+      "scheduledAt": "2026-09-08T23:30:00.000Z",
+      "caption": "Uma dica rápida e honesta de Célia do Céu para facilitar sua rotina.",
+      "hashtags": [
+        "#beleza",
+        "#skincare",
+        "#esteticistaeconsultoradebeleza",
+        "#dicadodia"
+      ],
+      "objective": "relacionamento",
+      "status": "draft",
+      "createdAt": "2026-08-26T17:46:04.041Z"
+    }
+  ],
+  "trends": {
+    "refreshedAt": "2026-09-01T12:18:05.557Z",
+    "nextRefreshAt": "2026-09-01T17:18:05.557Z",
+    "cadenceHours": 5,
+    "source": "baseline",
+    "platformSignals": {
+      "instagram": {
+        "peakHours": [
+          "12:15",
+          "19:30"
+        ],
+        "recommendedHashtagCount": 5,
+        "notes": [
+          "Hook visual no primeiro segundo",
+          "Legenda curta com palavra-chave",
+          "Responder comentários cedo"
+        ]
+      },
+      "tiktok": {
+        "peakHours": [
+          "18:45",
+          "21:10"
+        ],
+        "recommendedHashtagCount": 4,
+        "notes": [
+          "Contexto imediato",
+          "Texto pesquisável na legenda",
+          "Final que estimula replay"
+        ]
+      },
+      "youtube": {
+        "peakHours": [
+          "12:00",
+          "20:00"
+        ],
+        "recommendedHashtagCount": 3,
+        "notes": [
+          "Título pesquisável",
+          "Promessa entregue sem enrolação",
+          "Retenção acima de curtidas"
+        ]
+      },
+      "shopee": {
+        "peakHours": [
+          "10:30",
+          "20:30"
+        ],
+        "recommendedHashtagCount": 4,
+        "notes": [
+          "Benefício antes da oferta",
+          "Produto visível em uso",
+          "CTA direto para conferir detalhes"
+        ]
+      },
+      "mercado_livre": {
+        "peakHours": [
+          "09:30",
+          "18:30"
+        ],
+        "recommendedHashtagCount": 0,
+        "notes": [
+          "Título objetivo",
+          "Atributos completos",
+          "Descrição que antecipa dúvidas"
+        ]
+      }
+    }
+  },
+  "lastMediaScanAt": "2026-08-26T17:46:04.043Z",
+  "mediaProductLinks": {
+    "media_50862791b92557bf": "shopee_5ArzdKKBBT",
+    "media_9dc1364441e260b2": "shopee_5ArzdKKBBT",
+    "media_a6af858fd378de54": "shopee_3qMc2u6zDM",
+    "media_6e35e5d43e900378": "shopee_3qMc2u6zDM",
+    "media_83d05b875768fc10": "shopee_3B6tfafx0v",
+    "media_e124a5e6f385a63c": "shopee_3B6tfafx0v",
+    "media_c7622c149fcfeb21": "shopee_1VydvjN65J",
+    "media_3dd1ae087437b5ae": "shopee_1VydvjN65J",
+    "media_15b43496873c911d": "shopee_1VydvjN65J",
+    "media_3d8e2c559033b33f": "shopee_1VydvjN65J",
+    "media_a680a05d0f598513": "shopee_1VydvjN65J",
+    "media_606088eaf45203bb": "shopee_5ArzdKKBBT",
+    "media_83dfcda872ab1484": "shopee_3qMc2u6zDM",
+    "media_2d893c5596c48c78": "shopee_3B6tfafx0v",
+    "media_1a88ce3005e11f38": "shopee_5ArzdKKBBT",
+    "media_4eb7ebd313fa42e5": "shopee_3qMc2u6zDM",
+    "media_1e6b4d3cbc7967e5": "shopee_3B6tfafx0v"
+  }
+}

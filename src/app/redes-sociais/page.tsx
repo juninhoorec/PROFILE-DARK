@@ -1,97 +1,21 @@
 'use client';
+import { useEffect, useState } from 'react';
+import { CheckCircle2, ExternalLink, Loader2, LockKeyhole, Plus, ShieldCheck } from 'lucide-react';
 
-import React from 'react';
-import { Share2, ShieldCheck, CheckCircle2, AlertCircle, ExternalLink } from 'lucide-react';
+type Account = {id:string;platform:string;display_name:string;handle?:string;status:string};
+type Health = { configuration: Record<string,{ready:boolean}>; cloud: { accounts?: Account[] } };
+const NETWORKS = [
+  {id:'instagram',name:'Instagram',icon:'📸',description:'Conecte perfis profissionais e páginas do Instagram.',connect:'/api/social/oauth/meta'},
+  {id:'tiktok',name:'TikTok',icon:'🎵',description:'Conecte contas de criador autorizadas para publicação.',connect:'/api/social/oauth/tiktok'},
+  {id:'shopee',name:'Shopee',icon:'🛍️',description:'Conecte sua conta quando a publicação oficial estiver disponível.'},
+] as const;
 
-export default function RedesSociaisPage() {
-  const networks = [
-    {
-      id: 'instagram',
-      name: 'Instagram Professional',
-      handle: '@lunastar.oficial',
-      status: 'Conectado via Meta Graph API',
-      active: true,
-      icon: '📸',
-    },
-    {
-      id: 'tiktok',
-      name: 'TikTok for Creators',
-      handle: '@lunastar.dark',
-      status: 'Conectado via TikTok API v2',
-      active: true,
-      icon: '🎵',
-    },
-    {
-      id: 'youtube',
-      name: 'YouTube Shorts',
-      handle: 'Canal Luna Star',
-      status: 'Desconectado',
-      active: false,
-      icon: '▶️',
-    },
-  ];
-
-  return (
-    <div className="p-8 space-y-6">
-      {/* Header */}
-      <div>
-        <h1 className="text-xl font-bold text-white flex items-center gap-2">
-          <Share2 className="w-5 h-5 text-brand-400" />
-          Conexões de Redes Sociais
-        </h1>
-        <p className="text-xs text-zinc-400 mt-1">
-          Integrações diretas via OAuth e APIs oficiais. O Profile Dark nunca solicita senhas pessoais.
-        </p>
-      </div>
-
-      {/* Security notice */}
-      <div className="p-4 bg-[#141824] border border-blue-500/30 rounded-2xl flex items-start gap-3">
-        <ShieldCheck className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-        <div className="text-xs text-zinc-300">
-          <strong className="text-white block mb-0.5">Segurança & Conformidade:</strong>
-          Todas as publicações e análises de métricas utilizam tokens autenticados oficiais com escopo limitado de criador.
-        </div>
-      </div>
-
-      {/* Networks Grid */}
-      <div className="grid grid-cols-3 gap-6">
-        {networks.map((net) => (
-          <div
-            key={net.id}
-            className="bg-[#121216] border border-[#1F1F28] rounded-2xl p-5 space-y-4 shadow-subtle flex flex-col justify-between"
-          >
-            <div>
-              <div className="flex items-center justify-between">
-                <div className="text-2xl">{net.icon}</div>
-                <span
-                  className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                    net.active
-                      ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
-                      : 'bg-zinc-800 text-zinc-400'
-                  }`}
-                >
-                  {net.active ? 'Ativo' : 'Desconectado'}
-                </span>
-              </div>
-
-              <h3 className="text-sm font-bold text-white mt-3">{net.name}</h3>
-              <div className="text-xs text-brand-300 font-medium">{net.handle}</div>
-              <p className="text-[11px] text-zinc-400 mt-1">{net.status}</p>
-            </div>
-
-            <button
-              onClick={() => alert(`Gerenciando autenticação de ${net.name}`)}
-              className={`w-full py-2 rounded-xl text-xs font-semibold transition-all ${
-                net.active
-                  ? 'bg-[#181820] hover:bg-[#22222E] border border-[#272734] text-zinc-200'
-                  : 'bg-brand-600 hover:bg-brand-500 text-white shadow-purple-glow'
-              }`}
-            >
-              {net.active ? 'Gerenciar Conexão' : 'Conectar via OAuth 2.0'}
-            </button>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+export default function SocialNetworksPage(){
+  const [health,setHealth]=useState<Health|null>(null);
+  useEffect(()=>{void fetch('/api/social/health',{cache:'no-store'}).then(r=>r.json()).then(setHealth)},[]);
+  return <div className="mx-auto max-w-[1200px] space-y-6 p-4 sm:p-6 xl:p-8">
+    <header><div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.18em] text-brand-300"><ShieldCheck className="h-4 w-4"/>Conexões seguras</div><h1 className="mt-2 text-2xl font-bold text-white">Conectar redes sociais</h1><p className="mt-1 max-w-2xl text-xs leading-5 text-zinc-400">Escolha uma rede, entre na tela oficial dela e autorize o PD. Sua senha nunca é exibida nem armazenada pelo sistema.</p></header>
+    {!health?<div className="flex justify-center py-20"><Loader2 className="h-6 w-6 animate-spin text-brand-400"/></div>:<section className="grid gap-4 lg:grid-cols-3">{NETWORKS.map(net=>{const accounts=health.cloud.accounts?.filter(a=>a.platform===net.id)||[];const ready=net.id==='instagram'?health.configuration.instagram?.ready:net.id==='tiktok'?health.configuration.tiktok?.ready:false;return <article key={net.id} className="flex min-h-[300px] flex-col rounded-2xl border border-white/8 bg-gradient-to-b from-[#15151b] to-[#101014] p-5 shadow-subtle"><div className="flex items-center justify-between"><span className="text-3xl">{net.icon}</span><span className={`rounded-full px-2.5 py-1 text-[9px] font-bold ${accounts.length?'bg-emerald-400/10 text-emerald-300':'bg-white/5 text-zinc-500'}`}>{accounts.length?`${accounts.length} conectada${accounts.length===1?'':'s'}`:'Não conectado'}</span></div><h2 className="mt-4 text-base font-bold text-white">{net.name}</h2><p className="mt-1 text-[11px] leading-5 text-zinc-500">{net.description}</p><div className="mt-4 flex-1 space-y-2">{accounts.map(account=><div key={account.id} className="flex items-center gap-3 rounded-xl border border-emerald-400/15 bg-emerald-400/5 p-3"><CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400"/><div className="min-w-0"><div className="truncate text-xs font-semibold text-zinc-200">{account.display_name}</div><div className="truncate text-[9px] text-zinc-500">{account.handle||'Conta autorizada'}</div></div></div>)}</div>{'connect' in net&&net.connect?<a href={net.connect} className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 py-3 text-xs font-bold text-white hover:bg-brand-500"><Plus className="h-4 w-4"/>{accounts.length?'Conectar outra conta':`Entrar com ${net.name}`}<ExternalLink className="h-3.5 w-3.5 opacity-60"/></a>:<div className="mt-4 flex items-center gap-2 rounded-xl border border-white/8 bg-white/[.03] p-3 text-[10px] leading-4 text-zinc-500"><LockKeyhole className="h-4 w-4 shrink-0"/>Conexão oficial ainda não liberada pela plataforma.</div>}{'connect' in net&&net.connect&&!ready&&<p className="mt-2 text-center text-[9px] text-amber-300/80">Ativação da integração pendente pelo administrador do PD.</p>}</article>})}</section>}
+    <div className="rounded-2xl border border-blue-400/15 bg-blue-400/5 p-4 text-[10px] leading-5 text-zinc-400"><strong className="text-blue-200">Como funciona:</strong> ao clicar em conectar, você sai por alguns instantes para a página oficial da rede, faz login e escolhe quais contas deseja autorizar. Depois retorna automaticamente ao PD.</div>
+  </div>;
 }

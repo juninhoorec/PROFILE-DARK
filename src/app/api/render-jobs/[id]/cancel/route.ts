@@ -12,11 +12,15 @@ export async function POST(req: Request, { params }: { params: { id: string } })
       return NextResponse.json({ error: 'Não é possível cancelar um job já concluído.' }, { status: 400 });
     }
 
+    if (job.status === 'cancelado') {
+      return NextResponse.json({ job, message: 'Job já estava cancelado; nenhum novo estorno foi realizado.' });
+    }
+
     job.status = 'cancelado';
     db.saveJob(job);
     db.refundCredits(job.costCredits, `Reembolso por cancelamento do job ${job.id}`, job.id);
 
-    return NextResponse.json({ job, message: 'Job cancelado e créditos estornados com sucesso.' });
+    return NextResponse.json({ job, message: 'Trabalho cancelado sem qualquer cobrança.' });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }

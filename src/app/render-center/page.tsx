@@ -1,14 +1,16 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Film, RefreshCw, XCircle, CheckCircle2, AlertCircle, Play, MoreVertical, Layers } from 'lucide-react';
+import { Film, XCircle, Play } from 'lucide-react';
 import { GenerationJob } from '@/lib/types';
-import { INITIAL_RENDER_JOBS } from '@/lib/constants';
 import { getStatusBadge } from '@/lib/utils';
 
 export default function RenderCenterPage() {
-  const [jobs, setJobs] = useState<GenerationJob[]>(INITIAL_RENDER_JOBS);
+  const [jobs, setJobs] = useState<GenerationJob[]>([]);
   const [filter, setFilter] = useState<'todos' | 'processando' | 'concluidos' | 'falhas'>('todos');
+  const [status,setStatus]=useState<{type:'success'|'error';text:string}|null>(null);
+  const [videoProviderConfigured,setVideoProviderConfigured]=useState(false);
+  const [regenerating,setRegenerating]=useState<string|null>(null);
 
   useEffect(() => {
     fetch('/api/render-jobs')
@@ -17,35 +19,32 @@ export default function RenderCenterPage() {
         if (d.jobs) setJobs(d.jobs);
       })
       .catch(() => {});
+    fetch('/api/health').then(r=>r.json()).then(data=>setVideoProviderConfigured(Boolean(data.details?.find((item:{service:string;isConfigured:boolean})=>item.service==='video')?.isConfigured))).catch(()=>{});
   }, []);
 
-  const handleRetryScene = async (jobId: string, sceneNum: number) => {
-    try {
-      const res = await fetch(`/api/render-jobs/${jobId}/scene-retry`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sceneNumber: sceneNum }),
-      });
-      const d = await res.json();
-      if (d.job) {
-        setJobs((prev) => prev.map((j) => (j.id === jobId ? d.job : j)));
-        alert(`Regeneração da Cena ${sceneNum} iniciada mantendo Profile e Produto bloqueados.`);
-      }
-    } catch (e) {
-      console.error(e);
-    }
+  const handleRegenerate=async(jobId:string,sceneNumber:number)=>{
+    const key=`${jobId}:${sceneNumber}`;setRegenerating(key);setStatus(null);
+    try{
+      const response=await fetch(`/api/render-jobs/${jobId}/scene-retry`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sceneNumber})});
+      const data=await response.json();
+      if(!response.ok||!data.job)throw new Error(data.error||'A nova tentativa não foi concluída.');
+      setJobs(items=>items.map(item=>item.id===jobId?data.job:item));
+      setStatus({type:'success',text:`Vídeo refeito com foco na Cena ${sceneNumber}. Revise o resultado real antes de aprovar.`});
+    }catch(error){setStatus({type:'error',text:error instanceof Error?error.message:'Não foi possível refazer o vídeo.'});}
+    finally{setRegenerating(null);}
   };
 
   const handleCancelJob = async (jobId: string) => {
     try {
       const res = await fetch(`/api/render-jobs/${jobId}/cancel`, { method: 'POST' });
       const d = await res.json();
+      if(!res.ok)throw new Error(d.error||'Não foi possível cancelar o job.');
       if (d.job) {
         setJobs((prev) => prev.map((j) => (j.id === jobId ? d.job : j)));
-        alert('Job cancelado e créditos estornados.');
+        setStatus({type:'success',text:d.alreadyCanceled?'Este trabalho já estava cancelado.':'Trabalho cancelado sem qualquer cobrança.'});
       }
     } catch (e) {
-      console.error(e);
+      setStatus({type:'error',text:e instanceof Error?e.message:'Não foi possível cancelar o job.'});
     }
   };
 
@@ -57,7 +56,8 @@ export default function RenderCenterPage() {
   });
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-5 sm:p-8 space-y-6">
+      {status&&<div role="status" className={`rounded-xl border px-4 py-3 text-sm ${status.type==='success'?'border-emerald-500/25 bg-emerald-500/10 text-emerald-200':'border-red-500/25 bg-red-500/10 text-red-200'}`}>{status.text}</div>}
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -90,8 +90,10 @@ export default function RenderCenterPage() {
 
       {/* Jobs List */}
       <div className="space-y-4">
+        {filteredJobs.length===0&&<div className="rounded-2xl border border-dashed border-[#292933] py-14 text-center text-sm text-zinc-500">Nenhum job nesta categoria.</div>}
         {filteredJobs.map((job) => {
           const badge = getStatusBadge(job.status);
+          const isDemo = Boolean(job.isDemo);
 
           return (
             <div
@@ -99,7 +101,7 @@ export default function RenderCenterPage() {
               className="bg-[#121216] border border-[#1F1F28] rounded-2xl p-5 space-y-4 shadow-subtle"
             >
               {/* Job Header */}
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <img
                     src={job.thumbnailUrl || job.profileAvatarUrl}
@@ -108,6 +110,7 @@ export default function RenderCenterPage() {
                   />
                   <div>
                     <h3 className="text-sm font-bold text-white">{job.title}</h3>
+                    {isDemo && <span className="inline-block mt-1 rounded bg-amber-500/10 border border-amber-500/20 px-1.5 py-0.5 text-[9px] font-bold text-amber-300">DEMO — não é uma renderização do Profile Dark</span>}
                     <div className="text-[11px] text-zinc-400 mt-0.5">
                       Profile: <strong className="text-zinc-200">{job.profileName}</strong> •{' '}
                       {job.productName ? `Produto: ${job.productName} • ` : ''}
@@ -123,7 +126,7 @@ export default function RenderCenterPage() {
                     <span className={`text-xs font-bold ${badge.text}`}>{badge.label}</span>
                   </div>
 
-                  {job.status !== 'concluido' && job.status !== 'cancelado' && (
+                  {!isDemo && job.status !== 'concluido' && job.status !== 'cancelado' && job.status !== 'falhou' && (
                     <button
                       onClick={() => handleCancelJob(job.id)}
                       className="px-3 py-1.5 bg-[#1C1518] hover:bg-[#2A1D22] border border-red-500/30 text-red-400 rounded-xl text-xs font-semibold transition-colors flex items-center gap-1.5"
@@ -142,7 +145,7 @@ export default function RenderCenterPage() {
                   <span className="text-brand-400">{job.progress}% Concluído</span>
                 </div>
 
-                <div className="grid grid-cols-8 gap-2 text-center pt-1">
+                <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-8 gap-2 text-center pt-1">
                   {job.pipeline.map((stage) => {
                     const isDone = stage.status === 'completed';
                     const isRunning = stage.status === 'in_progress';
@@ -169,16 +172,18 @@ export default function RenderCenterPage() {
               </div>
 
               {/* Granular Scene Controls */}
-              <div className="flex items-center justify-between text-xs pt-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-zinc-500 font-semibold text-[10.5px]">Regenerar cena específica:</span>
-                  {[1, 2, 3].map((sNum) => (
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 text-xs pt-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-zinc-500 font-semibold text-[10.5px]">Refazer vídeo com foco na cena:</span>
+                  {(job.creativePlan?.scenes.map(scene=>scene.sceneNumber)||[]).map((sNum) => (
                     <button
                       key={sNum}
-                      onClick={() => handleRetryScene(job.id, sNum)}
-                      className="px-2 py-1 bg-[#181822] hover:bg-[#242432] border border-[#2B2B3C] rounded-lg text-[10.5px] font-medium text-zinc-300 hover:text-white transition-colors"
+                      onClick={()=>handleRegenerate(job.id,sNum)}
+                      disabled={isDemo||!videoProviderConfigured||regenerating!==null}
+                      title={isDemo?'Jobs demonstrativos não podem ser alterados':!videoProviderConfigured?'Configure um provider de vídeo real':'Um novo vídeo completo será renderizado com foco na correção desta cena'}
+                      className="px-2 py-1 bg-[#181822] hover:bg-[#242432] border border-[#2B2B3C] rounded-lg text-[10.5px] font-medium text-zinc-300 hover:text-white transition-colors disabled:cursor-not-allowed disabled:opacity-40"
                     >
-                      Regenerar Cena {sNum}
+                      {regenerating===`${job.id}:${sNum}`?'Refazendo...':`Cena ${sNum}`}
                     </button>
                   ))}
                 </div>
@@ -191,7 +196,7 @@ export default function RenderCenterPage() {
                     className="px-4 py-1.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs font-bold transition-all shadow-purple-glow flex items-center gap-1.5"
                   >
                     <Play className="w-3.5 h-3.5" />
-                    <span>Assistir Vídeo Final</span>
+                    <span>{isDemo ? 'Assistir vídeo demo' : 'Assistir Vídeo Final'}</span>
                   </a>
                 )}
               </div>

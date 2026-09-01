@@ -1,6 +1,6 @@
 import { db } from '../storage/db';
 import { SmartProviderRouter } from './router/smart-provider-router';
-import { VisualInspector } from './visual-inspector';
+import { PDGenerationEngine } from './engine/pd-generation-engine';
 import { GenerationJob, CreativePlan, Profile, Product } from '../types';
 
 export class AIOrchestrator {
@@ -24,19 +24,37 @@ export class AIOrchestrator {
       isSmokeTest = false,
     } = params;
 
-    const duration = isSmokeTest ? 3 : creativePlan.targetDurationSeconds;
-    const cost = isSmokeTest ? 15 : Math.round(duration * 3.5);
+    const duration = isSmokeTest ? 3 : Math.max(20, creativePlan.targetDurationSeconds || 20);
+    const freeOnly = process.env.FREE_ONLY_MODE !== 'false';
+    const cost = freeOnly ? 0 : isSmokeTest ? 15 : Math.round(duration * 3.5);
 
     // Reserve credits
-    const reserved = db.reserveCredits(
+    const reserved = freeOnly || db.reserveCredits(
       cost,
-      `Geração de vídeo (${isSmokeTest ? 'Teste 3s' : `${duration}s - ${resolution}`}) para ${profile.name}`,
+      `Geração de vídeo (${isSmokeTest ? 'Teste rápido 3s' : `${duration}s - ${resolution}`}) para ${profile.name}`,
     );
 
     if (!reserved) {
-      throw new Error('Créditos insuficientes na conta.');
+      throw new Error('Limite interno indisponível.');
     }
 
+    // Try PDGenerationEngine first (Local multi-scene pipeline >= 20s)
+    try {
+      const job = await PDGenerationEngine.produceVideo({
+        title,
+        profile,
+        product,
+        customScript: creativePlan.fullScript,
+        targetDurationSeconds: duration,
+        isSmokeTest,
+        resolution: resolution === '1080p' ? '1080p' : '720p',
+      });
+      return job;
+    } catch (engineErr) {
+      console.warn('PDGenerationEngine fallback to router:', engineErr);
+    }
+
+    // Fallback to SmartProviderRouter
     const job: GenerationJob = {
       id: `job_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
       title,
@@ -71,7 +89,6 @@ export class AIOrchestrator {
 
     db.saveJob(job);
 
-    // Trigger video synthesis via SmartProviderRouter
     const videoRes = await SmartProviderRouter.generateVideo({
       prompt: creativePlan.fullScript,
       imageUrl: profile.avatarUrl,
@@ -82,19 +99,12 @@ export class AIOrchestrator {
     if (videoRes.success && videoRes.data) {
       job.videoUrl = videoRes.data.videoUrl;
       job.thumbnailUrl = videoRes.data.thumbnailUrl;
+      job.durationSeconds = videoRes.data.actualDurationSeconds || duration;
       job.status = 'concluido';
       job.progress = 100;
       job.providerUsed = `${videoRes.provider} / ${videoRes.model}`;
       job.completedAt = new Date().toISOString();
-
-      // Mark all pipeline stages completed
       job.pipeline.forEach((p) => (p.status = 'completed'));
-
-      // Perform AI Quality Inspection
-      const qualityCheck = VisualInspector.inspect(job);
-      db.saveQualityCheck(qualityCheck);
-      job.qualityScore = qualityCheck.metrics.overallQuality;
-
       db.saveJob(job);
     } else {
       job.status = 'falhou';
@@ -107,7 +117,7 @@ export class AIOrchestrator {
     return job;
   }
 
-  // 3-Second Smoke Test Execution
+  // Short 3-second smoke test
   static async run3SecondTest(profile: Profile, product?: Product): Promise<GenerationJob> {
     const testPlan: CreativePlan = {
       id: `test_plan_${Date.now()}`,
@@ -117,7 +127,7 @@ export class AIOrchestrator {
       objective: 'conversao',
       funnelStage: 'meio',
       targetDurationSeconds: 3,
-      hook: `Teste de 3 segundos para ${profile.name}`,
+      hook: `Teste rápido de 3 segundos para ${profile.name}`,
       creativeAngle: 'Smoke Test de Validação de Identidade e Produto',
       fullScript: `[CENA 1 - 3 SEGUNDOS]\n${profile.name} olha para a câmera com movimento suave e sorriso autêntico segurando ${product ? product.name : 'produto de referência'}.`,
       scenes: [
@@ -135,16 +145,16 @@ export class AIOrchestrator {
         },
       ],
       ctaText: 'Aprovar e gerar vídeo completo',
-      captionText: 'Teste de validação de pipeline 3s.',
+      captionText: 'Teste rápido de validação do pipeline.',
       hashtags: ['#SmokeTest', '#ProfileDark'],
-      thumbnailPrompt: `Thumbnail de validação 3s para ${profile.name}`,
+      thumbnailPrompt: `Thumbnail de validação rápida para ${profile.name}`,
       thumbnailUrl: profile.avatarUrl,
-      estimatedCredits: 15,
+      estimatedCredits: 0,
       createdAt: new Date().toISOString(),
     };
 
     return this.startJob({
-      title: `⚡ Teste de 3s — ${profile.name} ${product ? `(${product.name})` : ''}`,
+      title: `⚡ Teste rápido 3s — ${profile.name} ${product ? `(${product.name})` : ''}`,
       profile,
       product,
       creativePlan: testPlan,
@@ -168,18 +178,29 @@ export class AIOrchestrator {
     job.progress = Math.min(85, job.progress);
     db.saveJob(job);
 
-    // Simulate scene regeneration
-    setTimeout(() => {
+    const result = await SmartProviderRouter.generateVideo({
+      prompt: job.creativePlan?.fullScript || `Regenerar cena ${sceneNumber} de ${job.title}`,
+      imageUrl: job.profileAvatarUrl,
+      durationSeconds: job.durationSeconds,
+      aspectRatio: job.aspectRatio,
+    });
+
+    if (result.success && result.data) {
       if (sceneStage) sceneStage.status = 'completed';
       job.status = 'concluido';
       job.progress = 100;
-      const qc = VisualInspector.inspect(job);
-      qc.status = 'passed';
-      qc.details.issues = [];
-      qc.details.autoFixAvailable = false;
-      db.saveQualityCheck(qc);
-      db.saveJob(job);
-    }, 1500);
+      job.videoUrl = result.data.videoUrl;
+      job.thumbnailUrl = result.data.thumbnailUrl;
+      job.providerUsed = `${result.provider} / ${result.model}`;
+      job.completedAt = new Date().toISOString();
+      job.pipeline.forEach((stage) => (stage.status = 'completed'));
+    } else {
+      if (sceneStage) sceneStage.status = 'failed';
+      job.status = 'falhou';
+      job.errorMessage = result.error;
+      job.userFriendlyError = result.userFriendlyError;
+    }
+    db.saveJob(job);
 
     return job;
   }

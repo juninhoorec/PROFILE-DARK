@@ -1,0 +1,22 @@
+{
+  "baselineUsed": "GENERATION_ENGINE_BASELINE_V2_GENERATIVE",
+  "videoProvider": "RemoteGpuVideoProvider / SmartVideoRouter",
+  "voiceProvider": "Chatterbox Multilingual / Windows SAPI (PT-BR)",
+  "lipSyncProvider": "LatentSync (Applied on Scene 1 & Scene 5)",
+  "scenes": 5,
+  "takesGenerated": 5,
+  "takesRejected": 0,
+  "automaticRepairs": 0,
+  "editorFixes": [
+    "Smart Cut trimming applied",
+    "EBU R128 Loudness Normalization (-16 LUFS)",
+    "AAC 48kHz stereo muxing"
+  ],
+  "duration": 22.16,
+  "sourceResolution": "720x1280",
+  "finalResolution": "1080x1920",
+  "totalGenerationTime": 53,
+  "totalCost": 0,
+  "finalQAApproval": true,
+  "qualityScore": 97
+}

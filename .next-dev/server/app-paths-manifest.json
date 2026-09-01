@@ -1,0 +1,5 @@
+{
+  "/biblioteca/page": "app/biblioteca/page.js",
+  "/redes-sociais/page": "app/redes-sociais/page.js",
+  "/api/social/health/route": "app/api/social/health/route.js"
+}

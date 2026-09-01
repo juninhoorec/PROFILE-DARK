@@ -25,13 +25,13 @@ export const SystemDoctorModal: React.FC<SystemDoctorModalProps> = ({
   onClose,
 }) => {
   const [report, setReport] = useState<DiagnosticReport>({
-    overallStatus: 'healthy',
-    summary: 'Todos os sistemas de Inteligência Artificial, renderização e storage estão operacionais.',
+    overallStatus: 'critical',
+    summary: 'Carregando diagnóstico real do sistema.',
     providers: INITIAL_PROVIDER_HEALTH,
     issuesFound: [],
-    recommendedActions: ['Nenhuma ação corretiva necessária. Todos os pipelines estão saudáveis.'],
-    canRunGeneration: true,
-    canRun3SecondTest: true,
+    recommendedActions: ['Aguarde a leitura das integrações.'],
+    canRunGeneration: false,
+    canRun3SecondTest: false,
   });
   const [isRefreshing, setIsRefreshing] = useState(false);
 
@@ -72,7 +72,7 @@ export const SystemDoctorModal: React.FC<SystemDoctorModalProps> = ({
                 AI System Doctor — Auto-Diagnóstico
               </h2>
               <p className="text-xs text-zinc-400">
-                Monitoramento contínuo de latência, disponibilidade de providers e saúde do storage.
+                Diagnóstico sob demanda de disponibilidade, configuração e respostas já validadas.
               </p>
             </div>
           </div>
@@ -91,7 +91,7 @@ export const SystemDoctorModal: React.FC<SystemDoctorModalProps> = ({
                 : 'bg-amber-500/10 border-amber-500/30 text-amber-300'
             }`}
           >
-            <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+            {report.overallStatus==='healthy'?<CheckCircle2 className="w-5 h-5 flex-shrink-0" />:<AlertTriangle className="w-5 h-5 flex-shrink-0"/>}
             <div>
               <div className="font-bold text-xs">
                 {report.overallStatus === 'healthy' ? 'Sistema 100% Operacional' : 'Avisos Encontrados'}
@@ -106,10 +106,12 @@ export const SystemDoctorModal: React.FC<SystemDoctorModalProps> = ({
               Status Individual dos Providers
             </span>
             <div className="bg-[#0C0C0F] border border-[#1E1E26] rounded-xl divide-y divide-[#181820] overflow-hidden">
-              {report.providers.map((p) => (
+              {report.providers.map((p) => {
+                const operational=p.status==='operational';
+                return (
                 <div key={p.service} className="p-3 flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    <span className={`w-2 h-2 rounded-full ${operational?'bg-emerald-400':'bg-amber-400'}`} />
                     <div>
                       <div className="font-semibold text-zinc-200">{p.name}</div>
                       <div className="text-[10px] text-zinc-500">
@@ -117,11 +119,11 @@ export const SystemDoctorModal: React.FC<SystemDoctorModalProps> = ({
                       </div>
                     </div>
                   </div>
-                  <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px] font-bold uppercase">
-                    Operacional
+                  <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${operational?'bg-emerald-500/10 text-emerald-400':'bg-amber-500/10 text-amber-300'}`}>
+                    {operational?'Operacional':p.status==='degraded'?'Aguardando validação':'Não configurado'}
                   </span>
                 </div>
-              ))}
+              )})}
             </div>
           </div>
 

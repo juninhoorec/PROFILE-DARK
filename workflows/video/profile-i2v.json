@@ -1,0 +1,44 @@
+{
+  "1": {
+    "inputs": {
+      "unet_name": "wan2.1_i2v_480p_14B.safetensors"
+    },
+    "class_type": "UNETLoader"
+  },
+  "2": {
+    "inputs": {
+      "image": "input_master_image.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage"
+  },
+  "3": {
+    "inputs": {
+      "text": "Smooth natural head movement, realistic eye blinks, subtle facial expressions, cinematic lighting",
+      "clip_name": "umt5_xxl_fp8.safetensors"
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "4": {
+    "inputs": {
+      "model": ["1", 0],
+      "image": ["2", 0],
+      "positive": ["3", 0],
+      "steps": 25,
+      "cfg": 6.0,
+      "frames": 81,
+      "fps": 25
+    },
+    "class_type": "WanVideoSampler"
+  },
+  "5": {
+    "inputs": {
+      "frame_rate": 25,
+      "loop_count": 0,
+      "filename_prefix": "PD_Wan_I2V",
+      "format": "video/h264-mp4",
+      "images": ["4", 0]
+    },
+    "class_type": "VHS_VideoCombine"
+  }
+}

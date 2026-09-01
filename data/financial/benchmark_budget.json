@@ -1,0 +1,10 @@
+{
+  "budgetTotalBrl": 5,
+  "budgetReservedBrl": 0,
+  "budgetSpentBrl": 1.55,
+  "budgetRemainingBrl": 3.45,
+  "exchangeRateUsdBrl": 5.1506,
+  "isExchangeEstimated": false,
+  "autoRecharge": false,
+  "lastUpdated": "2026-08-25T14:16:16.705Z"
+}

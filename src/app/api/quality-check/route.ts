@@ -1,20 +1,12 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/storage/db';
-import { VisualInspector } from '@/lib/ai/visual-inspector';
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const jobId = searchParams.get('jobId');
 
   if (jobId) {
-    let qc = db.getQualityCheckByJobId(jobId);
-    if (!qc) {
-      const job = db.getJobById(jobId);
-      if (job) {
-        qc = VisualInspector.inspect(job);
-        db.saveQualityCheck(qc);
-      }
-    }
+    const qc = db.getQualityCheckByJobId(jobId);
     return NextResponse.json({ qualityCheck: qc });
   }
 
@@ -30,10 +22,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Job não encontrado.' }, { status: 404 });
     }
 
-    const qc = VisualInspector.inspect(job);
-    db.saveQualityCheck(qc);
-
-    return NextResponse.json({ qualityCheck: qc });
+    return NextResponse.json({ error: 'O inspetor multimodal ainda não está configurado. Nenhuma nota automática foi inventada.', jobId: job.id }, { status: 503 });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }

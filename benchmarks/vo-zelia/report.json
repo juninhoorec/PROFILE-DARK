@@ -1,0 +1,34 @@
+{
+  "duration": 5,
+  "resolution": "1080x1920",
+  "fps": 30,
+  "imageProvider": "FLUX.2 klein / ProfileConsistencyEngine",
+  "voiceProvider": "Chatterbox Multilingual / Windows SAPI (PT-BR)",
+  "videoProvider": "Local Talking Avatar Synthesizer (Wan 2.2 / LongCat Configurado)",
+  "lipSyncProvider": "Audio Envelope Modulation / LatentSync Configurado",
+  "renderEngine": "FFmpeg (1080x1920 9:16 @ 30fps, EBU R128 -16 LUFS, AAC 48kHz)",
+  "generationTimeSeconds": 11,
+  "realVideoGeneration": false,
+  "audioSampleRate": 48000,
+  "files": {
+    "masterReference": "benchmarks/vo-zelia/master-reference.png",
+    "voice": "benchmarks/vo-zelia/voice.wav",
+    "rawVideo": "benchmarks/vo-zelia/raw-video.mp4",
+    "lipsyncVideo": "benchmarks/vo-zelia/lipsync-video.mp4",
+    "finalVideo": "benchmarks/vo-zelia/final-video.mp4"
+  },
+  "hardwareUsed": {
+    "os": "Windows 10 Pro",
+    "gpu": "AMD Radeon R9 380 (2GB VRAM)",
+    "cudaAvailable": false,
+    "executionMode": "Local Lightweight / SAPI / Sharp / FFmpeg"
+  },
+  "characterEvaluation": {
+    "characterName": "Vó Zélia Resolve",
+    "wardrobe": "Avental estampado",
+    "hair": "Grisalho ondulado",
+    "environment": "Cozinha acolhedora",
+    "facialMovement": "Modulado por envelope de fala",
+    "audioAlignment": "Sincronizado via timestamps"
+  }
+}

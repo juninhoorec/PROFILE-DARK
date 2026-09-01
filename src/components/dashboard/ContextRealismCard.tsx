@@ -1,18 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-export const ContextRealismCard: React.FC = () => {
-  const [keepContext, setKeepContext] = useState(true);
-  const [preserveProduct, setPreserveProduct] = useState(true);
-  const [autoCaptions, setAutoCaptions] = useState(true);
-  const [showWatermark, setShowWatermark] = useState(false);
-  const [realismLevel, setRealismLevel] = useState(90);
-  const [renderQuality, setRenderQuality] = useState('4K (Ultra)');
-  const [visualStyle, setVisualStyle] = useState('Natural');
-  const [backgroundScene, setBackgroundScene] = useState('Adaptar ao contexto');
+export type GenerationSettings = { keepContext:boolean; preserveProduct:boolean; autoCaptions:boolean; showWatermark:boolean; realismLevel:number; renderQuality:string; visualStyle:string; backgroundScene:string };
+export const DEFAULT_GENERATION_SETTINGS:GenerationSettings = {keepContext:true,preserveProduct:true,autoCaptions:true,showWatermark:false,realismLevel:90,renderQuality:'1080p (Full HD)',visualStyle:'Natural',backgroundScene:'Adaptar ao contexto'};
+
+export const ContextRealismCard: React.FC<{value:GenerationSettings;onChange:(value:GenerationSettings)=>void}> = ({value,onChange}) => {
+  const update=<K extends keyof GenerationSettings>(key:K,next:GenerationSettings[K])=>onChange({...value,[key]:next});
+  const {keepContext,preserveProduct,autoCaptions,showWatermark,realismLevel,renderQuality,visualStyle,backgroundScene}=value;
 
   return (
     <div className="bg-[#121215] border border-[#1F1F26] rounded-2xl p-4 flex flex-col justify-between h-[360px] shadow-subtle">
@@ -42,7 +39,7 @@ export const ContextRealismCard: React.FC = () => {
                 </div>
               </div>
               <button
-                onClick={() => setKeepContext(!keepContext)}
+                onClick={() => update('keepContext',!keepContext)}
                 className={cn(
                   'w-8 h-4.5 rounded-full transition-colors relative flex items-center p-0.5',
                   keepContext ? 'bg-emerald-500' : 'bg-zinc-700'
@@ -68,7 +65,7 @@ export const ContextRealismCard: React.FC = () => {
                 </div>
               </div>
               <button
-                onClick={() => setPreserveProduct(!preserveProduct)}
+                onClick={() => update('preserveProduct',!preserveProduct)}
                 className={cn(
                   'w-8 h-4.5 rounded-full transition-colors relative flex items-center p-0.5',
                   preserveProduct ? 'bg-emerald-500' : 'bg-zinc-700'
@@ -90,11 +87,11 @@ export const ContextRealismCard: React.FC = () => {
                   Legendas automáticas
                 </div>
                 <div className="text-[9.5px] text-zinc-400 leading-tight">
-                  Gera legendas com IA.
+                  Planeja legendas junto com o roteiro.
                 </div>
               </div>
               <button
-                onClick={() => setAutoCaptions(!autoCaptions)}
+                onClick={() => update('autoCaptions',!autoCaptions)}
                 className={cn(
                   'w-8 h-4.5 rounded-full transition-colors relative flex items-center p-0.5',
                   autoCaptions ? 'bg-emerald-500' : 'bg-zinc-700'
@@ -120,7 +117,7 @@ export const ContextRealismCard: React.FC = () => {
                 </div>
               </div>
               <button
-                onClick={() => setShowWatermark(!showWatermark)}
+                onClick={() => update('showWatermark',!showWatermark)}
                 className={cn(
                   'w-8 h-4.5 rounded-full transition-colors relative flex items-center p-0.5',
                   showWatermark ? 'bg-emerald-500' : 'bg-zinc-700'
@@ -153,7 +150,7 @@ export const ContextRealismCard: React.FC = () => {
                 min="50"
                 max="100"
                 value={realismLevel}
-                onChange={(e) => setRealismLevel(Number(e.target.value))}
+                onChange={(e) => update('realismLevel',Number(e.target.value))}
                 className="w-full cursor-pointer"
               />
             </div>
@@ -165,7 +162,7 @@ export const ContextRealismCard: React.FC = () => {
               </label>
               <select
                 value={renderQuality}
-                onChange={(e) => setRenderQuality(e.target.value)}
+                onChange={(e) => update('renderQuality',e.target.value)}
                 className="w-full py-1.5 px-2 bg-[#0E0E12] border border-[#24242C] rounded-xl text-xs text-zinc-100 focus:outline-none focus:border-brand-500"
               >
                 <option>4K (Ultra)</option>
@@ -181,7 +178,7 @@ export const ContextRealismCard: React.FC = () => {
               </label>
               <select
                 value={visualStyle}
-                onChange={(e) => setVisualStyle(e.target.value)}
+                onChange={(e) => update('visualStyle',e.target.value)}
                 className="w-full py-1.5 px-2 bg-[#0E0E12] border border-[#24242C] rounded-xl text-xs text-zinc-100 focus:outline-none focus:border-brand-500"
               >
                 <option>Natural</option>
@@ -198,7 +195,7 @@ export const ContextRealismCard: React.FC = () => {
               </label>
               <select
                 value={backgroundScene}
-                onChange={(e) => setBackgroundScene(e.target.value)}
+                onChange={(e) => update('backgroundScene',e.target.value)}
                 className="w-full py-1.5 px-2 bg-[#0E0E12] border border-[#24242C] rounded-xl text-xs text-zinc-100 focus:outline-none focus:border-brand-500"
               >
                 <option>Adaptar ao contexto</option>

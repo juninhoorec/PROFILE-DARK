@@ -1,0 +1,60 @@
+{
+  "generativeVideo": true,
+  "provider": "RemoteGpuVideoProvider / SmartVideoRouter",
+  "model": "Wan 2.2 / Local Synthesizer / LatentSync",
+  "duration": 22.16,
+  "sourceResolution": "720x1280",
+  "finalResolution": "1080x1920",
+  "lipSync": "LatentSync (Applied on Scene 1 & Scene 5)",
+  "takesGenerated": 5,
+  "repairs": 0,
+  "totalGenerationSeconds": 53,
+  "audioSampleRate": 48000,
+  "scenes": [
+    {
+      "sceneNumber": 1,
+      "title": "Cena 1 — Abertura & Gancho (Talking)",
+      "folder": "scene-01",
+      "duration": 4,
+      "type": "character_talking",
+      "isTalkingHead": true
+    },
+    {
+      "sceneNumber": 2,
+      "title": "Cena 2 — Close-up do Produto",
+      "folder": "scene-02",
+      "duration": 4,
+      "type": "product_closeup",
+      "isTalkingHead": false
+    },
+    {
+      "sceneNumber": 3,
+      "title": "Cena 3 — Demonstração & Interação Física",
+      "folder": "scene-03",
+      "duration": 5,
+      "type": "character_movement",
+      "isTalkingHead": false
+    },
+    {
+      "sceneNumber": 4,
+      "title": "Cena 4 — B-roll do Resultado Impecável",
+      "folder": "scene-04",
+      "duration": 4,
+      "type": "b_roll",
+      "isTalkingHead": false
+    },
+    {
+      "sceneNumber": 5,
+      "title": "Cena 5 — Conclusão & CTA (Talking)",
+      "folder": "scene-05",
+      "duration": 5,
+      "type": "character_talking",
+      "isTalkingHead": true
+    }
+  ],
+  "files": {
+    "audio": "benchmarks/vo-zelia/generative-v2/20s/audio.wav",
+    "finalVideo": "benchmarks/vo-zelia/generative-v2/20s/final.mp4"
+  },
+  "qualityScore": 95
+}

@@ -1,30 +1,51 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Users, Plus, Lock, Sparkles, Edit3, Camera, Copy, CheckCheck, X } from 'lucide-react';
+import { Users, Plus, Lock, Edit3, Camera, Copy, CheckCheck, X, BriefcaseBusiness, Sparkles } from 'lucide-react';
 import { Profile } from '@/lib/types';
-import { INITIAL_PROFILES } from '@/lib/constants';
 import { CreateProfileModal } from '@/components/modals/CreateProfileModal';
+import { EditProfileModal } from '@/components/modals/EditProfileModal';
 import { RealismEngine } from '@/lib/ai/realism-engine';
+import { ProfileProfessionalKitModal } from '@/components/modals/ProfileProfessionalKitModal';
+import { GenerateProfileMediaModal } from '@/components/modals/GenerateProfileMediaModal';
 
 export default function ProfilesPage() {
-  const [profiles, setProfiles] = useState<Profile[]>(INITIAL_PROFILES);
+  const [profiles, setProfiles] = useState<Profile[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [viewPromptProfile, setViewPromptProfile] = useState<Profile | null>(null);
+  const [mediaProfile, setMediaProfile] = useState<Profile | null>(null);
   const [copiedPrompt, setCopiedPrompt] = useState(false);
+  const [editingProfile, setEditingProfile] = useState<Profile | null>(null);
+  const [kitProfile, setKitProfile] = useState<Profile | null>(null);
+  const [initialProduct, setInitialProduct] = useState<string>();
+  const [initialArchetype, setInitialArchetype] = useState<string>();
 
   useEffect(() => {
     fetch('/api/profiles')
       .then((r) => r.json())
       .then((d) => {
-        if (d.profiles) setProfiles(d.profiles);
+        if (d.profiles) {
+          setProfiles(d.profiles);
+          const editId = new URLSearchParams(window.location.search).get('edit');
+          if (editId) setEditingProfile(d.profiles.find((profile: Profile) => profile.id === editId) || null);
+        }
       })
       .catch(() => {});
   }, []);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('create') === '1') setIsModalOpen(true);
+    setInitialProduct(params.get('product') || undefined);
+    setInitialArchetype(params.get('archetype') || undefined);
+  }, []);
+
   const handleProfileCreated = (newProfile: Profile) => {
-    setProfiles((prev) => [newProfile, ...prev]);
+    setProfiles((prev) => [newProfile, ...prev.filter(item=>item.id!==newProfile.id)]);
   };
+
+  const handleProfileUpdated = (updated: Profile) => setProfiles((items) => items.map((item) => item.id === updated.id ? updated : item));
+  const handleProfileDeleted = (id: string) => setProfiles((items) => items.filter((item) => item.id !== id));
 
   const handleCopyPrompt = (promptText: string) => {
     navigator.clipboard.writeText(promptText);
@@ -33,16 +54,16 @@ export default function ProfilesPage() {
   };
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-5 sm:p-8 space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-xl font-bold text-white flex items-center gap-2">
             <Users className="w-5 h-5 text-brand-400" />
             Profiles Virtuais
           </h1>
           <p className="text-xs text-zinc-400 mt-1">
-            Personagens virtuais hiper-realistas com Character Lock ativo e finalidade comercial definida.
+            Personagens com DNA profissional, finalidade comercial definida e Character Lock configurável por referência.
           </p>
         </div>
 
@@ -56,7 +77,7 @@ export default function ProfilesPage() {
       </div>
 
       {/* Profiles Grid */}
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
         {profiles.map((p) => (
           <div
             key={p.id}
@@ -73,8 +94,8 @@ export default function ProfilesPage() {
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
                     <h3 className="text-sm font-bold text-white">{p.name}</h3>
-                    <span className="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-semibold">
-                      {p.realismScore}% Realismo
+                    <span className={`px-2 py-0.5 rounded border text-[10px] font-semibold ${p.realismScore > 0 ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' : 'bg-amber-500/10 border-amber-500/30 text-amber-300'}`}>
+                      {p.realismScore > 0 ? `${p.realismScore}% Realismo` : 'Aguardando referência'}
                     </span>
                   </div>
                   <div className="text-[11px] text-brand-400 font-medium">{p.niche}</div>
@@ -102,20 +123,38 @@ export default function ProfilesPage() {
               <div className="mt-3 flex items-center justify-between pt-2 border-t border-[#1C1C24] text-[10.5px]">
                 <div className="flex items-center gap-1 text-emerald-400 font-semibold">
                   <Lock className="w-3 h-3" />
-                  <span>Character Lock 100%</span>
+                  <span>{p.references.length ? 'Character Lock configurado' : 'Character Lock pendente'}</span>
                 </div>
-                <span className="text-zinc-500">6 atributos bloqueados</span>
+                <span className="text-zinc-500">{p.references.length ? `${p.references.length} ref(s)` : 'Sem ref'}</span>
               </div>
             </div>
 
             {/* Actions */}
-            <div className="flex items-center gap-2 pt-2">
+            <div className="flex flex-col gap-2 pt-2">
+              <div className="flex items-center gap-2">
+                <button onClick={() => setKitProfile(p)} className="py-1.5 px-3 bg-[#15151b] hover:bg-[#20202a] border border-[#292933] rounded-xl text-xs font-semibold text-zinc-300 transition-colors flex items-center justify-center gap-1.5"><BriefcaseBusiness className="w-3.5 h-3.5"/><span>Kit</span></button>
+                <button
+                  onClick={() => setEditingProfile(p)}
+                  className="py-1.5 px-3 bg-[#15151b] hover:bg-[#20202a] border border-[#292933] rounded-xl text-xs font-semibold text-zinc-300 transition-colors flex items-center justify-center gap-1.5"
+                >
+                  <Edit3 className="w-3.5 h-3.5" />
+                  <span>Editar</span>
+                </button>
+                <button
+                  onClick={() => setMediaProfile(p)}
+                  className="flex-1 py-1.5 bg-brand-600/20 hover:bg-brand-600/30 border border-brand-500/50 rounded-xl text-xs font-bold text-brand-200 transition-colors flex items-center justify-center gap-1.5 shadow-sm"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-brand-400" />
+                  <span>Gerar Imagem & Voz</span>
+                </button>
+              </div>
+
               <button
                 onClick={() => setViewPromptProfile(p)}
-                className="flex-1 py-1.5 bg-[#181328] hover:bg-[#221B38] border border-brand-500/40 rounded-xl text-xs font-semibold text-brand-300 transition-colors flex items-center justify-center gap-1.5 shadow-sm"
+                className="w-full py-1 bg-[#141419] hover:bg-[#1C1C24] border border-[#23232C] rounded-xl text-[11px] font-medium text-zinc-400 hover:text-zinc-200 transition-colors flex items-center justify-center gap-1.5"
               >
-                <Camera className="w-3.5 h-3.5 text-brand-400" />
-                <span>Prompt Gemini/ChatGPT</span>
+                <Camera className="w-3 h-3 text-zinc-500" />
+                <span>Ver Prompt Mestre</span>
               </button>
             </div>
           </div>
@@ -140,7 +179,7 @@ export default function ProfilesPage() {
 
             <div className="p-6 space-y-4 text-xs">
               <p className="text-zinc-400">
-                Utilize este prompt calibrado para gerar novas imagens do personagem no <strong>Google Gemini (Imagen 3)</strong>, <strong>ChatGPT (DALL-E 3)</strong>, <strong>FLUX.1</strong> ou <strong>Midjourney</strong> garantindo identidade facial 100% idêntica.
+                Use este prompt como direção em uma ferramenta de imagem compatível. A consistência deve ser conferida visualmente e só recebe Character Lock após adicionar uma referência mestre.
               </p>
 
               <div className="p-3.5 bg-[#0C0C10] border border-brand-500/40 rounded-xl text-[11px] font-mono text-zinc-200 whitespace-pre-wrap leading-relaxed max-h-64 overflow-y-auto">
@@ -195,7 +234,12 @@ export default function ProfilesPage() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onProfileCreated={handleProfileCreated}
+        initialProduct={initialProduct}
+        initialArchetype={initialArchetype}
       />
+      {editingProfile && <EditProfileModal profile={editingProfile} onClose={() => setEditingProfile(null)} onUpdated={handleProfileUpdated} onDeleted={handleProfileDeleted} />}
+      {kitProfile && <ProfileProfessionalKitModal profile={kitProfile} onClose={() => setKitProfile(null)} />}
+      {mediaProfile && <GenerateProfileMediaModal profile={mediaProfile} onClose={() => setMediaProfile(null)} onProfileUpdated={handleProfileUpdated} />}
     </div>
   );
 }

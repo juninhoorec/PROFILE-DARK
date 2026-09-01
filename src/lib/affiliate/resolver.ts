@@ -25,7 +25,7 @@ function isPrivateIp(address: string) {
   return /^(127\.|10\.|192\.168\.|169\.254\.|0\.|::1$|fc|fd|fe80)/i.test(address) || /^172\.(1[6-9]|2\d|3[01])\./.test(address);
 }
 
-async function assertSafeUrl(url: URL) {
+export async function assertSafeUrl(url: URL) {
   if (!['http:', 'https:'].includes(url.protocol)) throw new Error('Use um link http ou https válido.');
   if (url.username || url.password || ['localhost', '0.0.0.0'].includes(url.hostname)) throw new Error('Este endereço não pode ser analisado.');
   const addresses = await lookup(url.hostname, { all: true });

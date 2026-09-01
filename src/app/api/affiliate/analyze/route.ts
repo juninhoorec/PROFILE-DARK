@@ -15,16 +15,18 @@ export async function POST(request: Request) {
     const dna = buildProductDNA(resolved.data);
     dna.checkoutUrl = resolved.affiliateUrl;
     const now = new Date().toISOString();
+    const existingLink=db.getAffiliateLinks().find(item=>item.affiliateUrl===resolved.affiliateUrl);
+    const existingProduct=existingLink?.productId?db.getProductById(existingLink.productId):undefined;
     const product: Product = {
-      id: `prod_${crypto.randomUUID()}`, name: resolved.data.name!, brand: resolved.data.brand || 'Não informada',
+      id: existingProduct?.id || `prod_${crypto.randomUUID()}`, name: resolved.data.name!, brand: resolved.data.brand || 'Não informada',
       category: resolved.data.category || 'Produto', description: resolved.data.description || 'Sem descrição publicada.',
       imageUrl: resolved.data.imageUrl, price: [resolved.data.currency, resolved.data.price].filter(Boolean).join(' '), buyUrl: resolved.affiliateUrl,
-      productLock: { logo: true, color: true, shape: true, material: true, packaging: true, text: true, details: true }, dna, createdAt: now, updatedAt: now,
+      productLock: { logo: true, color: true, shape: true, material: true, packaging: true, text: true, details: true }, dna, createdAt: existingProduct?.createdAt || now, updatedAt: now,
     };
     db.saveProduct(product);
     const affiliateLink: AffiliateLink = {
-      id: `aff_${crypto.randomUUID()}`, productId: product.id, affiliateUrl: resolved.affiliateUrl, resolvedUrl: resolved.resolvedUrl,
-      platform: resolved.platform, trackingPreserved: true, resolutionSource: resolved.resolutionSource, createdAt: now,
+      id: existingLink?.id || `aff_${crypto.randomUUID()}`, productId: product.id, affiliateUrl: resolved.affiliateUrl, resolvedUrl: resolved.resolvedUrl,
+      platform: resolved.platform, trackingPreserved: true, resolutionSource: resolved.resolutionSource, createdAt: existingLink?.createdAt || now,
     };
     db.saveAffiliateLink(affiliateLink);
     return NextResponse.json({ resolved, product, affiliateLink, productDNA: dna, matches: ProfileProductMatcher.suggest(dna) }, { status: 201 });
